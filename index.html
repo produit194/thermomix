@@ -1,1276 +1,806 @@
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Complete Page</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <style>
-    /* Reset CSS */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Arial', sans-serif;
-      line-height: 1.6;
-      color: #333;
-    }
-
-    /* Header Styles */
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-      background: #fff;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .menu-icon {
-      font-size: 18px;
-      cursor: pointer;
-      color: #333;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-    }
-
-    .logo img {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      margin-right: 8px;
-    }
-
-    .logo span {
-      font-size: 16px;
-      font-weight: bold;
-      color: #333;
-    }
-
-    .nav-items {
-      display: flex;
-      align-items: center;
-    }
-
-    .nav-items .btn {
-      background-color: #ff4c4c;
-      color: white;
-      padding: 5px 15px;
-      border: none;
-      border-radius: 15px;
-      cursor: pointer;
-      font-size: 12px;
-      margin-right: 10px;
-    }
-
-    .nav-items i {
-      font-size: 16px;
-      color: #333;
-      margin: 0 8px;
-      cursor: pointer;
-    }
-
-    .slider {
-    position: relative;
-    width: 100%;
-    max-width: 300px; /* حجم مناسب للهواتف */
-    margin: auto;
-    overflow: hidden;
-    border-radius: 8px;
-}
-
-.slides {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    width: 100%;
-}
-
-.slides img {
-    width: 100%;
-    height: auto;
-}
-
-/* Media Query للهواتف */
-@media (max-width: 768px) {
-    .slider {
-        max-width: 90%; /* يجعل العرض يتناسب مع شاشة الهاتف */
-    }
-
-    .slides img {
-        max-width: 100%;
-        height: auto; /* يحافظ على تناسب الصور */
-    }
-}
-
-.navigation {
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  transform: translateY(-50%);
-}
-
-.navigation button {
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.navigation button:hover {
-  background: rgba(0, 0, 0, 0.7);
-}
-
-.indicators {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-}
-
-.indicators span {
-  width: 10px;
-  height: 10px;
-  background: white;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.indicators span.active {
-  background: red;
-}
-    
-    /* Hero Section */
-    .hero {
-      background: url('images/hero.jpg') no-repeat center center/cover;
-      height: 90vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: white;
-      padding: 20px;
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
-    }
-
-    .hero button {
-      background-color: #ff4c4c;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 20px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .hero button:hover {
-      background-color: #e44141;
-      transform: scale(1.1);
-    }
-
-    /* Features Section */
-    .features {
-      padding: 50px 20px;
-      background: #f8f8f8;
-      text-align: center;
-    }
-
-    .features h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-
-    .features .feature-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 30px;
-    }
-
-    .feature {
-      background: white;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .feature img {
-      width: 50px;
-      margin-bottom: 15px;
-    }
-
-    .feature h3 {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-    }
-
-    .feature p {
-      font-size: 1rem;
-      color: #555;
-    }
-
-    /* Footer Section */
-    footer {
-  background: #f9f9f9;
-  padding: 20px;
-  text-align: center;
-  font-family: Arial, sans-serif;
-}
-
-.newsletter {
-  margin-bottom: 20px;
-}
-
-.newsletter-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: red;
-  margin-bottom: 10px;
-}
-
-.newsletter p {
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 20px;
-}
-
-.email-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.email-form input {
-  width: 70%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px 0 0 5px;
-  font-size: 1rem;
-}
-
-.email-form button {
-  padding: 10px 20px;
-  border: none;
-  background: red;
-  color: white;
-  font-size: 1.2rem;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-}
-
-.footer-links {
-  margin-bottom: 20px;
-}
-
-.footer-links a {
-  color: red;
-  text-decoration: none;
-  margin: 0 10px;
-  font-size: 0.9rem;
-}
-
-.social-media {
-  margin-bottom: 20px;
-}
-
-.social-media h3 {
-  font-size: 1.2rem;
-  color: #333;
-}
-
-.social-media p {
-  font-size: 0.9rem;
-  color: #555;
-  margin-bottom: 10px;
-}
-
-.social-media .icons a {
-  margin: 0 10px;
-  font-size: 1.5rem;
-  color: #333;
-  text-decoration: none;
-}
-
-.social-media .icons a:hover {
-  color: red;
-}
-
-.footer-categories {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-bottom: 20px;
-}
-
-.footer-categories h4 {
-  font-size: 1rem;
-  font-weight: bold;
-  color: #333;
-}
-
-.footer-bottom {
-  font-size: 0.8rem;
-  color: #aaa;
-}
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-
-      .hero p {
-        font-size: 1rem;
-      }
-
-      .hero button {
-        padding: 8px 15px;
-        font-size: 0.9rem;
-      }
-
-      .features .feature-container {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Header Section -->
-  <div class="header">
-    <div class="menu-icon">
-      <i class="fas fa-bars"></i>
-    </div>
-    <div class="logo">
-      <img src="322144555_5652290678220387_8371673163580908615_n.jpg" alt="Logo">
-      <span>roborock</span>
-    </div>
-
-    <div class="nav-items">
-  <a href="#our-features" class="btn">Boutique</a> <!-- Dert link li kaydir l "Our Features" section -->
-  <i class="fas fa-search"></i>
-  <i class="fas fa-user"></i>
-  <i class="fas fa-shopping-cart"></i>
-</div>
-  </div>
-
- <!DOCTYPE html>
-<html lang="ar">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شعبيات رأس السنة</title>
+    <title>Thermomix - Robot culinaire multifonction</title>
     <style>
-        /* Effet de neige */
-        .snowflakes {
-            position: fixed;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: 9999;
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
         }
-
-        .snowflake {
+        
+        /* Variables */
+        :root {
+            --primary-color: #e2001a;
+            --secondary-color: #333;
+            --light-color: #f8f8f8;
+            --dark-color: #222;
+            --discount-color: #ffcc00;
+            --white: #fff;
+            --gray: #eee;
+            --transition: all 0.3s ease;
+        }
+        
+        /* Global Styles */
+        body {
+            line-height: 1.6;
+            color: var(--secondary-color);
+            background-color: var(--light-color);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: var(--dark-color);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: var(--transition);
+            font-size: 14px;
+        }
+        
+        .btn:hover {
+            background-color: var(--dark-color);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
             position: absolute;
-            top: -10px;
-            color: #fff;
-            font-size: 1.5rem;
-            user-select: none;
-            animation: snow 10s linear infinite;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--primary-color);
         }
-
-        @keyframes snow {
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo img {
+            height: 50px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: var(--secondary-color);
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .discount-badge {
+            background-color: var(--discount-color);
+            color: var(--dark-color);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.5rem;
+            display: inline-block;
+            margin-bottom: 30px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
             0% {
-                transform: translateY(-10px) rotate(0deg);
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
             }
             100% {
-                transform: translateY(100vh) rotate(360deg);
+                transform: scale(1);
             }
         }
-
-        /* Style pour la boîte promotionnelle */
-        .promo-box {
-            background: linear-gradient(135deg, #ff5f6d, #ffc3a0);
-            color: white;
-            padding: 20px 30px;
-            border-radius: 15px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 25px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .feature-card {
             text-align: center;
-            max-width: 90%;
+            padding: 30px;
+            border-radius: 10px;
+            background-color: var(--light-color);
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 100px 0;
+            background-color: var(--light-color);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+        
+        .product-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--discount-color);
+            color: var(--dark-color);
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1rem;
+            z-index: 1;
+        }
+        
+        .product-image {
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-content {
+            padding: 30px;
+        }
+        
+        .product-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .product-price {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .current-price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .old-price {
+            font-size: 1.2rem;
+            text-decoration: line-through;
+            color: #999;
+            margin-left: 15px;
+        }
+        
+        .product-description {
+            margin-bottom: 25px;
+            color: #666;
+        }
+        
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+        
+        .testimonials-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .testimonial-item {
+            padding: 30px;
+        }
+        
+        .testimonial-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 30px;
+            color: #555;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        /* Newsletter Section */
+        .newsletter {
+            padding: 80px 0;
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .newsletter h2 {
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+        }
+        
+        .newsletter p {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
         }
-
-        /* Style pour le compte à rebours */
-        .countdown {
-            font-size: 1.5rem;
-            margin-top: 15px;
-            font-weight: 700;
-            color: #ffcc00;
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 16px;
+        }
+        
+        .newsletter-form button {
+            padding: 15px 30px;
+            background-color: var(--dark-color);
+            color: var(--white);
+            border: none;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+        
+        .newsletter-form button:hover {
+            background-color: #111;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--white);
+            padding: 70px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-col ul li a {
+            color: #bbb;
+            transition: var(--transition);
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--white);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            color: var(--white);
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 14px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 15px;
+            }
+            
+            nav {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--white);
+                transition: all 0.5s ease;
+                z-index: 999;
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 30px;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                margin-top: 70px;
+                height: auto;
+                padding: 100px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                border-radius: 30px;
+                margin-bottom: 10px;
+            }
+            
+            .newsletter-form button {
+                border-radius: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Effet de neige -->
-    <div class="snowflakes" aria-hidden="true">
-        <span class="snowflake">❄️</span>
-        <span class="snowflake">❄️</span>
-        <span class="snowflake">❄️</span>
-        <span class="snowflake">❄️</span>
-        <span class="snowflake">❄️</span>
-        <span class="snowflake">❄️</span>
-        <span class="snowflake">❄️</span>
-    </div>
-
-<!-- Boîte de Promotion Compacte -->
-<div class="promo-box" style="
-    background: linear-gradient(135deg, #ff4d4d, #ff7b7b); 
-    color: white; 
-    padding: 15px; 
-    border-radius: 10px; 
-    text-align: center; 
-    font-family: 'Arial', sans-serif; 
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); 
-    margin: 10px auto; 
-    max-width: 400px; 
-    position: relative;">
-
-    <!-- Message Principal -->
-    <div style="font-size: 1.3rem; font-weight: bold; margin-bottom: 8px;">
-        🎆 Bonne Année 2025 🎆
-    </div>
-
-    <!-- Message Secondaire -->
-<div style="font-size: 0.9rem; line-height: 1.5; margin-bottom: 10px;">
-    Réduction exceptionnelle <strong>jusqu'à -60 %</strong> sur vos essentiels préférés : 
-    robots aspirateurs, télévisions, et robots cuiseurs. 🎉 Démarrez 2025 avec style et confort ! 🚀
-</div>
-
-
-    <!-- Compte à Rebours -->
-    <div style="font-size: 1rem; font-weight: bold; color: #ffe5e5;">
-        Temps restant : <span id="countdown" style="color: #fff;"></span>
-    </div>
-</div>
-
-<script>
-    // Fonction pour démarrer le compte à rebours
-    function startCountdown(endTime) {
-        const countdownElement = document.getElementById('countdown');
-        const timer = setInterval(function () {
-            const now = new Date().getTime();
-            const timeLeft = endTime - now;
-
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-            countdownElement.innerHTML = `${minutes}m ${seconds}s`;
-
-            if (timeLeft <= 0) {
-                clearInterval(timer);
-                countdownElement.innerHTML = "Offre expirée !";
-            }
-        }, 1000);
-    }
-
-    // Définir l'heure de fin (1 heure à partir de maintenant)
-    const now = new Date().getTime();
-    const oneHourLater = now + 60 * 60 * 1000;
-
-    // Démarrer le compte à rebours
-    startCountdown(oneHourLater);
-</script>
-
-
-<script>
-    // Fonction pour démarrer le compte à rebours
-    function startCountdown(endTime) {
-        const countdownElement = document.getElementById('countdown');
-        const timer = setInterval(function () {
-            const now = new Date().getTime();
-            const timeLeft = endTime - now;
-
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-            countdownElement.innerHTML = `${hours}h ${minutes}m ${seconds}s`;
-
-            if (timeLeft <= 0) {
-                clearInterval(timer);
-                countdownElement.innerHTML = "Les offres sont terminées !";
-            }
-        }, 1000);
-    }
-
-    // Définir l'heure de fin (12 heures à partir de maintenant)
-    const now = new Date().getTime();
-    const twelveHoursLater = now + 12 * 60 * 60 * 1000;
-
-    // Démarrer le compte à rebours
-    startCountdown(twelveHoursLater);
-</script>
-
-  <!-- Features Section -->
-<section id="our-features" class="features">
-    <div class="container" style="max-width: 600px; margin: auto; text-align: center; padding: 20px;">
-        <!-- Premier Produit -->
-        <div class="feature" style="
-            background: #f9f9f9; 
-            padding: 15px; 
-            border-radius: 8px; 
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-            margin-bottom: 20px;">
-            
-            <!-- Image réduite -->
-            <img src="51FWfzIHkWL._AC_SX679_.jpg" alt="LG TV - 55NANO766" style="
-                width: 80%; 
-                max-width: 250px; 
-                height: auto; 
-                border-radius: 8px; 
-                margin-bottom: 10px;">
-
-            <!-- Titre du produit -->
-            <h3 style="font-size: 1.2rem; color: #333; margin-bottom: 8px;">
-                LG TV - 55NANO766 - Acier foncé - 55'' (139 cm) - LED NanoCell 4K
-            </h3>
-
-            <!-- Détails du produit -->
-            <p style="color: #555; font-size: 0.9rem; line-height: 1.4; margin-bottom: 10px;">
-                Taille de l'écran : <b>55 Pouces</b><br>
-                Marque : <b>LG</b><br>
-                Technologie d'affichage : <b>LED</b><br>
-                Résolution : <b>4K</b><br>
-                Fréquence de rafraîchissement : <b>50 Hz</b><br>
-                Technologie de connectivité : <b>USB, HDMI</b>
-            </p>
-
-            <!-- Avis et étoiles -->
-            <div style="margin-bottom: 8px;">
-                <span style="font-size: 1rem; color: #333; font-weight: bold;">
-                    Note : 4.4
-                </span>
-                <span style="color: #FFC107; font-size: 1rem;">
-                    ★★★★★
-                </span>
-                <span style="color: #555; font-size: 0.8rem;">
-                    (5010 avis)
-                </span>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="thermomixdinshaiaa881.img" alt="Thermomix Logo">
             </div>
-
-            <!-- Prix -->
-            <div style="margin-bottom: 10px;">
-                <span style="font-size: 1rem; text-decoration: line-through; color: #999; margin-right: 8px;">
-                    645.99€
-                </span>
-                <span style="font-size: 1.4rem; font-weight: bold; color: red;">
-                    399.99€
-                </span>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#products">Produits</a></li>
+                    <li><a href="#features">Fonctionnalités</a></li>
+                    <li><a href="#recipes">Recettes</a></li>
+                    <li><a href="#testimonials">Témoignages</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars">☰</i>
             </div>
-            <!-- Informations supplémentaires -->
-<div style="margin-bottom: 20px; padding: 15px; border: 1px solid #e6e6e6; border-radius: 8px; background: #ffffff; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
-    <p style="color: #28a745; font-size: 1.1rem; font-weight: 500; margin-bottom: 10px; text-align: center;">
-        - La livraison gratuite
-    </p>
-    <p style="color: #28a745; font-size: 1.1rem; font-weight: 500; margin-bottom: 10px; text-align: center;">
-        - Retour de produit autorisé
-    </p>
-    <p style="color: #28a745; font-size: 1.1rem; font-weight: 500; margin-bottom: 10px; text-align: center;">
-        - Disponible en stock
-    </p>
-</div>
-
-            <!-- Bouton d'achat -->
-            <a href="page-produit1.html">
-                <button style="
-                    background-color: red; 
-                    color: white; 
-                    border: none; 
-                    padding: 8px 15px; 
-                    border-radius: 5px; 
-                    font-size: 0.9rem; 
-                    cursor: pointer; 
-                    transition: 0.3s ease; 
-                    font-weight: bold;"
-                    onmouseover="this.style.backgroundColor='#e44141';"
-                    onmouseout="this.style.backgroundColor='red';">
-                    Acheter Maintenant
-                </button>
-            </a>
         </div>
+    </header>
 
-<!-- Sixième Produit -->
-<div class="feature" style="
-    background: #f9f9f9; 
-    padding: 15px; 
-    border-radius: 8px; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-    margin-bottom: 20px;">
-    
-    <!-- Image réduite -->
-    <img src="81W4MbZDa8L._AC_SX679_.jpg" alt="Samsung Téléviseur TQ55Q60C" style="
-        width: 80%; 
-        max-width: 250px; 
-        height: auto; 
-        border-radius: 8px; 
-        margin-bottom: 10px;">
-
-    <!-- Titre du produit -->
-    <h3 style="font-size: 1.2rem; color: #333; margin-bottom: 8px;">
-        Samsung Téléviseur TQ55Q60C 55" QLED 4K Smart TV 2023
-    </h3>
-
-    <!-- Détails du produit -->
-    <p style="color: #555; font-size: 0.9rem; line-height: 1.4; margin-bottom: 10px;">
-        Taille de l'écran : <b>55 Pouces</b><br>
-        Marque : <b>Samsung</b><br>
-        Technologie d'affichage : <b>QLED</b><br>
-        Résolution : <b>4K</b><br>
-        Fréquence de rafraîchissement : <b>50 Hz</b><br>
-        Caractéristique spéciale : <b>Chromecast intégré</b><br>
-        Connectivité : <b>Bluetooth, HDMI, USB, Wi-Fi</b><br>
-        Dimensions : <b>123,2L x 74,6H x 1P cm</b>
-    </p>
-
-    <!-- Avis et étoiles -->
-    <div style="margin-bottom: 8px;">
-        <span style="font-size: 1rem; color: #333; font-weight: bold;">
-            Note : 4.1
-        </span>
-        <span style="color: #FFC107; font-size: 1rem;">
-            ★★★★☆
-        </span>
-        <span style="color: #555; font-size: 0.8rem;">
-            (1450 avis)
-        </span>
-    </div>
-
-    <!-- Prix -->
-    <div style="margin-bottom: 10px;">
-        <span style="font-size: 1rem; text-decoration: line-through; color: #999; margin-right: 8px;">
-            699.99€
-        </span>
-        <span style="font-size: 1.4rem; font-weight: bold; color: red;">
-            445.99€
-        </span>
-    </div>
-    <!-- Informations supplémentaires -->
-<div style="margin-bottom: 20px; padding: 15px; border: 1px solid #e6e6e6; border-radius: 8px; background: #ffffff; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
-    <p style="color: #28a745; font-size: 1.1rem; font-weight: 500; margin-bottom: 10px; text-align: center;">
-        - La livraison gratuite
-    </p>
-    <p style="color: #28a745; font-size: 1.1rem; font-weight: 500; margin-bottom: 10px; text-align: center;">
-        - Retour de produit autorisé
-    </p>
-    <p style="color: #28a745; font-size: 1.1rem; font-weight: 500; margin-bottom: 10px; text-align: center;">
-        - Disponible en stock
-    </p>
-</div>
-
-    <!-- Bouton d'achat -->
-    <a href="page-produit2.html">
-        <button style="
-            background-color: red; 
-            color: white; 
-            border: none; 
-            padding: 8px 15px; 
-            border-radius: 5px; 
-            font-size: 0.9rem; 
-            cursor: pointer; 
-            transition: 0.3s ease; 
-            font-weight: bold;"
-            onmouseover="this.style.backgroundColor='#e44141';"
-            onmouseout="this.style.backgroundColor='red';">
-            Acheter Maintenant
-        </button>
-    </a>
-</div>
-
-        <!-- Troisième Produit -->
-<div class="feature" style="
-    background: #f9f9f9; 
-    padding: 15px; 
-    border-radius: 8px; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-    margin-bottom: 20px;">
-    
-    <!-- Image réduite -->
-    <img src="61T1MvqIJwL._AC_SX569_.jpg" alt="ECOVACS DEEBOT X5 OMNI" style="
-        width: 80%; 
-        max-width: 250px; 
-        height: auto; 
-        border-radius: 8px; 
-        margin-bottom: 10px;">
-
-    <!-- Titre du produit -->
-    <h3 style="font-size: 1.2rem; color: #333; margin-bottom: 8px;">
-        ECOVACS Robot Aspirateur Laveur DEEBOT X5 Omni
-    </h3>
-
-    <!-- Détails du produit -->
-    <p style="color: #555; font-size: 0.9rem; line-height: 1.4; margin-bottom: 10px;">
-        Marque : <b>ECOVACS</b><br>
-        Modèle : <b>DEEBOT X5 OMNI</b><br>
-        Aspiration puissante : <b>12 800 PA</b><br>
-        Caractéristiques : <b>ZeroTangle, TruEdge Adaptive Mopping, Lavage à l'eau chaude 70°C</b><br>
-        Dimensions : <b>45,9L x 46,9l x 62,3H cm</b><br>
-        Tension : <b>110 V</b>
-    </p>
-
-    <!-- Avis et étoiles -->
-    <div style="margin-bottom: 8px;">
-        <span style="font-size: 1rem; color: #333; font-weight: bold;">
-            Note : 4.3
-        </span>
-        <span style="color: #FFC107; font-size: 1rem;">
-            ★★★★★
-        </span>
-        <span style="color: #555; font-size: 0.8rem;">
-            (1050 avis)
-        </span>
-    </div>
-
-    <!-- Prix -->
-    <div style="margin-bottom: 10px;">
-        <span style="font-size: 1rem; text-decoration: line-through; color: #999; margin-right: 8px;">
-            1099.99€
-        </span>
-        <span style="font-size: 1.4rem; font-weight: bold; color: red;">
-            649.99€
-        </span>
-    </div>
-    <!-- Informations supplémentaires -->
-<div style="margin-bottom: 20px; padding: 15px; border: 1px solid #e6e6e6; border-radius: 8px; background: #ffffff; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
-    <p style="color: #28a745; font-size: 1.1rem; font-weight: 500; margin-bottom: 10px; text-align: center;">
-        - La livraison gratuite
-    </p>
-    <p style="color: #28a745; font-size: 1.1rem; font-weight: 500; margin-bottom: 10px; text-align: center;">
-        - Retour de produit autorisé
-    </p>
-    <p style="color: #28a745; font-size: 1.1rem; font-weight: 500; margin-bottom: 10px; text-align: center;">
-        - Disponible en stock
-    </p>
-</div>
-
-    <!-- Bouton d'achat -->
-    <a href="page-produit3.html">
-        <button style="
-            background-color: red; 
-            color: white; 
-            border: none; 
-            padding: 8px 15px; 
-            border-radius: 5px; 
-            font-size: 0.9rem; 
-            cursor: pointer; 
-            transition: 0.3s ease; 
-            font-weight: bold;"
-            onmouseover="this.style.backgroundColor='#e44141';"
-            onmouseout="this.style.backgroundColor='red';">
-            Acheter Maintenant
-        </button>
-    </a>
-</div>
-
-<!-- Cinquième Produit -->
-<div class="feature" style="
-    background: #f9f9f9; 
-    padding: 15px; 
-    border-radius: 8px; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-    margin-bottom: 20px;">
-    
-    <!-- Image réduite -->
-    <img src="71+NzbI3cDL._AC_SX569_.jpg" alt="Melitta Barista TS Smart Noire" style="
-        width: 80%; 
-        max-width: 250px; 
-        height: auto; 
-        border-radius: 8px; 
-        margin-bottom: 10px;">
-
-    <!-- Titre du produit -->
-    <h3 style="font-size: 1.2rem; color: #333; margin-bottom: 8px;">
-        Melitta Barista TS Smart Noire, Machine à Café à Grain
-    </h3>
-
-    <!-- Détails du produit -->
-    <p style="color: #555; font-size: 0.9rem; line-height: 1.4; margin-bottom: 10px;">
-        Marque : <b>Melitta</b><br>
-        Couleur : <b>Noir</b><br>
-        Dimensions : <b>25,9P x 46,7l x 37,2H cm</b><br>
-        Caractéristiques spéciales : <b>15 bars, poids 11.28 kg</b><br>
-        Type : <b>Machine à espresso avec broyeur intégré</b><br>
-        Usages spécifiques : <b>Filtre réutilisable, programmable, mousseur à lait</b><br>
-        Finition : <b>Acier inoxydable</b>
-    </p>
-
-    <!-- Avis et étoiles -->
-    <div style="margin-bottom: 8px;">
-        <span style="font-size: 1rem; color: #333; font-weight: bold;">
-            Note : 4.5
-        </span>
-        <span style="color: #FFC107; font-size: 1rem;">
-            ★★★★★
-        </span>
-        <span style="color: #555; font-size: 0.8rem;">
-            (982 avis)
-        </span>
-    </div>
-
-    <!-- Prix -->
-    <div style="margin-bottom: 10px;">
-        <span style="font-size: 1rem; text-decoration: line-through; color: #999; margin-right: 8px;">
-            1099.99€
-        </span>
-        <span style="font-size: 1.4rem; font-weight: bold; color: red;">
-            519.99€
-        </span>
-    </div>
-    <!-- Informations supplémentaires -->
-<div style="margin-bottom: 20px; padding: 15px; border: 1px solid #e6e6e6; border-radius: 8px; background: #ffffff; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
-    <p style="color: #28a745; font-size: 1.1rem; font-weight: 500; margin-bottom: 10px; text-align: center;">
-        - La livraison gratuite
-    </p>
-    <p style="color: #28a745; font-size: 1.1rem; font-weight: 500; margin-bottom: 10px; text-align: center;">
-        - Retour de produit autorisé
-    </p>
-    <p style="color: #28a745; font-size: 1.1rem; font-weight: 500; margin-bottom: 10px; text-align: center;">
-        - Disponible en stock
-    </p>
-</div>
-
-    <!-- Bouton d'achat -->
-    <a href="page-produit4.html">
-        <button style="
-            background-color: red; 
-            color: white; 
-            border: none; 
-            padding: 8px 15px; 
-            border-radius: 5px; 
-            font-size: 0.9rem; 
-            cursor: pointer; 
-            transition: 0.3s ease; 
-            font-weight: bold;"
-            onmouseover="this.style.backgroundColor='#e44141';"
-            onmouseout="this.style.backgroundColor='red';">
-            Acheter Maintenant
-        </button>
-    </a>
-</div>
-
-<!-- 5 Produit -->
-<div class="feature" style="
-    background: #f9f9f9; 
-    padding: 15px; 
-    border-radius: 8px; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-    margin-bottom: 20px;">
-    
-    <!-- Image réduite -->
-    <img src="71RJFkFMrML._AC_SY741_.jpg" alt="Samsung RS6HA8891SL/EF - Réfrigérateur Side by Side" style="
-        width: 80%; 
-        max-width: 250px; 
-        height: auto; 
-        border-radius: 8px; 
-        margin-bottom: 10px;">
-
-    <!-- Titre du produit -->
-    <h3 style="font-size: 1.2rem; color: #333; margin-bottom: 8px;">
-        Samsung RS6HA8891SL/EF - Réfrigérateur Side by Side avec Family Hub
-    </h3>
-
-    <!-- Détails du produit -->
-    <p style="color: #555; font-size: 0.9rem; line-height: 1.4; margin-bottom: 10px;">
-        Marque : <b>Samsung</b><br>
-        Capacité : <b>614 Litres</b><br>
-        Configuration : <b>Congélateur à côté</b><br>
-        Dimensions : <b>28,2P x 35,9l x 70,1H cm</b><br>
-        Classe énergétique : <b>E</b><br>
-        Caractéristique spéciale : <b>Distributeur d'eau</b><br>
-        Couleur : <b>Inox</b>
-    </p>
-
-    <!-- Avis et étoiles -->
-    <div style="margin-bottom: 8px;">
-        <span style="font-size: 1rem; color: #333; font-weight: bold;">
-            Note : 4.2
-        </span>
-        <span style="color: #FFC107; font-size: 1rem;">
-            ★★★★★
-        </span>
-        <span style="color: #555; font-size: 0.8rem;">
-            (650 avis)
-        </span>
-    </div>
-
-    <!-- Prix -->
-    <div style="margin-bottom: 10px;">
-        <span style="font-size: 1rem; text-decoration: line-through; color: #999; margin-right: 8px;">
-            1888.99€
-        </span>
-        <span style="font-size: 1.4rem; font-weight: bold; color: red;">
-            999.99€
-        </span>
-    </div>
-    <!-- Informations supplémentaires -->
-<div style="margin-bottom: 20px; padding: 15px; border: 1px solid #e6e6e6; border-radius: 8px; background: #ffffff; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
-    <p style="color: #28a745; font-size: 1.1rem; font-weight: 500; margin-bottom: 10px; text-align: center;">
-        - La livraison gratuite
-    </p>
-    <p style="color: #28a745; font-size: 1.1rem; font-weight: 500; margin-bottom: 10px; text-align: center;">
-        - Retour de produit autorisé
-    </p>
-    <p style="color: #28a745; font-size: 1.1rem; font-weight: 500; margin-bottom: 10px; text-align: center;">
-        - Disponible en stock
-    </p>
-</div>
-
-    <!-- Bouton d'achat -->
-    <a href="page-produit5.html">
-        <button style="
-            background-color: red; 
-            color: white; 
-            border: none; 
-            padding: 8px 15px; 
-            border-radius: 5px; 
-            font-size: 0.9rem; 
-            cursor: pointer; 
-            transition: 0.3s ease; 
-            font-weight: bold;"
-            onmouseover="this.style.backgroundColor='#e44141';"
-            onmouseout="this.style.backgroundColor='red';">
-            Acheter Maintenant
-        </button>
-    </a>
-</div>
-
-        <!-- Deuxième Produit -->
-        <div class="feature" style="
-            background: #f9f9f9; 
-            padding: 15px; 
-            border-radius: 8px; 
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-            margin-bottom: 20px;">
-            
-            <!-- Image réduite -->
-            <img src="71dOPK9GIOL._AC_SX569_.jpg" alt="Moulinex Robot cuiseur" style="
-                width: 80%; 
-                max-width: 250px; 
-                height: auto; 
-                border-radius: 8px; 
-                margin-bottom: 10px;">
-
-            <!-- Titre du produit -->
-            <h3 style="font-size: 1.2rem; color: #333; margin-bottom: 8px;">
-                Moulinex Robot cuiseur - 18 Modes - Balance intégrée
-            </h3>
-
-            <!-- Détails du produit -->
-            <p style="color: #555; font-size: 0.9rem; line-height: 1.4; margin-bottom: 10px;">
-                Capacité : <b>3 Litres</b><br>
-                Marque : <b>Moulinex</b><br>
-                Puissance : <b>1550 Watts</b><br>
-                Couleur : <b>Noir</b><br>
-                Méthode de contrôle : <b>Application, Tactile</b><br>
-                Dimensions : <b>32P x 31l x 35H cm</b>
-            </p>
-
-            <!-- Avis et étoiles -->
-            <div style="margin-bottom: 8px;">
-                <span style="font-size: 1rem; color: #333; font-weight: bold;">
-                    Note : 4.3
-                </span>
-                <span style="color: #FFC107; font-size: 1rem;">
-                    ★★★★★
-                </span>
-                <span style="color: #555; font-size: 0.8rem;">
-                    (1250 avis)
-                </span>
-            </div>
-
-            <!-- Prix -->
-            <div style="margin-bottom: 10px;">
-                <span style="font-size: 1rem; text-decoration: line-through; color: #999; margin-right: 8px;">
-                    1919.99€
-                </span>
-                <span style="font-size: 1.4rem; font-weight: bold; color: red;">
-                    849.99€
-                </span>
-            </div>
-            <!-- Informations supplémentaires -->
-<div style="margin-bottom: 20px; padding: 15px; border: 1px solid #e6e6e6; border-radius: 8px; background: #ffffff; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
-    <p style="color: #28a745; font-size: 1.1rem; font-weight: 500; margin-bottom: 10px; text-align: center;">
-        - La livraison gratuite
-    </p>
-    <p style="color: #28a745; font-size: 1.1rem; font-weight: 500; margin-bottom: 10px; text-align: center;">
-        - Retour de produit autorisé
-    </p>
-    <p style="color: #28a745; font-size: 1.1rem; font-weight: 500; margin-bottom: 10px; text-align: center;">
-        - Disponible en stock
-    </p>
-</div>
-
-            <!-- Bouton d'achat -->
-            <a href="page-produit6.html">
-                <button style="
-                    background-color: red; 
-                    color: white; 
-                    border: none; 
-                    padding: 8px 15px; 
-                    border-radius: 5px; 
-                    font-size: 0.9rem; 
-                    cursor: pointer; 
-                    transition: 0.3s ease; 
-                    font-weight: bold;"
-                    onmouseover="this.style.backgroundColor='#e44141';"
-                    onmouseout="this.style.backgroundColor='red';">
-                    Acheter Maintenant
-                </button>
-            </a>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="discount-badge">Promotion -40%</div>
+            <h1>Découvrez la nouvelle génération de Thermomix</h1>
+            <p>Le robot culinaire révolutionnaire qui transforme votre cuisine en expérience ludique et créative</p>
+            <a href="#products" class="btn">Voir les produits</a>
+            <a href="#features" class="btn btn-outline">Découvrir les fonctionnalités</a>
         </div>
+    </section>
 
-        <!-- 6 Produit -->
-        <div class="feature" style="
-            background: #f9f9f9; 
-            padding: 15px; 
-            border-radius: 8px; 
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-            margin-bottom: 20px;">
-            
-            <!-- Image réduite -->
-            <img src="61n1pymUpkL._AC_SX569_.jpg" alt="ECOVACS DEEBOT T30 PRO OMNI" style="
-                width: 80%; 
-                max-width: 250px; 
-                height: auto; 
-                border-radius: 8px; 
-                margin-bottom: 10px;">
-
-            <!-- Titre du produit -->
-            <h3 style="font-size: 1.2rem; color: #333; margin-bottom: 8px;">
-                ECOVACS Robot Aspirateur Laveur DEEBOT T30 Pro Omni
-            </h3>
-
-            <!-- Détails du produit -->
-            <p style="color: #555; font-size: 0.9rem; line-height: 1.4; margin-bottom: 10px;">
-                Marque : <b>ECOVACS</b><br>
-                Modèle : <b>T30 PRO OMNI</b><br>
-                Aspiration puissante : <b>11 000 PA</b><br>
-                Caractéristiques : <b>Nettoyage humide adaptatif, ZeroTangle</b><br>
-                Dimensions : <b>40,9L x 49l x 48H cm</b><br>
-                Durée de vie de la batterie : <b>100 minutes</b>
-            </p>
-
-            <!-- Avis et étoiles -->
-            <div style="margin-bottom: 8px;">
-                <span style="font-size: 1rem; color: #333; font-weight: bold;">
-                    Note : 4.4
-                </span>
-                <span style="color: #FFC107; font-size: 1rem;">
-                    ★★★★★
-                </span>
-                <span style="color: #555; font-size: 0.8rem;">
-                    (875 avis)
-                </span>
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Pourquoi choisir Thermomix?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Technologie avancée</h3>
+                    <p>Le Thermomix combine 12 fonctions en 1 seul appareil pour une cuisine simplifiée et innovante.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⏱️</div>
+                    <h3>Gain de temps</h3>
+                    <p>Préparez des repas délicieux en un temps record grâce à ses programmes intelligents.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍🍳</div>
+                    <h3>Expert en cuisine</h3>
+                    <p>Accédez à des milliers de recettes guidées pas à pas pour des résultats professionnels.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💡</div>
+                    <h3>Facile à utiliser</h3>
+                    <p>Interface intuitive et écran tactile pour une prise en main immédiate par toute la famille.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌱</div>
+                    <h3>Cuisine saine</h3>
+                    <p>Préparez des plats maison avec des ingrédients frais, sans additifs ni conservateurs.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Garantie 3 ans</h3>
+                    <p>Un produit fiable et durable avec un service après-vente de qualité.</p>
+                </div>
             </div>
-
-            <!-- Prix -->
-            <div style="margin-bottom: 10px;">
-                <span style="font-size: 1rem; text-decoration: line-through; color: #999; margin-right: 8px;">
-                    999.99€
-                </span>
-                <span style="font-size: 1.4rem; font-weight: bold; color: red;">
-                    499.99€
-                </span>
-            </div>
-           <!-- Informations supplémentaires -->
-<div style="margin-bottom: 20px; padding: 15px; border: 1px solid #e6e6e6; border-radius: 8px; background: #ffffff; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
-    <p style="color: #28a745; font-size: 1.1rem; font-weight: 500; margin-bottom: 10px; text-align: center;">
-        - La livraison gratuite
-    </p>
-    <p style="color: #28a745; font-size: 1.1rem; font-weight: 500; margin-bottom: 10px; text-align: center;">
-        - Retour de produit autorisé
-    </p>
-    <p style="color: #28a745; font-size: 1.1rem; font-weight: 500; margin-bottom: 10px; text-align: center;">
-        - Disponible en stock
-    </p>
-</div>
-
-            <!-- Bouton d'achat -->
-            <a href="page-produit7.html">
-                <button style="
-                    background-color: red; 
-                    color: white; 
-                    border: none; 
-                    padding: 8px 15px; 
-                    border-radius: 5px; 
-                    font-size: 0.9rem; 
-                    cursor: pointer; 
-                    transition: 0.3s ease; 
-                    font-weight: bold;"
-                    onmouseover="this.style.backgroundColor='#e44141';"
-                    onmouseout="this.style.backgroundColor='red';">
-                    Acheter Maintenant
-                </button>
-            </a>
         </div>
+    </section>
 
-        <!-- 7 Produit -->
-        <div class="feature" style="
-            background: #f9f9f9; 
-            padding: 15px; 
-            border-radius: 8px; 
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-            margin-bottom: 20px;">
-            
-            <!-- Image réduite -->
-            <img src="71oWw+6nAWL._AC_SX569_.jpg" alt="EUREKA NEW400 Aspirateur Laveur" style="
-                width: 80%; 
-                max-width: 250px; 
-                height: auto; 
-                border-radius: 8px; 
-                margin-bottom: 10px;">
-
-            <!-- Titre du produit -->
-            <h3 style="font-size: 1.2rem; color: #333; margin-bottom: 8px;">
-                EUREKA NEW400 Aspirateur Laveur sans Fil pour Sols Durs
-            </h3>
-
-            <!-- Détails du produit -->
-            <p style="color: #555; font-size: 0.9rem; line-height: 1.4; margin-bottom: 10px;">
-                Marque : <b>EUREKA</b><br>
-                Caractéristiques : <b>Portable, humide/sec, léger</b><br>
-                Type de filtre : <b>Mousse</b><br>
-                Autonomie : <b>30 minutes</b><br>
-                Temps de charge : <b>5 heures</b><br>
-                Puissance : <b>120 Watts</b><br>
-                Usages recommandés : <b>Nettoyages rapides, sols durs, maisons avec animaux</b>
-            </p>
-
-            <!-- Avis et étoiles -->
-            <div style="margin-bottom: 8px;">
-                <span style="font-size: 1rem; color: #333; font-weight: bold;">
-                    Note : 4.0
-                </span>
-                <span style="color: #FFC107; font-size: 1rem;">
-                    ★★★★☆
-                </span>
-                <span style="color: #555; font-size: 0.8rem;">
-                    (542 avis)
-                </span>
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">Nos Produits</h2>
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-badge">-40%</div>
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/600x400?text=Thermomix+TM6" alt="Thermomix TM6">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Thermomix TM6</h3>
+                        <div class="product-price">
+                            <span class="current-price">€999</span>
+                            <span class="old-price">€1665</span>
+                        </div>
+                        <p class="product-description">
+                            Le Thermomix® TM6 est le robot culinaire le plus intelligent au monde. Avec son écran tactile couleur et ses fonctions guidées, il révolutionne votre cuisine au quotidien.
+                        </p>
+                        <div class="product-actions">
+                            <a href="#" class="btn">Acheter maintenant</a>
+                            <a href="#" class="btn btn-outline">Voir détails</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-badge">-40%</div>
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/600x400?text=Thermomix+TM7" alt="Thermomix TM7">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Thermomix TM7</h3>
+                        <div class="product-price">
+                            <span class="current-price">€1199</span>
+                            <span class="old-price">€1999</span>
+                        </div>
+                        <p class="product-description">
+                            La dernière innovation Vorwerk avec des fonctionnalités avancées, une capacité augmentée et une connectivité améliorée pour une expérience culinaire sans précédent.
+                        </p>
+                        <div class="product-actions">
+                            <a href="#" class="btn">Acheter maintenant</a>
+                            <a href="#" class="btn btn-outline">Voir détails</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <!-- Prix -->
-            <div style="margin-bottom: 10px;">
-                <span style="font-size: 1rem; text-decoration: line-through; color: #999; margin-right: 8px;">
-                    399.99€
-                </span>
-                <span style="font-size: 1.4rem; font-weight: bold; color: red;">
-                    249.99€
-                </span>
-            </div>
-            <!-- Informations supplémentaires -->
-<div style="margin-bottom: 20px; padding: 15px; border: 1px solid #e6e6e6; border-radius: 8px; background: #ffffff; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
-    <p style="color: #28a745; font-size: 1.1rem; font-weight: 500; margin-bottom: 10px; text-align: center;">
-        - La livraison gratuite
-    </p>
-    <p style="color: #28a745; font-size: 1.1rem; font-weight: 500; margin-bottom: 10px; text-align: center;">
-        - Retour de produit autorisé
-    </p>
-    <p style="color: #28a745; font-size: 1.1rem; font-weight: 500; margin-bottom: 10px; text-align: center;">
-        - Disponible en stock
-    </p>
-</div>
-
-            <!-- Bouton d'achat -->
-            <a href="page-produit8.html">
-                <button style="
-                    background-color: red; 
-                    color: white; 
-                    border: none; 
-                    padding: 8px 15px; 
-                    border-radius: 5px; 
-                    font-size: 0.9rem; 
-                    cursor: pointer; 
-                    transition: 0.3s ease; 
-                    font-weight: bold;"
-                    onmouseover="this.style.backgroundColor='#e44141';"
-                    onmouseout="this.style.backgroundColor='red';">
-                    Acheter Maintenant
-                </button>
-            </a>
         </div>
-    </div>
-</section>
+    </section>
 
-  <!-- Footer Section -->
-<footer style="background-color: #2c2c2c; color: #fff; padding: 20px 0; font-family: Arial, sans-serif;">
-  <div style="display: flex; flex-wrap: wrap; justify-content: space-around; align-items: center; margin-bottom: 20px;">
-    <!-- Logo Section -->
-    <div style="flex: 1; text-align: center; padding: 10px;">
-      <img src="322144555_5652290678220387_8371673163580908615_n.jpg" alt="Logo 1" style="max-width: 120px; height: auto;">
-    </div>
-    <div style="flex: 1; text-align: center; padding: 10px;">
-      <img src="roborock.png" alt="Logo 2" style="max-width: 120px; height: auto;">
-    </div>
-  </div>
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Ce que nos clients disent</h2>
+            <div class="testimonials-slider">
+                <div class="testimonial-item">
+                    <p class="testimonial-text">
+                        "Le Thermomix a complètement transformé ma façon de cuisiner. Je peux préparer des repas sains et délicieux en un temps record, même après une longue journée de travail."
+                    </p>
+                    <div class="testimonial-author">- Sophie D., Paris</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Newsletter Section -->
-  <div style="text-align: center; margin-bottom: 20px;">
-    <h2 style="font-size: 1.5rem; margin-bottom: 10px;">Restez Informé</h2>
-    <p style="font-size: 0.9rem; line-height: 1.5;">Inscrivez-vous pour recevoir un coupon de réduction de 5% et être le premier à connaître les dernières offres sur la boutique officielle Roborock France.</p>
-    <div style="margin-top: 10px;">
-      <input type="email" placeholder="Adresse e-mail" required style="padding: 10px; font-size: 1rem; width: 250px; margin-right: 10px; border: 1px solid #444; border-radius: 5px; background-color: #555; color: #fff;">
-      <button type="submit" style="padding: 10px 20px; font-size: 1rem; border: none; border-radius: 5px; background-color: #2E8B57; color: #fff; cursor: pointer; transition: 0.3s;">
-        ➤
-      </button>
-    </div>
-  </div>
+    <!-- Newsletter Section -->
+    <section class="newsletter" id="contact">
+        <div class="container">
+            <h2>Abonnez-vous à notre newsletter</h2>
+            <p>Recevez des recettes exclusives, des conseils culinaires et des offres spéciales directement dans votre boîte mail.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Votre adresse email" required>
+                <button type="submit">S'abonner</button>
+            </form>
+        </div>
+    </section>
 
-  <!-- Footer Links -->
-  <div style="text-align: center; margin-bottom: 20px;">
-    <a href="#" style="color: #fff; font-size: 0.9rem; margin: 0 15px; text-decoration: none;">Politique de confidentialité</a>
-    <a href="#" style="color: #fff; font-size: 0.9rem; margin: 0 15px; text-decoration: none;">Accord utilisateur</a>
-  </div>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Thermomix</h3>
+                    <p>Le robot culinaire multifonction qui révolutionne votre cuisine depuis 1961.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f">f</i></a>
+                        <a href="#"><i class="fab fa-instagram">i</i></a>
+                        <a href="#"><i class="fab fa-twitter">t</i></a>
+                        <a href="#"><i class="fab fa-youtube">y</i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Produits</h3>
+                    <ul>
+                        <li><a href="#">Thermomix TM6</a></li>
+                        <li><a href="#">Thermomix TM7</a></li>
+                        <li><a href="#">Accessoires</a></li>
+                        <li><a href="#">Recettes</a></li>
+                        <li><a href="#">Cookidoo</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Manuels d'utilisation</a></li>
+                        <li><a href="#">Service client</a></li>
+                        <li><a href="#">Garantie</a></li>
+                        <li><a href="#">Points de vente</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Entreprise</h3>
+                    <ul>
+                        <li><a href="#">À propos</a></li>
+                        <li><a href="#">Carrières</a></li>
+                        <li><a href="#">Presse</a></li>
+                        <li><a href="#">Responsabilité</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Thermomix. Tous droits réservés. | <a href="#">Mentions légales</a> | <a href="#">Politique de confidentialité</a> | <a href="#">Conditions générales</a></p>
+            </div>
+        </div>
+    </footer>
 
-  <!-- Social Media -->
-  <div style="text-align: center; margin-bottom: 20px;">
-    <h3 style="font-size: 1.2rem; margin-bottom: 10px;">Suivez-nous</h3>
-    <p style="font-size: 0.9rem; margin-bottom: 10px;">Nous voulons vous entendre</p>
-    <div>
-      <a href="https://www.facebook.com/RoborockFR/" target="_blank" style="color: #fff; font-size: 1.5rem; margin: 0 10px;"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.instagram.com/roborockfr/" target="_blank" style="color: #fff; font-size: 1.5rem; margin: 0 10px;"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.youtube.com/channel/UC86CMysBnOMlRdBJEfihcUQ" target="_blank" style="color: #fff; font-size: 1.5rem; margin: 0 10px;"><i class="fab fa-youtube"></i></a>
-      <a href="https://www.tiktok.com/@roborockfr" target="_blank" style="color: #fff; font-size: 1.5rem; margin: 0 10px;"><i class="fab fa-tiktok"></i></a>
-    </div>
-  </div>
-
-  <!-- Footer Bottom -->
-  <div style="text-align: center; border-top: 1px solid #444; padding-top: 10px;">
-    <p style="font-size: 0.8rem;">&copy; 2025 Roborock. Tous droits réservés.</p>
-  </div>
-</footer>
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('main-nav').classList.toggle('active');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                document.getElementById('main-nav').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
