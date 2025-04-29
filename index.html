@@ -3,454 +3,477 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thermomix - La cuisine révolutionnaire</title>
+    <title>Thermomix® | Le robot culinaire multifonction</title>
     <style>
-        /* Reset et styles de base */
+        /* Reset CSS */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Roboto', Arial, sans-serif;
         }
-        
-        body {
-            background-color: #f9f9f9;
-            color: #333;
-            line-height: 1.6;
-        }
-        
-        /* Couleurs principales */
+
+        /* Variables */
         :root {
-            --primary-color: #00a651;
-            --secondary-color: #007d3a;
-            --accent-color: #ffcc00;
-            --light-color: #ffffff;
-            --dark-color: #333333;
-            --gray-color: #f5f5f5;
-            --text-color: #444444;
+            --primary-color: #00A651;
+            --primary-dark: #008040;
+            --primary-light: #E5F5EC;
+            --secondary-color: #FFCC00;
+            --white: #FFFFFF;
+            --black: #333333;
+            --gray: #F5F5F5;
+            --dark-gray: #777777;
+            --error-color: #E53935;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
         }
-        
-        /* Header */
-        header {
-            background-color: var(--light-color);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+
+        /* Base Styles */
+        body {
+            color: var(--black);
+            background-color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
-        
-        .top-bar {
-            background-color: var(--primary-color);
-            color: var(--light-color);
-            padding: 8px 0;
-            font-size: 14px;
+
+        a {
+            text-decoration: none;
+            color: inherit;
         }
-        
-        .top-bar-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
-        .top-bar-links a {
-            color: var(--light-color);
-            text-decoration: none;
-            margin-left: 15px;
-            transition: opacity 0.3s;
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 16px;
         }
-        
-        .top-bar-links a:hover {
-            opacity: 0.8;
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
         }
-        
-        .main-header {
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--box-shadow);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: var(--black);
+        }
+
+        .btn-secondary:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: var(--box-shadow);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--black);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .section-title p {
+            color: var(--dark-gray);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 18px;
+        }
+
+        /* Header */
+        .announcement-bar {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 10px 0;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 15px 20px;
+            padding: 15px 0;
         }
-        
+
         .logo img {
             height: 50px;
         }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 25px;
-            position: relative;
-        }
-        
-        nav ul li a {
-            color: var(--dark-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-            padding: 5px 0;
-        }
-        
-        nav ul li a:hover {
-            color: var(--primary-color);
-        }
-        
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: var(--light-color);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border-radius: 4px;
-            padding: 15px 0;
-            min-width: 200px;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-            z-index: 100;
-        }
-        
-        nav ul li:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .dropdown-menu li {
-            margin: 0;
-            padding: 8px 20px;
-        }
-        
-        .dropdown-menu li a {
-            display: block;
-            white-space: nowrap;
-        }
-        
-        .header-icons {
+
+        .nav-main {
             display: flex;
             align-items: center;
         }
-        
-        .header-icons a {
-            color: var(--dark-color);
-            margin-left: 20px;
-            font-size: 18px;
-            transition: color 0.3s;
+
+        .nav-links {
+            display: flex;
         }
-        
-        .header-icons a:hover {
+
+        .nav-links > li {
+            position: relative;
+            margin: 0 15px;
+        }
+
+        .nav-links > li > a {
+            font-weight: 500;
+            padding: 10px 0;
+            display: block;
+            position: relative;
+        }
+
+        .nav-links > li > a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links > li > a:hover::after {
+            width: 100%;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--white);
+            box-shadow: var(--box-shadow);
+            border-radius: 4px;
+            padding: 15px 0;
+            min-width: 220px;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 100;
+        }
+
+        .nav-links > li:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .dropdown li {
+            padding: 8px 20px;
+        }
+
+        .dropdown li a {
+            display: block;
+            transition: var(--transition);
+        }
+
+        .dropdown li a:hover {
             color: var(--primary-color);
         }
-        
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-actions a {
+            margin-left: 20px;
+            font-size: 18px;
+            transition: var(--transition);
+        }
+
+        .header-actions a:hover {
+            color: var(--primary-color);
+        }
+
         .hamburger {
             display: none;
             cursor: pointer;
             font-size: 24px;
+            margin-left: 20px;
         }
-        
+
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
             height: 600px;
             display: flex;
             align-items: center;
-            color: var(--light-color);
+            color: var(--white);
             text-align: center;
-            position: relative;
         }
-        
+
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
         .hero h1 {
             font-size: 48px;
             margin-bottom: 20px;
             font-weight: 700;
+            line-height: 1.2;
         }
-        
+
         .hero p {
             font-size: 20px;
             margin-bottom: 30px;
         }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: var(--light-color);
-            padding: 12px 30px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        
-        .btn:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--light-color);
-            margin-left: 15px;
-        }
-        
-        .btn-outline:hover {
-            background-color: var(--light-color);
-            color: var(--primary-color);
-        }
-        
-        /* Promo Banner */
-        .promo-banner {
-            background-color: var(--accent-color);
-            color: var(--dark-color);
-            text-align: center;
-            padding: 15px 0;
-            font-weight: 600;
-            font-size: 18px;
-        }
-        
-        .promo-banner span {
-            font-weight: 700;
-            color: #e53935;
-        }
-        
-        /* Features Section */
-        .features {
-            padding: 80px 0;
-            background-color: var(--light-color);
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        
-        .section-title h2 {
-            font-size: 36px;
-            color: var(--dark-color);
-            margin-bottom: 15px;
-        }
-        
-        .section-title p {
-            color: var(--text-color);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .features-container {
+
+        .hero-buttons {
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
+            gap: 15px;
+        }
+
+        /* Promo Banner */
+        .promo-banner {
+            background-color: var(--secondary-color);
+            color: var(--black);
+            text-align: center;
+            padding: 15px 0;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .promo-banner span {
+            color: var(--error-color);
+        }
+
+        /* Features */
+        .features {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
-        
+
         .feature-card {
-            flex: 1 1 300px;
-            background-color: var(--gray-color);
+            background-color: var(--gray);
             border-radius: 8px;
-            padding: 30px;
+            padding: 40px 30px;
             text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: var(--transition);
         }
-        
+
         .feature-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--box-shadow);
         }
-        
+
         .feature-icon {
-            font-size: 50px;
+            font-size: 48px;
             color: var(--primary-color);
             margin-bottom: 20px;
         }
-        
+
         .feature-card h3 {
             font-size: 22px;
             margin-bottom: 15px;
-            color: var(--dark-color);
         }
-        
-        /* Products Section */
+
+        /* Products */
         .products {
             padding: 80px 0;
-            background-color: var(--gray-color);
+            background-color: var(--gray);
         }
-        
+
         .products-container {
-            max-width: 1200px;
-            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            padding: 0 20px;
+            gap: 30px;
         }
-        
+
         .product-card {
-            background-color: var(--light-color);
+            background-color: var(--white);
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: var(--transition);
             position: relative;
         }
-        
+
         .product-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
-        
+
         .product-badge {
             position: absolute;
             top: 20px;
             right: 20px;
-            background-color: #e53935;
-            color: var(--light-color);
+            background-color: var(--error-color);
+            color: var(--white);
             padding: 5px 15px;
             border-radius: 20px;
             font-weight: 600;
             font-size: 14px;
             z-index: 10;
         }
-        
+
         .product-image {
-            height: 250px;
+            height: 300px;
             overflow: hidden;
         }
-        
+
         .product-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s;
+            transition: var(--transition);
         }
-        
+
         .product-card:hover .product-image img {
             transform: scale(1.05);
         }
-        
+
         .product-info {
             padding: 25px;
         }
-        
+
         .product-info h3 {
             font-size: 22px;
             margin-bottom: 10px;
-            color: var(--dark-color);
         }
-        
+
         .product-price {
             display: flex;
             align-items: center;
             margin-bottom: 15px;
         }
-        
+
         .current-price {
             font-size: 24px;
             font-weight: 700;
             color: var(--primary-color);
         }
-        
+
         .old-price {
             font-size: 18px;
-            color: #999;
+            color: var(--dark-gray);
             text-decoration: line-through;
             margin-left: 10px;
         }
-        
+
         .product-description {
-            color: var(--text-color);
+            color: var(--dark-gray);
             margin-bottom: 20px;
         }
-        
+
         .product-actions {
             display: flex;
             gap: 10px;
         }
-        
-        .btn-secondary {
-            background-color: var(--dark-color);
-        }
-        
-        .btn-secondary:hover {
-            background-color: #222;
-        }
-        
+
         /* Testimonials */
         .testimonials {
             padding: 80px 0;
-            background-color: var(--light-color);
+            background-color: var(--white);
         }
-        
-        .testimonials-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
+
         .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
             position: relative;
-            overflow: hidden;
         }
-        
+
         .testimonial-slide {
-            background-color: var(--gray-color);
+            background-color: var(--gray);
             padding: 40px;
             border-radius: 8px;
             text-align: center;
             display: none;
         }
-        
+
         .testimonial-slide.active {
             display: block;
             animation: fadeIn 0.5s ease-in-out;
         }
-        
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        
+
         .testimonial-text {
             font-size: 18px;
             font-style: italic;
-            color: var(--text-color);
+            color: var(--dark-gray);
             margin-bottom: 20px;
             position: relative;
+            line-height: 1.8;
         }
-        
+
         .testimonial-text::before,
         .testimonial-text::after {
             content: '"';
             font-size: 24px;
             color: var(--primary-color);
         }
-        
+
         .testimonial-author {
             font-weight: 600;
-            color: var(--dark-color);
+            color: var(--black);
         }
-        
+
         .testimonial-slider-nav {
             display: flex;
             justify-content: center;
             margin-top: 30px;
         }
-        
+
         .slider-dot {
             width: 12px;
             height: 12px;
@@ -458,42 +481,39 @@
             border-radius: 50%;
             margin: 0 5px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: var(--transition);
         }
-        
+
         .slider-dot.active {
             background-color: var(--primary-color);
         }
-        
+
         /* Newsletter */
         .newsletter {
             padding: 60px 0;
             background-color: var(--primary-color);
-            color: var(--light-color);
+            color: var(--white);
             text-align: center;
         }
-        
-        .newsletter-container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
+
         .newsletter h2 {
             font-size: 32px;
             margin-bottom: 20px;
         }
-        
+
         .newsletter p {
             margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        
+
         .newsletter-form {
             display: flex;
             max-width: 500px;
             margin: 0 auto;
         }
-        
+
         .newsletter-form input {
             flex: 1;
             padding: 15px;
@@ -501,67 +521,116 @@
             border-radius: 4px 0 0 4px;
             font-size: 16px;
         }
-        
+
         .newsletter-form button {
             padding: 15px 25px;
-            background-color: var(--dark-color);
-            color: var(--light-color);
+            background-color: var(--black);
+            color: var(--white);
             border: none;
             border-radius: 0 4px 4px 0;
             font-weight: 600;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: var(--transition);
         }
-        
+
         .newsletter-form button:hover {
             background-color: #222;
         }
-        
+
+        /* Contact Form */
+        .contact {
+            padding: 80px 0;
+            background-color: var(--gray);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
         /* Footer */
-        footer {
-            background-color: var(--dark-color);
-            color: var(--light-color);
+        .footer {
+            background-color: var(--black);
+            color: var(--white);
             padding: 60px 0 20px;
         }
-        
+
         .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 40px;
-            padding: 0 20px;
         }
-        
+
         .footer-logo img {
             height: 40px;
             margin-bottom: 20px;
         }
-        
+
         .footer-about p {
             margin-bottom: 20px;
             color: #bbb;
         }
-        
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
         .social-links a {
-            display: inline-block;
-            color: var(--light-color);
-            margin-right: 15px;
-            font-size: 20px;
-            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
         }
-        
+
         .social-links a:hover {
-            color: var(--primary-color);
+            background-color: var(--primary-color);
         }
-        
+
         .footer-links h3 {
             font-size: 18px;
             margin-bottom: 20px;
             position: relative;
             padding-bottom: 10px;
         }
-        
+
         .footer-links h3::after {
             content: '';
             position: absolute;
@@ -571,37 +640,33 @@
             height: 2px;
             background-color: var(--primary-color);
         }
-        
-        .footer-links ul {
-            list-style: none;
-        }
-        
+
         .footer-links li {
             margin-bottom: 10px;
         }
-        
+
         .footer-links a {
             color: #bbb;
-            text-decoration: none;
-            transition: color 0.3s;
+            transition: var(--transition);
         }
-        
+
         .footer-links a:hover {
-            color: var(--light-color);
+            color: var(--white);
+            padding-left: 5px;
         }
-        
+
         .footer-contact p {
             display: flex;
             align-items: center;
             margin-bottom: 15px;
             color: #bbb;
         }
-        
+
         .footer-contact i {
             margin-right: 10px;
             color: var(--primary-color);
         }
-        
+
         .footer-bottom {
             text-align: center;
             padding-top: 30px;
@@ -610,177 +675,79 @@
             color: #bbb;
             font-size: 14px;
         }
-        
-        /* Responsive */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 40px;
-            }
-            
-            .hero p {
-                font-size: 18px;
-            }
-            
-            .features-container {
-                gap: 20px;
-            }
+
+        /* Cookie Consent */
+        .cookie-consent {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--black);
+            color: var(--white);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transform: translateY(100%);
+            transition: var(--transition);
         }
-        
-        @media (max-width: 768px) {
-            .top-bar {
-                display: none;
-            }
-            
-            .hamburger {
-                display: block;
-            }
-            
-            nav {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 80%;
-                height: calc(100vh - 80px);
-                background-color: var(--light-color);
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-                transition: left 0.3s;
-                z-index: 999;
-            }
-            
-            nav.active {
-                left: 0;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                padding: 20px;
-            }
-            
-            nav ul li {
-                margin: 0 0 15px 0;
-            }
-            
-            .dropdown-menu {
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                box-shadow: none;
-                padding: 10px 0 0 20px;
-                display: none;
-            }
-            
-            nav ul li:hover .dropdown-menu {
-                display: block;
-            }
-            
-            .hero {
-                height: 500px;
-            }
-            
-            .hero h1 {
-                font-size: 32px;
-            }
-            
-            .hero p {
-                font-size: 16px;
-            }
-            
-            .btn {
-                padding: 10px 20px;
-            }
-            
-            .section-title h2 {
-                font-size: 28px;
-            }
-            
-            .newsletter-form {
-                flex-direction: column;
-            }
-            
-            .newsletter-form input {
-                border-radius: 4px;
-                margin-bottom: 10px;
-            }
-            
-            .newsletter-form button {
-                border-radius: 4px;
-            }
+
+        .cookie-consent.active {
+            transform: translateY(0);
         }
-        
-        @media (max-width: 576px) {
-            .hero {
-                height: 400px;
-            }
-            
-            .products-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .product-actions {
-                flex-direction: column;
-            }
-            
-            .btn {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-            
-            .btn-outline {
-                margin-left: 0;
-            }
+
+        .cookie-consent p {
+            margin-right: 20px;
+            font-size: 14px;
         }
-        
-        /* Animation */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+
+        .cookie-consent a {
+            color: var(--primary-color);
+            text-decoration: underline;
         }
-        
-        .floating {
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        /* Form Styles */
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: var(--light-color);
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--dark-color);
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
+
+        .cookie-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 8px 20px;
             border-radius: 4px;
-            font-size: 16px;
-            transition: border-color 0.3s;
+            cursor: pointer;
+            font-size: 14px;
+            white-space: nowrap;
         }
-        
-        .form-control:focus {
-            border-color: var(--primary-color);
-            outline: none;
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
         }
-        
-        textarea.form-control {
-            min-height: 120px;
-            resize: vertical;
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
         }
-        
+
+        .back-to-top:hover {
+            background-color: var(--primary-dark);
+        }
+
         /* Modal */
         .modal {
             display: none;
@@ -794,9 +761,9 @@
             justify-content: center;
             align-items: center;
         }
-        
+
         .modal-content {
-            background-color: var(--light-color);
+            background-color: var(--white);
             border-radius: 8px;
             width: 90%;
             max-width: 500px;
@@ -804,12 +771,12 @@
             position: relative;
             animation: modalFadeIn 0.3s;
         }
-        
+
         @keyframes modalFadeIn {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
+
         .close-modal {
             position: absolute;
             top: 15px;
@@ -817,282 +784,332 @@
             font-size: 24px;
             cursor: pointer;
             color: #999;
-            transition: color 0.3s;
+            transition: var(--transition);
         }
-        
+
         .close-modal:hover {
-            color: var(--dark-color);
+            color: var(--black);
         }
-        
+
         .modal-title {
             font-size: 24px;
             margin-bottom: 20px;
             color: var(--primary-color);
         }
-        
-        /* Cookie Consent */
-        .cookie-consent {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background-color: var(--dark-color);
-            color: var(--light-color);
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            transform: translateY(100%);
-            transition: transform 0.3s;
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .section-title h2 {
+                font-size: 32px;
+            }
         }
-        
-        .cookie-consent.active {
-            transform: translateY(0);
+
+        @media (max-width: 768px) {
+            .nav-main {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 80px);
+                background-color: var(--white);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                transition: var(--transition);
+                z-index: 999;
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .nav-main.active {
+                left: 0;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .nav-links > li {
+                margin: 0 0 15px 0;
+            }
+
+            .dropdown {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                box-shadow: none;
+                padding: 10px 0 0 20px;
+                display: none;
+            }
+
+            .nav-links > li:hover .dropdown {
+                display: block;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hero {
+                height: 500px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input {
+                border-radius: 4px;
+                margin-bottom: 10px;
+            }
+
+            .newsletter-form button {
+                border-radius: 4px;
+            }
+
+            .product-actions {
+                flex-direction: column;
+            }
+
+            .product-actions .btn {
+                width: 100%;
+            }
         }
-        
-        .cookie-consent p {
-            margin-right: 20px;
-            font-size: 14px;
-        }
-        
-        .cookie-consent a {
-            color: var(--primary-color);
-            text-decoration: underline;
-        }
-        
-        .cookie-btn {
-            background-color: var(--primary-color);
-            color: var(--light-color);
-            border: none;
-            padding: 8px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-            white-space: nowrap;
-        }
-        
-        /* Back to Top */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background-color: var(--primary-color);
-            color: var(--light-color);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 20px;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-            z-index: 999;
-        }
-        
-        .back-to-top.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .back-to-top:hover {
-            background-color: var(--secondary-color);
+
+        @media (max-width: 576px) {
+            .hero {
+                height: 400px;
+            }
+
+            .section-title h2 {
+                font-size: 28px;
+            }
+
+            .features-container {
+                grid-template-columns: 1fr;
+            }
+
+            .products-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <div class="top-bar-container">
-            <div class="top-bar-text">Livraison gratuite à partir de 150€ d'achat</div>
-            <div class="top-bar-links">
-                <a href="#"><i class="fas fa-store"></i> Trouver un conseiller</a>
-                <a href="#"><i class="fas fa-question-circle"></i> Aide</a>
-                <a href="#"><i class="fas fa-phone"></i> Contact</a>
-            </div>
-        </div>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        Livraison gratuite à partir de 150€ d'achat | Paiement sécurisé
     </div>
-    
-    <!-- Main Header -->
-    <header>
-        <div class="main-header">
-            <div class="logo">
-                <img src="thermomixdinshaiaa881.img" alt="Thermomix Logo">
-            </div>
-            
-            <nav id="main-nav">
-                <ul>
-                    <li><a href="#">Accueil</a></li>
-                    <li>
-                        <a href="#">Produits <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Thermomix TM6</a></li>
-                            <li><a href="#">Thermomix TM7</a></li>
-                            <li><a href="#">Accessoires</a></li>
-                            <li><a href="#">Recettes</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Fonctionnalités</a></li>
-                    <li><a href="#">Recettes</a></li>
-                    <li><a href="#">Guide d'achat</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </nav>
-            
-            <div class="header-icons">
-                <a href="#"><i class="fas fa-search"></i></a>
-                <a href="#"><i class="fas fa-user"></i></a>
-                <a href="#"><i class="fas fa-shopping-cart"></i></a>
-                <div class="hamburger" id="hamburger">
-                    <i class="fas fa-bars"></i>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-container">
+                <div class="logo">
+                    <a href="#"><img src="thermomixdinshaiaa881.img" alt="Thermomix"></a>
+                </div>
+
+                <nav class="nav-main" id="navMain">
+                    <ul class="nav-links">
+                        <li><a href="#">Accueil</a></li>
+                        <li>
+                            <a href="#">Produits <i class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown">
+                                <li><a href="#">Thermomix TM6</a></li>
+                                <li><a href="#">Thermomix TM7</a></li>
+                                <li><a href="#">Accessoires</a></li>
+                                <li><a href="#">Recettes</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Fonctionnalités</a></li>
+                        <li><a href="#">Recettes</a></li>
+                        <li><a href="#">Guide</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-actions">
+                    <a href="#"><i class="fas fa-search"></i></a>
+                    <a href="#"><i class="fas fa-user"></i></a>
+                    <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                    <div class="hamburger" id="hamburger">
+                        <i class="fas fa-bars"></i>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
-    
+
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>Découvrez la révolution culinaire</h1>
-            <p>Le Thermomix® transforme votre cuisine au quotidien avec 12 fonctions en 1 seul appareil</p>
-            <div class="hero-buttons">
-                <a href="#" class="btn">Découvrir</a>
-                <a href="#" class="btn btn-outline">Voir la démo</a>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Découvrez la révolution culinaire avec Thermomix®</h1>
+                <p>12 fonctions en 1 seul robot pour transformer votre cuisine au quotidien</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn btn-primary">Découvrir les produits</a>
+                    <a href="#" class="btn btn-outline">Voir la démo</a>
+                </div>
             </div>
         </div>
     </section>
-    
+
     <!-- Promo Banner -->
     <div class="promo-banner">
-        PROMO EXCEPTIONNELLE : <span>-40%</span> sur tous les Thermomix jusqu'au 30 novembre
+        PROMOTION EXCEPTIONNELLE : <span>-40%</span> sur toute la gamme Thermomix®
     </div>
-    
+
     <!-- Features Section -->
     <section class="features">
-        <div class="section-title">
-            <h2>Pourquoi choisir Thermomix® ?</h2>
-            <p>Découvrez comment Thermomix® simplifie votre quotidien et révolutionne votre cuisine</p>
-        </div>
-        
-        <div class="features-container">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-clock"></i>
-                </div>
-                <h3>Gain de temps</h3>
-                <p>Préparez des repas savoureux en un temps record grâce aux fonctions automatisées.</p>
+        <div class="container">
+            <div class="section-title">
+                <h2>Pourquoi choisir Thermomix® ?</h2>
+                <p>Découvrez comment Thermomix® simplifie votre quotidien et révolutionne votre cuisine</p>
             </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-utensils"></i>
+
+            <div class="features-container">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Gain de temps</h3>
+                    <p>Préparez des repas savoureux en un temps record grâce aux fonctions automatisées.</p>
                 </div>
-                <h3>12 en 1</h3>
-                <p>Un seul appareil remplace 12 ustensiles de cuisine différents.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-heart"></i>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>12 en 1</h3>
+                    <p>Un seul appareil remplace 12 ustensiles de cuisine différents.</p>
                 </div>
-                <h3>Santé</h3>
-                <p>Cuisson douce qui préserve les nutriments pour une alimentation plus saine.</p>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Santé</h3>
+                    <p>Cuisson douce qui préserve les nutriments pour une alimentation plus saine.</p>
+                </div>
             </div>
         </div>
     </section>
-    
+
     <!-- Products Section -->
     <section class="products">
-        <div class="section-title">
-            <h2>Nos Produits Phares</h2>
-            <p>Découvrez notre gamme de robots culinaires haut de gamme</p>
-        </div>
-        
-        <div class="products-container">
-            <div class="product-card">
-                <div class="product-badge">-40%</div>
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1585238342024-78d90f58f6b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Thermomix TM6">
-                </div>
-                <div class="product-info">
-                    <h3>Thermomix® TM6</h3>
-                    <div class="product-price">
-                        <span class="current-price">899€</span>
-                        <span class="old-price">1499€</span>
-                    </div>
-                    <p class="product-description">Le robot culinaire intelligent avec écran tactile et plus de 40,000 recettes guidées.</p>
-                    <div class="product-actions">
-                        <a href="#" class="btn">Acheter maintenant</a>
-                        <a href="#" class="btn btn-secondary">Détails</a>
-                    </div>
-                </div>
+        <div class="container">
+            <div class="section-title">
+                <h2>Nos Produits Phares</h2>
+                <p>Découvrez notre gamme de robots culinaires haut de gamme</p>
             </div>
-            
-            <div class="product-card">
-                <div class="product-badge">Nouveau</div>
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1556910638-9a0cc496705e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Thermomix TM7">
-                </div>
-                <div class="product-info">
-                    <h3>Thermomix® TM7</h3>
-                    <div class="product-price">
-                        <span class="current-price">1199€</span>
-                        <span class="old-price">1999€</span>
+
+            <div class="products-container">
+                <div class="product-card">
+                    <div class="product-badge">-40%</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1585238342024-78d90f58f6b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Thermomix TM6">
                     </div>
-                    <p class="product-description">La dernière innovation avec reconnaissance des ingrédients et assistant vocal intégré.</p>
-                    <div class="product-actions">
-                        <a href="#" class="btn">Acheter maintenant</a>
-                        <a href="#" class="btn btn-secondary">Détails</a>
+                    <div class="product-info">
+                        <h3>Thermomix® TM6</h3>
+                        <div class="product-price">
+                            <span class="current-price">899€</span>
+                            <span class="old-price">1499€</span>
+                        </div>
+                        <p class="product-description">Le robot culinaire intelligent avec écran tactile et plus de 40,000 recettes guidées.</p>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary">Acheter maintenant</a>
+                            <a href="#" class="btn btn-secondary">Détails</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Accessoires Thermomix">
-                </div>
-                <div class="product-info">
-                    <h3>Pack Accessoires</h3>
-                    <div class="product-price">
-                        <span class="current-price">199€</span>
+
+                <div class="product-card">
+                    <div class="product-badge">Nouveau</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1556910638-9a0cc496705e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Thermomix TM7">
                     </div>
-                    <p class="product-description">Tous les accessoires essentiels pour tirer le meilleur parti de votre Thermomix®.</p>
-                    <div class="product-actions">
-                        <a href="#" class="btn">Acheter maintenant</a>
-                        <a href="#" class="btn btn-secondary">Détails</a>
+                    <div class="product-info">
+                        <h3>Thermomix® TM7</h3>
+                        <div class="product-price">
+                            <span class="current-price">1199€</span>
+                            <span class="old-price">1999€</span>
+                        </div>
+                        <p class="product-description">La dernière innovation avec reconnaissance des ingrédients et assistant vocal intégré.</p>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary">Acheter maintenant</a>
+                            <a href="#" class="btn btn-secondary">Détails</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Accessoires Thermomix">
+                    </div>
+                    <div class="product-info">
+                        <h3>Pack Accessoires</h3>
+                        <div class="product-price">
+                            <span class="current-price">199€</span>
+                        </div>
+                        <p class="product-description">Tous les accessoires essentiels pour tirer le meilleur parti de votre Thermomix®.</p>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary">Acheter maintenant</a>
+                            <a href="#" class="btn btn-secondary">Détails</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <!-- Testimonials Section -->
     <section class="testimonials">
-        <div class="section-title">
-            <h2>Témoignages</h2>
-            <p>Découvrez ce que nos clients disent de Thermomix®</p>
-        </div>
-        
-        <div class="testimonials-container">
+        <div class="container">
+            <div class="section-title">
+                <h2>Témoignages</h2>
+                <p>Découvrez ce que nos clients disent de Thermomix®</p>
+            </div>
+
             <div class="testimonial-slider">
                 <div class="testimonial-slide active">
                     <p class="testimonial-text">Le Thermomix a complètement transformé ma façon de cuisiner. Je gagne tellement de temps et mes enfants adorent les repas que je prépare maintenant.</p>
                     <p class="testimonial-author">- Sophie D., Paris</p>
                 </div>
-                
+
                 <div class="testimonial-slide">
                     <p class="testimonial-text">Après 6 mois d'utilisation, je ne pourrais plus m'en passer. C'est devenu indispensable dans ma cuisine et j'ai même perdu du poids grâce à une alimentation plus saine.</p>
                     <p class="testimonial-author">- Marc T., Lyon</p>
                 </div>
-                
+
                 <div class="testimonial-slide">
                     <p class="testimonial-text">Investissement initial élevé mais rentabilisé en quelques mois. Les recettes guidées sont parfaites pour quelqu'un comme moi qui ne savait pas cuisiner.</p>
                     <p class="testimonial-author">- Julie P., Bordeaux</p>
                 </div>
-                
+
                 <div class="testimonial-slider-nav">
                     <div class="slider-dot active" data-slide="0"></div>
                     <div class="slider-dot" data-slide="1"></div>
@@ -1101,140 +1118,144 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Newsletter Section -->
     <section class="newsletter">
-        <div class="newsletter-container">
+        <div class="container">
             <h2>Abonnez-vous à notre newsletter</h2>
             <p>Recevez des recettes exclusives, des conseils et des offres spéciales directement dans votre boîte mail.</p>
-            
+
             <form id="newsletterForm" class="newsletter-form">
                 <input type="email" placeholder="Votre adresse email" required>
                 <button type="submit">S'abonner</button>
             </form>
         </div>
     </section>
-    
+
     <!-- Contact Form Section -->
-    <section class="features" style="padding-bottom: 60px;">
-        <div class="section-title">
-            <h2>Contactez-nous</h2>
-            <p>Nous sommes à votre disposition pour toute question ou demande d'information</p>
+    <section class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contactez-nous</h2>
+                <p>Nous sommes à votre disposition pour toute question ou demande d'information</p>
+            </div>
+
+            <form id="contactForm" class="contact-form" action="traitement.html" method="POST">
+                <div class="form-group">
+                    <label for="name">Nom complet</label>
+                    <input type="text" id="name" name="name" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Adresse email</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Numéro de téléphone</label>
+                    <input type="tel" id="phone" name="phone" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Sujet</label>
+                    <select id="subject" name="subject" class="form-control" required>
+                        <option value="">Sélectionnez un sujet</option>
+                        <option value="product">Question sur un produit</option>
+                        <option value="order">Commande</option>
+                        <option value="support">Support technique</option>
+                        <option value="other">Autre</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" class="form-control" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Envoyer le message</button>
+                </div>
+            </form>
         </div>
-        
-        <form id="contactForm" class="contact-form" action="traitement.html" method="POST">
-            <div class="form-group">
-                <label for="name">Nom complet</label>
-                <input type="text" id="name" name="name" class="form-control" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" class="form-control" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="phone">Téléphone</label>
-                <input type="tel" id="phone" name="phone" class="form-control">
-            </div>
-            
-            <div class="form-group">
-                <label for="subject">Sujet</label>
-                <select id="subject" name="subject" class="form-control" required>
-                    <option value="">Sélectionnez un sujet</option>
-                    <option value="question">Question sur un produit</option>
-                    <option value="order">Commande</option>
-                    <option value="support">Support technique</option>
-                    <option value="other">Autre</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" class="form-control" required></textarea>
-            </div>
-            
-            <div class="form-group">
-                <button type="submit" class="btn">Envoyer le message</button>
-            </div>
-        </form>
     </section>
-    
+
     <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-logo">
-                <img src="thermomixdinshaiaa881.img" alt="Thermomix Logo">
-                <div class="footer-about">
-                    <p>Thermomix® révolutionne la cuisine depuis plus de 50 ans avec des innovations constantes pour simplifier votre quotidien.</p>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-logo">
+                    <img src="thermomixdinshaiaa881.img" alt="Thermomix">
+                    <div class="footer-about">
+                        <p>Thermomix® révolutionne la cuisine depuis plus de 50 ans avec des innovations constantes pour simplifier votre quotidien.</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
                 </div>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+
+                <div class="footer-links">
+                    <h3>Produits</h3>
+                    <ul>
+                        <li><a href="#">Thermomix TM6</a></li>
+                        <li><a href="#">Thermomix TM7</a></li>
+                        <li><a href="#">Accessoires</a></li>
+                        <li><a href="#">Recettes</a></li>
+                        <li><a href="#">Cookidoo</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Entreprise</h3>
+                    <ul>
+                        <li><a href="#">À propos</a></li>
+                        <li><a href="#">Carrières</a></li>
+                        <li><a href="#">Presse</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Événements</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Manuels</a></li>
+                        <li><a href="#">Garantie</a></li>
+                        <li><a href="#">Service client</a></li>
+                        <li><a href="#">Trouver un conseiller</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Rue de la Cuisine, Paris, France</p>
+                    <p><i class="fas fa-phone"></i> +33 1 23 45 67 89</p>
+                    <p><i class="fas fa-envelope"></i> contact@thermomix.fr</p>
+                    <p><i class="fas fa-clock"></i> Lun-Ven: 9h-18h</p>
                 </div>
             </div>
-            
-            <div class="footer-links">
-                <h3>Produits</h3>
-                <ul>
-                    <li><a href="#">Thermomix TM6</a></li>
-                    <li><a href="#">Thermomix TM7</a></li>
-                    <li><a href="#">Accessoires</a></li>
-                    <li><a href="#">Recettes</a></li>
-                    <li><a href="#">Cookidoo</a></li>
-                </ul>
+
+            <div class="footer-bottom">
+                <p>&copy; 2023 Thermomix. Tous droits réservés. | <a href="#">Politique de confidentialité</a> | <a href="#">Conditions générales</a> | <a href="#">Mentions légales</a></p>
             </div>
-            
-            <div class="footer-links">
-                <h3>Entreprise</h3>
-                <ul>
-                    <li><a href="#">À propos</a></li>
-                    <li><a href="#">Carrières</a></li>
-                    <li><a href="#">Presse</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Événements</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-links">
-                <h3>Support</h3>
-                <ul>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Manuels</a></li>
-                    <li><a href="#">Garantie</a></li>
-                    <li><a href="#">Service client</a></li>
-                    <li><a href="#">Trouver un conseiller</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-contact">
-                <h3>Contact</h3>
-                <p><i class="fas fa-map-marker-alt"></i> 123 Rue de la Cuisine, Paris, France</p>
-                <p><i class="fas fa-phone"></i> +33 1 23 45 67 89</p>
-                <p><i class="fas fa-envelope"></i> contact@thermomix.fr</p>
-                <p><i class="fas fa-clock"></i> Lun-Ven: 9h-18h</p>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2023 Thermomix. Tous droits réservés. | <a href="#">Politique de confidentialité</a> | <a href="#">Conditions générales</a> | <a href="#">Mentions légales</a></p>
         </div>
     </footer>
-    
+
     <!-- Cookie Consent -->
     <div class="cookie-consent">
         <p>Nous utilisons des cookies pour améliorer votre expérience sur notre site. En continuant votre navigation, vous acceptez notre <a href="#">politique de cookies</a>.</p>
         <button class="cookie-btn">Accepter</button>
     </div>
-    
-    <!-- Back to Top Button -->
+
+    <!-- Back to Top -->
     <div class="back-to-top">
         <i class="fas fa-arrow-up"></i>
     </div>
-    
+
     <!-- Modal -->
     <div class="modal" id="newsletterModal">
         <div class="modal-content">
@@ -1243,94 +1264,110 @@
             <p>Vous recevrez bientôt nos meilleures recettes et offres exclusives dans votre boîte mail.</p>
         </div>
     </div>
-    
+
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    
+
     <!-- JavaScript -->
     <script>
-        // Menu mobile
+        // Mobile Menu Toggle
         const hamburger = document.getElementById('hamburger');
-        const nav = document.getElementById('main-nav');
-        
+        const navMain = document.getElementById('navMain');
+
         hamburger.addEventListener('click', () => {
-            nav.classList.toggle('active');
+            navMain.classList.toggle('active');
         });
-        
-        // Slider témoignages
-        const slides = document.querySelectorAll('.testimonial-slide');
+
+        // Testimonial Slider
+        const testimonialSlides = document.querySelectorAll('.testimonial-slide');
         const dots = document.querySelectorAll('.slider-dot');
-        let currentSlide = 0;
-        
-        function showSlide(n) {
-            slides.forEach(slide => slide.classList.remove('active'));
+        let currentTestimonial = 0;
+
+        function showTestimonial(n) {
+            testimonialSlides.forEach(slide => slide.classList.remove('active'));
             dots.forEach(dot => dot.classList.remove('active'));
             
-            currentSlide = (n + slides.length) % slides.length;
-            slides[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
+            currentTestimonial = (n + testimonialSlides.length) % testimonialSlides.length;
+            testimonialSlides[currentTestimonial].classList.add('active');
+            dots[currentTestimonial].classList.add('active');
         }
-        
+
         dots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
-                showSlide(index);
+                showTestimonial(index);
             });
         });
-        
+
         // Auto slide
         setInterval(() => {
-            showSlide(currentSlide + 1);
+            showTestimonial(currentTestimonial + 1);
         }, 5000);
-        
-        // Newsletter form
+
+        // Newsletter Form
         const newsletterForm = document.getElementById('newsletterForm');
         const newsletterModal = document.getElementById('newsletterModal');
         const closeModal = document.querySelector('.close-modal');
-        
+
         newsletterForm.addEventListener('submit', (e) => {
             e.preventDefault();
             newsletterModal.style.display = 'flex';
             newsletterForm.reset();
         });
-        
+
         closeModal.addEventListener('click', () => {
             newsletterModal.style.display = 'none';
         });
-        
+
         window.addEventListener('click', (e) => {
             if (e.target === newsletterModal) {
                 newsletterModal.style.display = 'none';
             }
         });
-        
-        // Contact form
+
+        // Contact Form
         const contactForm = document.getElementById('contactForm');
-        
+
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            // Ici vous pouvez ajouter la logique pour envoyer le formulaire
-            // Pour l'instant on redirige simplement vers traitement.html
-            contactForm.submit();
+            
+            // Validate form
+            let isValid = true;
+            const requiredFields = contactForm.querySelectorAll('[required]');
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.style.borderColor = 'var(--error-color)';
+                    isValid = false;
+                } else {
+                    field.style.borderColor = '#ddd';
+                }
+            });
+
+            if (isValid) {
+                // In a real implementation, you would send the form data to the server
+                // For now, we'll just submit to traitement.html
+                contactForm.submit();
+            }
         });
-        
-        // Cookie consent
+
+        // Cookie Consent
         const cookieConsent = document.querySelector('.cookie-consent');
         const cookieBtn = document.querySelector('.cookie-btn');
-        
+
         if (!localStorage.getItem('cookieConsent')) {
             setTimeout(() => {
                 cookieConsent.classList.add('active');
             }, 2000);
         }
-        
+
         cookieBtn.addEventListener('click', () => {
             cookieConsent.classList.remove('active');
             localStorage.setItem('cookieConsent', 'true');
         });
-        
-        // Back to top button
+
+        // Back to Top Button
         const backToTop = document.querySelector('.back-to-top');
-        
+
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
                 backToTop.classList.add('active');
@@ -1338,16 +1375,63 @@
                 backToTop.classList.remove('active');
             }
         });
-        
+
         backToTop.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
         });
-        
-        // Animation on scroll
-        const animateOnScroll = () => {
+
+        // Form Validation
+        function validateForm(form) {
+            let isValid = true;
+            const inputs = form.querySelectorAll('[required]');
+            
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    input.style.borderColor = 'var(--error-color)';
+                    isValid = false;
+                } else {
+                    input.style.borderColor = '#ddd';
+                }
+            });
+            
+            return isValid;
+        }
+
+        // Product Details Modal (placeholder)
+        document.querySelectorAll('.product-actions .btn-secondary').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert('Les détails du produit seraient affichés ici dans une modale.');
+            });
+        });
+
+        // Responsive Navigation
+        function handleResponsiveNav() {
+            if (window.innerWidth <= 768) {
+                document.querySelectorAll('.footer-links h3').forEach(header => {
+                    header.addEventListener('click', () => {
+                        const list = header.nextElementSibling;
+                        list.style.display = list.style.display === 'none' ? 'block' : 'none';
+                    });
+                    
+                    // Initially hide on mobile
+                    header.nextElementSibling.style.display = 'none';
+                });
+            } else {
+                document.querySelectorAll('.footer-links ul').forEach(list => {
+                    list.style.display = 'block';
+                });
+            }
+        }
+
+        window.addEventListener('resize', handleResponsiveNav);
+        window.addEventListener('load', handleResponsiveNav);
+
+        // Animation on Scroll
+        function animateOnScroll() {
             const elements = document.querySelectorAll('.feature-card, .product-card');
             
             elements.forEach(element => {
@@ -1359,205 +1443,19 @@
                     element.style.transform = 'translateY(0)';
                 }
             });
-        };
-        
+        }
+
         // Set initial state for animation
         document.querySelectorAll('.feature-card, .product-card').forEach(element => {
             element.style.opacity = '0';
             element.style.transform = 'translateY(20px)';
             element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
         });
-        
+
         window.addEventListener('scroll', animateOnScroll);
         window.addEventListener('load', animateOnScroll);
-        
-        // Product modal (would be implemented similarly to newsletter modal)
-        // This is just a placeholder for future implementation
-        const productButtons = document.querySelectorAll('.product-actions .btn-secondary');
-        
-        productButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                // Here you would implement the product details modal
-                alert('Détails du produit seraient affichés ici dans une modale.');
-            });
-        });
-        
-        // Form validation
-        function validateForm(form) {
-            let isValid = true;
-            const inputs = form.querySelectorAll('input[required], textarea[required], select[required]');
-            
-            inputs.forEach(input => {
-                if (!input.value.trim()) {
-                    input.style.borderColor = '#e53935';
-                    isValid = false;
-                } else {
-                    input.style.borderColor = '#ddd';
-                }
-            });
-            
-            return isValid;
-        }
-        
-        // Additional interactive elements
-        document.querySelectorAll('.dropdown-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                // Close mobile menu after click
-                if (window.innerWidth <= 768) {
-                    nav.classList.remove('active');
-                }
-            });
-        });
-        
-        // More complex animations could be added here
-        // For example, parallax effects, scroll animations, etc.
-        
-        // This is just a sample of how you might implement a more complex feature
-        // Like a product comparison tool
-        function initProductComparison() {
-            // This would be implemented in a real scenario
-            console.log('Product comparison feature would be initialized here');
-        }
-        
-        // Initialize all features when DOM is loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            initProductComparison();
-            // Other initializations would go here
-        });
-        
-        // Sample function to demonstrate more complex functionality
-        function trackUserBehavior() {
-            // In a real application, this would track user interactions
-            // For analytics or personalization purposes
-            console.log('Tracking user behavior for improved experience');
-        }
-        
-        // Call the tracking function
-        trackUserBehavior();
-        
-        // More JavaScript can be added here to reach the desired line count
-        // While maintaining clean, functional code
-        
-        // Sample utility functions
-        function debounce(func, wait) {
-            let timeout;
-            return function() {
-                const context = this, args = arguments;
-                clearTimeout(timeout);
-                timeout = setTimeout(() => {
-                    func.apply(context, args);
-                }, wait);
-            };
-        }
-        
-        function throttle(func, limit) {
-            let inThrottle;
-            return function() {
-                const args = arguments;
-                const context = this;
-                if (!inThrottle) {
-                    func.apply(context, args);
-                    inThrottle = true;
-                    setTimeout(() => inThrottle = false, limit);
-                }
-            };
-        }
-        
-        // Event listeners for improved user experience
-        window.addEventListener('resize', debounce(() => {
-            console.log('Window resized - adjusting layout as needed');
-        }, 250));
-        
-        // Sample feature detection
-        function checkBrowserFeatures() {
-            // Check for important features and polyfill if needed
-            if (!('IntersectionObserver' in window)) {
-                console.log('IntersectionObserver not supported - loading polyfill');
-                // Load polyfill in real implementation
-            }
-        }
-        
-        checkBrowserFeatures();
-        
-        // More interactive elements
-        document.querySelectorAll('.product-image').forEach(image => {
-            image.addEventListener('mouseenter', () => {
-                // Additional hover effects could be added here
-            });
-            
-            image.addEventListener('mouseleave', () => {
-                // Reset hover effects
-            });
-        });
-        
-        // Sample AJAX implementation for dynamic content loading
-        function loadDynamicContent(url, callback) {
-            // In a real implementation, this would fetch content from the server
-            console.log(`Loading content from ${url}`);
-            setTimeout(() => {
-                const mockData = { success: true, content: 'Dynamic content loaded' };
-                callback(mockData);
-            }, 500);
-        }
-        
-        // Example usage:
-        // loadDynamicContent('/api/products', (data) => {
-        //     console.log(data);
-        //     // Update DOM with new content
-        // });
-        
-        // More utility functions to demonstrate comprehensive code
-        function formatPrice(price) {
-            return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(price);
-        }
-        
-        function formatDate(date) {
-            return new Intl.DateTimeFormat('fr-FR').format(new Date(date));
-        }
-        
-        // Sample product data processing
-        const products = [
-            { id: 1, name: 'Thermomix TM6', price: 899, oldPrice: 1499 },
-            { id: 2, name: 'Thermomix TM7', price: 1199, oldPrice: 1999 }
-        ];
-        
-        function renderProductDiscounts() {
-            products.forEach(product => {
-                const discount = Math.round((1 - product.price / product.oldPrice) * 100);
-                console.log(`${product.name}: ${discount}% de réduction`);
-            });
-        }
-        
-        renderProductDiscounts();
-        
-        // Additional event listeners for enhanced interactivity
-        document.querySelectorAll('.btn').forEach(button => {
-            button.addEventListener('mousedown', () => {
-                button.style.transform = 'translateY(1px)';
-            });
-            
-            button.addEventListener('mouseup', () => {
-                button.style.transform = 'translateY(0)';
-            });
-            
-            button.addEventListener('mouseleave', () => {
-                button.style.transform = 'translateY(0)';
-            });
-        });
-        
-        // Sample localStorage usage for persistence
-        function saveUserPreferences(prefs) {
-            localStorage.setItem('userPreferences', JSON.stringify(prefs));
-        }
-        
-        function loadUserPreferences() {
-            const prefs = localStorage.getItem('userPreferences');
-            return prefs ? JSON.parse(prefs) : {};
-        }
-        
-        // More sophisticated features could be added here
-        // For example, a shopping cart implementation
+
+        // Shopping Cart Functionality (placeholder)
         class ShoppingCart {
             constructor() {
                 this.items = [];
@@ -1586,137 +1484,36 @@
                 this.items = items ? JSON.parse(items) : [];
             }
         }
-        
+
         // Initialize cart
         const cart = new ShoppingCart();
         cart.load();
-        
-        // Sample usage:
-        // cart.addItem({ id: 1, name: 'Thermomix TM6', price: 899 });
-        // console.log(cart.getTotal());
-        
-        // More code to reach the desired line count while maintaining quality
-        // These would be actual features in a real implementation
-        
-        // Product comparison feature
-        function compareProducts(products) {
-            // Implementation would compare product features
-            console.log('Comparing products:', products);
-        }
-        
-        // Wishlist functionality
-        class Wishlist {
-            constructor() {
-                this.items = [];
-            }
-            
-            addItem(item) {
-                if (!this.items.some(i => i.id === item.id)) {
-                    this.items.push(item);
-                    this.save();
-                }
-            }
-            
-            removeItem(id) {
-                this.items = this.items.filter(item => item.id !== id);
-                this.save();
-            }
-            
-            save() {
-                localStorage.setItem('wishlist', JSON.stringify(this.items));
-            }
-            
-            load() {
-                const items = localStorage.getItem('wishlist');
-                this.items = items ? JSON.parse(items) : [];
-            }
-        }
-        
-        // Initialize wishlist
-        const wishlist = new Wishlist();
-        wishlist.load();
-        
-        // More utility functions
-        function getDeviceType() {
-            const width = window.innerWidth;
-            if (width < 576) return 'mobile';
-            if (width < 992) return 'tablet';
-            return 'desktop';
-        }
-        
-        function setupResponsiveElements() {
-            const device = getDeviceType();
-            console.log(`Setting up elements for ${device}`);
-            // Different setups based on device
-        }
-        
-        window.addEventListener('resize', throttle(setupResponsiveElements, 500));
-        
-        // Initial setup
-        setupResponsiveElements();
-        
-        // More interactive features
-        document.querySelectorAll('.footer-links h3').forEach(header => {
-            if (window.innerWidth <= 768) {
-                header.addEventListener('click', () => {
-                    const list = header.nextElementSibling;
-                    list.style.display = list.style.display === 'none' ? 'block' : 'none';
+
+        // Add to cart buttons
+        document.querySelectorAll('.product-actions .btn-primary').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const productCard = e.target.closest('.product-card');
+                const productName = productCard.querySelector('h3').textContent;
+                const productPrice = parseFloat(productCard.querySelector('.current-price').textContent.replace('€', ''));
+                
+                cart.addItem({
+                    id: Date.now(),
+                    name: productName,
+                    price: productPrice
                 });
                 
-                // Initially hide on mobile
-                header.nextElementSibling.style.display = 'none';
-            }
-        });
-        
-        // Sample analytics tracking
-        function trackEvent(category, action, label) {
-            console.log(`Tracking: ${category}, ${action}, ${label}`);
-            // In real implementation, this would send data to analytics platform
-        }
-        
-        // Track important interactions
-        document.querySelectorAll('.btn').forEach(button => {
-            button.addEventListener('click', () => {
-                trackEvent('Button', 'Click', button.textContent.trim());
+                alert(`${productName} a été ajouté à votre panier.`);
             });
         });
-        
-        // More code to demonstrate comprehensive implementation
-        // This would be actual features in a real application
-        
-        // Product filtering functionality
-        function filterProducts(criteria) {
-            // Implementation would filter displayed products
-            console.log('Filtering products by:', criteria);
-        }
-        
-        // Sorting functionality
-        function sortProducts(method) {
-            // Implementation would sort products
-            console.log('Sorting products by:', method);
-        }
-        
-        // Sample product data
-        const productData = [
-            { id: 1, name: 'TM6', price: 899, category: 'robot' },
-            { id: 2, name: 'TM7', price: 1199, category: 'robot' },
-            { id: 3, name: 'Accessories', price: 199, category: 'accessory' }
-        ];
-        
-        // More utility functions
-        function getProductsByCategory(category) {
-            return productData.filter(product => product.category === category);
-        }
-        
-        // Example usage:
-        // const robots = getProductsByCategory('robot');
-        // console.log(robots);
-        
-        // More sophisticated features could continue here
-        // Reaching the desired line count with meaningful code
-        
-        // Final initialization
-        console.log('Thermomix website initialized successfully');
+
+        // More sophisticated features could be added here
+        // For example: Product comparison, wishlist, etc.
+
+        // Initialize all features when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Thermomix website initialized successfully');
+        });
     </script>
 </body>
 </html>
