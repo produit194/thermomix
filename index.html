@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thermomix Officiel | Robot Cuiseur Intelligent</title>
+    <style>
+        /* CSS داخلي لأكثر من 1900 سطر كما طلبت */
+        :root {
+            --primary-color: #007a3d; /* الأخضر المشابه لـ Vorwerk */
+            --secondary-color: #f8f8f8;
+            --accent-color: #e63946;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container img {
+            height: 50px;
+            width: auto;
+        }
+
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+            position: relative;
+        }
+
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--text-light);
+            bottom: 0;
+            left: 0;
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('hero-bg.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            color: var(--text-light);
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            margin-right: 1rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: var(--text-light);
+            border: 2px solid var(--accent-color);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--accent-color);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--text-light);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--text-light);
+            color: var(--primary-color);
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 5rem 5%;
+            background-color: var(--secondary-color);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .product-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .current-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .old-price {
+            font-size: 1.2rem;
+            text-decoration: line-through;
+            color: #999;
+            margin-left: 1rem;
+        }
+
+        .discount-badge {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-left: 1rem;
+        }
+
+        .product-description {
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 5rem 5%;
+            background-color: #ffffff;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* Testimonials */
+        .testimonials-section {
+            padding: 5rem 5%;
+            background-color: var(--secondary-color);
+        }
+
+        .testimonials-slider {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin: 1rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+        }
+
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+        }
+
+        .author-info p {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        /* Newsletter */
+        .newsletter-section {
+            padding: 5rem 5%;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        .newsletter-form {
+            max-width: 600px;
+            margin: 2rem auto 0;
+            display: flex;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 50px 0 0 50px;
+            font-size: 1rem;
+        }
+
+        .newsletter-btn {
+            padding: 0 2rem;
+            background-color: var(--accent-color);
+            color: var(--text-light);
+            border: none;
+            border-radius: 0 50px 50px 0;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-btn:hover {
+            background-color: #c1121f;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #fff;
+            padding: 5rem 5% 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--text-light);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                height: auto;
+                padding: 8rem 5% 4rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-input {
+                border-radius: 50px;
+                margin-bottom: 1rem;
+            }
+            
+            .newsletter-btn {
+                border-radius: 50px;
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .product-actions {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                margin-right: 0;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+    </style>
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <img src="thermomixdinshaiaa881.img" alt="Thermomix Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="produits.html">Produits</a></li>
+                <li><a href="recettes.html">Recettes</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="apropos.html">À propos</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <a href="panier.html" class="cart-icon"><i class="fas fa-shopping-cart"></i></a>
+            <a href="login.html" class="btn btn-outline">Connexion</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content fade-in">
+            <h1>Découvrez la nouvelle génération de robots culinaires</h1>
+            <p>Thermomix® TM6 et TM7 - La révolution en cuisine</p>
+            <div class="hero-buttons">
+                <a href="produits.html" class="btn btn-primary">Voir les produits</a>
+                <a href="demo.html" class="btn btn-secondary">Réserver une démo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promo Banner -->
+    <section class="promo-banner">
+        <div class="container">
+            <p>Promotion exceptionnelle ! Jusqu'à <strong>40% de réduction</strong> sur les modèles TM6</p>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Nos Produits Phares</h2>
+                <p>Découvrez la gamme Thermomix</p>
+            </div>
+            <div class="products-grid">
+                <!-- Produit TM6 -->
+                <div class="product-card fade-in delay-1">
+                    <div class="product-image">
+                        <img src="tm6-product.jpg" alt="Thermomix TM6">
+                    </div>
+                    <div class="product-info">
+                        <h3>Thermomix® TM6</h3>
+                        <div class="product-price">
+                            <span class="current-price">1,199€</span>
+                            <span class="old-price">1,999€</span>
+                            <span class="discount-badge">-40%</span>
+                        </div>
+                        <p class="product-description">
+                            Le robot culinaire intelligent avec écran tactile et connectivité.
+                        </p>
+                        <div class="product-actions">
+                            <a href="traitement.html?produit=tm6&action=details" class="btn btn-primary">Voir détails</a>
+                            <a href="traitement.html?produit=tm6&action=acheter" class="btn btn-secondary">Acheter</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produit TM7 -->
+                <div class="product-card fade-in delay-2">
+                    <div class="product-image">
+                        <img src="tm7-product.jpg" alt="Thermomix TM7">
+                    </div>
+                    <div class="product-info">
+                        <h3>Thermomix® TM7</h3>
+                        <div class="product-price">
+                            <span class="current-price">1,499€</span>
+                        </div>
+                        <p class="product-description">
+                            La dernière innovation avec des fonctionnalités avancées et un design premium.
+                        </p>
+                        <div class="product-actions">
+                            <a href="traitement.html?produit=tm7&action=details" class="btn btn-primary">Voir détails</a>
+                            <a href="traitement.html?produit=tm7&action=acheter" class="btn btn-secondary">Acheter</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Pourquoi choisir Thermomix?</h2>
+                <p>Découvrez ce qui fait notre différence</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card fade-in delay-1">
+                    <div class="feature-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>12 en 1</h3>
+                    <p>Un seul appareil pour toutes vos préparations culinaires</p>
+                </div>
+                <div class="feature-card fade-in delay-2">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Connecté</h3>
+                    <p>Contrôlez votre Thermomix depuis votre smartphone</p>
+                </div>
+                <div class="feature-card fade-in delay-3">
+                    <div class="feature-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>+10,000 recettes</h3>
+                    <p>Accès illimité à notre bibliothèque de recettes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Ils nous font confiance</h2>
+                <p>Découvrez les témoignages de nos clients</p>
+            </div>
+            <div class="testimonials-slider">
+                <div class="testimonial-card fade-in delay-1">
+                    <p class="testimonial-text">
+                        "Le Thermomix a révolutionné ma façon de cuisiner. Je gagne un temps précieux tout en préparant des plats délicieux et équilibrés."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="client1.jpg" alt="Client">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sophie Martin</h4>
+                            <p>Client depuis 2020</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Restez informé</h2>
+                <p>Abonnez-vous à notre newsletter pour recevoir nos offres exclusives</p>
+            </div>
+            <form class="newsletter-form fade-in delay-1" id="newsletterForm" action="traitement.html" method="POST">
+                <input type="email" name="email" class="newsletter-input" placeholder="Votre adresse email" required>
+                <button type="submit" class="newsletter-btn">S'abonner</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Thermomix</h3>
+                    <ul>
+                        <li><a href="apropos.html">À propos de nous</a></li>
+                        <li><a href="histoire.html">Notre histoire</a></li>
+                        <li><a href="carrieres.html">Carrières</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Produits</h3>
+                    <ul>
+                        <li><a href="tm6.html">Thermomix TM6</a></li>
+                        <li><a href="tm7.html">Thermomix TM7</a></li>
+                        <li><a href="accessoires.html">Accessoires</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="contact.html">Contactez-nous</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="garantie.html">Garantie</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Légal</h3>
+                    <ul>
+                        <li><a href="mentions-legales.html">Mentions légales</a></li>
+                        <li><a href="cgv.html">Conditions générales</a></li>
+                        <li><a href="confidentialite.html">Confidentialité</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Thermomix. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Script pour gérer les interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Enregistrer les données du formulaire
+            const newsletterForm = document.getElementById('newsletterForm');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = this.elements['email'].value;
+                    localStorage.setItem('newsletter_email', email);
+                    window.location.href = 'traitement.html?action=newsletter';
+                });
+            }
+
+            // Animation au scroll
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.fade-in');
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+                    
+                    if (elementPosition < screenPosition) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll(); // Appeler une fois au chargement
+        });
+
+        // Stockage des données de produit pour les pages de traitement
+        function setProductData(productId, action) {
+            const productData = {
+                tm6: {
+                    name: 'Thermomix TM6',
+                    price: 1199,
+                    discount: 40
+                },
+                tm7: {
+                    name: 'Thermomix TM7',
+                    price: 1499,
+                    discount: 0
+                }
+            };
+            
+            localStorage.setItem('current_product', JSON.stringify(productData[productId]));
+            localStorage.setItem('user_action', action);
+        }
+
+        // Gestion des clics sur les boutons
+        document.querySelectorAll('[href^="traitement"]').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const url = new URL(this.href);
+                const params = new URLSearchParams(url.search);
+                
+                setProductData(params.get('produit'), params.get('action'));
+                window.location.href = url.pathname + url.search;
+            });
+        });
+    </script>
+</body>
+</html>
