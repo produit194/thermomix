@@ -1,0 +1,29 @@
+.products-page {
+    padding: 2rem 5%;
+}
+
+.categories {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.categories button {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    background: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.categories button.active {
+    background: #e63946;
+    color: white;
+    border-color: #e63946;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+}
