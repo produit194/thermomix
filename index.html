@@ -3,58 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thermomix France - Robot Cuiseur Intelligent</title>
+    <title>Thermomix France | Robot Cuiseur Intelligent</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <!-- الهيدر (الجزء العلوي) -->
+    <!-- Header -->
     <header class="header">
         <div class="logo">
-            <img src="./images/logo-thermomix.png" alt="Thermomix">
+            <img src="./images/logo.png" alt="Thermomix" width="180">
         </div>
         <nav class="navigation">
             <a href="./index.html">Accueil</a>
-            <a href="./produits.html">Produits</a>
+            <a href="./produits.html">Nos Produits</a>
             <a href="./recettes.html">Recettes</a>
             <a href="./contact.html">Contact</a>
-            <a href="./panier.html" class="panier-link">Panier (<span id="panier-count">0</span>)</a>
+            <a href="./panier.html" class="panier-btn">
+                🛒 <span class="cart-count">0</span>
+            </a>
         </nav>
     </header>
 
-    <!-- القسم الرئيسي -->
-    <main>
-        <!-- قسم العرض الترويجي -->
-        <section class="hero">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
             <h1>Découvrez le Thermomix® TM6</h1>
-            <p>Le robot culinaire le plus intelligent au monde</p>
+            <p>La révolution culinaire intelligente</p>
             <a href="./produits.html" class="cta-button">Voir les produits</a>
-        </section>
-
-        <!-- قسم المنتجات المميزة -->
-        <section class="featured-products">
-            <h2>Nos produits phares</h2>
-            <div class="products-grid">
-                <!-- سيتم إضافة المنتجات هنا عبر JavaScript -->
-            </div>
-        </section>
-
-        <!-- قسم الفيديو التوضيحي -->
-        <section class="video-demo">
-            <h2>Comment ça marche ?</h2>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </section>
-    </main>
-
-    <!-- الفوتر (الجزء السفلي) -->
-    <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; 2023 Thermomix. Tous droits réservés.</p>
-            <a href="./mentions-legales.html">Mentions légales</a>
         </div>
-    </footer>
+    </section>
 
+    <!-- Scripts -->
     <script src="./js/main.js"></script>
 </body>
 </html>
