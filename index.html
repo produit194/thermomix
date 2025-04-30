@@ -7,26 +7,53 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
+    <!-- الهيدر (الجزء العلوي) -->
     <header class="header">
         <div class="logo">
             <img src="./images/logo-thermomix.png" alt="Thermomix">
         </div>
         <nav class="navigation">
             <a href="./index.html">Accueil</a>
-            <a href="./produits.html">Nos Produits</a>
+            <a href="./produits.html">Produits</a>
             <a href="./recettes.html">Recettes</a>
             <a href="./contact.html">Contact</a>
             <a href="./panier.html" class="panier-link">Panier (<span id="panier-count">0</span>)</a>
         </nav>
     </header>
 
+    <!-- القسم الرئيسي -->
     <main>
+        <!-- قسم العرض الترويجي -->
         <section class="hero">
             <h1>Découvrez le Thermomix® TM6</h1>
             <p>Le robot culinaire le plus intelligent au monde</p>
             <a href="./produits.html" class="cta-button">Voir les produits</a>
         </section>
+
+        <!-- قسم المنتجات المميزة -->
+        <section class="featured-products">
+            <h2>Nos produits phares</h2>
+            <div class="products-grid">
+                <!-- سيتم إضافة المنتجات هنا عبر JavaScript -->
+            </div>
+        </section>
+
+        <!-- قسم الفيديو التوضيحي -->
+        <section class="video-demo">
+            <h2>Comment ça marche ?</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </section>
     </main>
+
+    <!-- الفوتر (الجزء السفلي) -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2023 Thermomix. Tous droits réservés.</p>
+            <a href="./mentions-legales.html">Mentions légales</a>
+        </div>
+    </footer>
 
     <script src="./js/main.js"></script>
 </body>
