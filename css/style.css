@@ -28,3 +28,19 @@ body {
     text-align: center;
     margin-top: 2rem;
 }
+.cart-notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #2a9d8f;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+    transition: opacity 0.5s;
+}
+
+.cart-notification.fade-out {
+    opacity: 0;
+}
