@@ -1,38 +1,85 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thermomix France | Robot Cuiseur Intelligent</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <title>Thermomix® Officiel | Robot Cuiseur Connecté</title>
+    <meta name="description" content="Découvrez le Thermomix® TM6 : 12 fonctions en 1 robot. Commandez le vôtre sur le site officiel.">
+    
+    <!-- Preload CSS -->
+    <link rel="preload" href="./css/main.min.css" as="style">
+    <link rel="stylesheet" href="./css/main.min.css">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
+    
+    <!-- Webfonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="logo">
-            <img src="./images/logo.png" alt="Thermomix" width="180">
+    <!-- Header Premium -->
+    <header class="header--premium">
+        <div class="container">
+            <div class="header__logo">
+                <svg width="180" height="40" viewBox="0 0 180 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Logo SVG vectoriel -->
+                    <path d="M..." fill="#E63946"/>
+                </svg>
+            </div>
+            
+            <nav class="nav--main">
+                <ul>
+                    <li><a href="/tm6" class="nav__link active">TM6</a></li>
+                    <li><a href="/accessoires" class="nav__link">Accessoires</a></li>
+                    <li><a href="/recettes" class="nav__link">Recettes</a></li>
+                    <li><a href="/guide" class="nav__link">Guide d'achat</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header__actions">
+                <button class="btn--icon search-trigger">
+                    <svg><!-- Icône loupe --></svg>
+                </button>
+                <a href="/mon-compte" class="btn--text">Mon compte</a>
+                <a href="/panier" class="btn--cart">
+                    <span class="cart-count">0</span>
+                    <svg><!-- Icône panier --></svg>
+                </a>
+            </div>
         </div>
-        <nav class="navigation">
-            <a href="./index.html">Accueil</a>
-            <a href="./produits.html">Nos Produits</a>
-            <a href="./recettes.html">Recettes</a>
-            <a href="./contact.html">Contact</a>
-            <a href="./panier.html" class="panier-btn">
-                🛒 <span class="cart-count">0</span>
-            </a>
-        </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Découvrez le Thermomix® TM6</h1>
-            <p>La révolution culinaire intelligente</p>
-            <a href="./produits.html" class="cta-button">Voir les produits</a>
+    <!-- Hero Section Animée -->
+    <section class="hero--video">
+        <div class="hero__video-container">
+            <video autoplay muted loop playsinline poster="./assets/video-poster.jpg">
+                <source src="./assets/hero-video.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="hero__content">
+            <h1 class="hero__title">
+                <span class="reveal-text">Révolutionnez</span>
+                <span class="reveal-text">votre cuisine</span>
+            </h1>
+            <p class="hero__subtitle">Le Thermomix® TM6 connecté</p>
+            <div class="hero__cta">
+                <a href="/acheter" class="btn--primary">
+                    Découvrir
+                    <svg><!-- Icône flèche --></svg>
+                </a>
+                <a href="/demo" class="btn--secondary">Voir démo</a>
+            </div>
         </div>
     </section>
 
-    <!-- Scripts -->
-    <script src="./js/main.js"></script>
+    <!-- Intégration Web Components -->
+    <product-carousel></product-carousel>
+    
+    <!-- Scripts optimisés -->
+    <script src="./js/main.min.js" defer></script>
+    <script src="./js/components.min.js" type="module"></script>
 </body>
 </html>
