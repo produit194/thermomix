@@ -1,498 +1,1925 @@
 <!DOCTYPE html>
-<html lang="fr" dir="ltr">
+<html lang="fr-FR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thermomix® Officiel | Robot Cuiseur Intelligent</title>
+    <meta name="description" content="Thermomix® - Le robot culinaire multifonction révolutionnaire. Découvrez les modèles TM6 et TM7 avec promotion exclusive de -40%">
+    <meta name="keywords" content="thermomix, tm6, tm7, robot cuisine, promotion, recettes">
+    <title>Thermomix® | Robot Culinaire Intelligent | Promotion -40%</title>
     
-    <!-- SEO Meta -->
-    <meta name="description" content="Découvrez le Thermomix® TM6 et TM7 - 40% de réduction. Le robot cuiseur intelligent avec écran tactile et 12 fonctions en 1.">
-    <meta name="keywords" content="thermomix, tm6, tm7, robot cuiseur, cuisine intelligente">
-    <meta property="og:title" content="Thermomix® Officiel | Robot Cuiseur Intelligent">
-    <meta property="og:image" content="https://www.thermomix.com/share-image.jpg">
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Thermomix France",
+        "url": "https://www.thermomix.fr",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.thermomix.fr/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
     
-    <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    
-    <!-- Preload -->
-    <link rel="preload" href="css/main.css" as="style">
-    <link rel="preload" href="js/main.js" as="script">
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* CSS Reset */
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        /* CSS Reset - Meyer's Reset Extended */
+        html, body, div, span, applet, object, iframe,
+        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+        a, abbr, acronym, address, big, cite, code,
+        del, dfn, em, img, ins, kbd, q, s, samp,
+        small, strike, strong, sub, sup, tt, var,
+        b, u, i, center, dl, dt, dd, ol, ul, li,
+        fieldset, form, label, legend,
+        table, caption, tbody, tfoot, thead, tr, th, td,
+        article, aside, canvas, details, embed, 
+        figure, figcaption, footer, header, hgroup, 
+        menu, nav, output, ruby, section, summary,
+        time, mark, audio, video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+            box-sizing: border-box;
+        }
         
-        /* Variables */
+        /* HTML5 display-role reset for older browsers */
+        article, aside, details, figcaption, figure, 
+        footer, header, hgroup, menu, nav, section {
+            display: block;
+        }
+        
+        body {
+            line-height: 1.6;
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            color: #333333;
+            background-color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+        
+        ol, ul {
+            list-style: none;
+        }
+        
+        blockquote, q {
+            quotes: none;
+        }
+        
+        blockquote:before, blockquote:after,
+        q:before, q:after {
+            content: '';
+            content: none;
+        }
+        
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+        
+        /* Global Variables */
         :root {
-            --primary: #007a3d; /* Vert Vorwerk */
-            --primary-dark: #006633;
-            --secondary: #f8f8f8;
-            --accent: #e63946;
-            --text: #333333;
-            --light: #ffffff;
-            --dark: #222222;
-            --transition: all 0.4s cubic-bezier(0.65, 0, 0.35, 1);
-            --shadow-sm: 0 2px 10px rgba(0,0,0,0.08);
-            --shadow-md: 0 4px 20px rgba(0,0,0,0.12);
-            --radius: 8px;
+            /* Color Palette */
+            --primary-color: #00A651;
+            --primary-dark: #008040;
+            --primary-light: #E5F5EC;
+            --primary-extra-light: #F5FBF8;
+            --secondary-color: #FFCC00;
+            --secondary-dark: #E6B800;
+            --white: #FFFFFF;
+            --black: #333333;
+            --gray-100: #F5F5F5;
+            --gray-200: #EEEEEE;
+            --gray-300: #E0E0E0;
+            --gray-400: #BDBDBD;
+            --gray-500: #9E9E9E;
+            --gray-600: #757575;
+            --gray-700: #616161;
+            --gray-800: #424242;
+            --gray-900: #212121;
+            --error-color: #E53935;
+            --success-color: #43A047;
+            --warning-color: #FB8C00;
+            --info-color: #1E88E5;
+            
+            /* Typography */
+            --font-base: 1rem;
+            --font-scale: 1.25;
+            --font-xs: calc(var(--font-base) / var(--font-scale));
+            --font-sm: var(--font-base);
+            --font-md: calc(var(--font-base) * var(--font-scale));
+            --font-lg: calc(var(--font-md) * var(--font-scale));
+            --font-xl: calc(var(--font-lg) * var(--font-scale));
+            --font-xxl: calc(var(--font-xl) * var(--font-scale));
+            --font-xxxl: calc(var(--font-xxl) * var(--font-scale));
+            
+            /* Spacing */
+            --space-unit: 1rem;
+            --space-xxs: calc(var(--space-unit) * 0.25);
+            --space-xs: calc(var(--space-unit) * 0.5);
+            --space-sm: calc(var(--space-unit) * 0.75);
+            --space-md: var(--space-unit);
+            --space-lg: calc(var(--space-unit) * 1.5);
+            --space-xl: calc(var(--space-unit) * 2);
+            --space-xxl: calc(var(--space-unit) * 3);
+            --space-xxxl: calc(var(--space-unit) * 4);
+            
+            /* Border Radius */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-round: 50%;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.15);
+            --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+            
+            /* Transitions */
+            --transition-fast: all 0.15s ease-in-out;
+            --transition-normal: all 0.3s ease-in-out;
+            --transition-slow: all 0.5s ease-in-out;
+            
+            /* Z-index */
+            --z-index-dropdown: 100;
+            --z-index-sticky: 200;
+            --z-index-fixed: 300;
+            --z-index-modal: 400;
+            --z-index-toast: 500;
         }
         
         /* Base Styles */
-        html { scroll-behavior: smooth; overflow-x: hidden; }
-        body { font-family: 'Montserrat', sans-serif; color: var(--text); line-height: 1.6; }
-        img { max-width: 100%; height: auto; display: block; }
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
-        .container { width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+        
+        body {
+            font-size: var(--font-sm);
+            line-height: 1.6;
+            color: var(--gray-900);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
         
         /* Typography */
-        h1, h2, h3, .title { font-family: 'Playfair Display', serif; font-weight: 700; }
-        h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.2; }
-        h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1.5rem; }
-        p { margin-bottom: 1rem; font-size: 1.1rem; }
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--space-md);
+            color: var(--black);
+        }
+        
+        h1 {
+            font-size: var(--font-xxxl);
+        }
+        
+        h2 {
+            font-size: var(--font-xxl);
+        }
+        
+        h3 {
+            font-size: var(--font-xl);
+        }
+        
+        h4 {
+            font-size: var(--font-lg);
+        }
+        
+        h5 {
+            font-size: var(--font-md);
+        }
+        
+        h6 {
+            font-size: var(--font-sm);
+        }
+        
+        p {
+            margin-bottom: var(--space-md);
+        }
+        
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+        
+        a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+        
+        strong {
+            font-weight: 700;
+        }
+        
+        em {
+            font-style: italic;
+        }
+        
+        /* Layout */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+        
+        .container-fluid {
+            width: 100%;
+            padding: 0 var(--space-md);
+        }
+        
+        .section {
+            padding: var(--space-xxxl) 0;
+        }
+        
+        .section-sm {
+            padding: var(--space-xl) 0;
+        }
+        
+        .section-lg {
+            padding: var(--space-xxxl) 0;
+        }
         
         /* Buttons */
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-md);
             font-weight: 600;
-            transition: var(--transition);
             text-align: center;
             cursor: pointer;
-            gap: 0.5rem;
+            transition: var(--transition-normal);
             border: none;
-        }
-        .btn-primary {
-            background: var(--primary);
-            color: var(--light);
-        }
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
-        }
-        .btn-secondary {
-            background: var(--light);
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-        .btn-secondary:hover {
-            background: var(--primary);
-            color: var(--light);
+            font-size: var(--font-sm);
+            line-height: 1.5;
+            position: relative;
+            overflow: hidden;
         }
         
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: var(--light);
-            box-shadow: var(--shadow-sm);
-            z-index: 1000;
-            padding: 1rem 0;
-            transition: var(--transition);
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
         }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: var(--black);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--secondary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .btn-white {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+        
+        .btn-white:hover {
+            background-color: var(--gray-100);
+            color: var(--primary-dark);
+        }
+        
+        .btn-lg {
+            padding: var(--space-md) var(--space-xl);
+            font-size: var(--font-md);
+        }
+        
+        .btn-sm {
+            padding: var(--space-xs) var(--space-md);
+            font-size: var(--font-xs);
+        }
+        
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+        
+        .btn-icon {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+        
+        /* Forms */
+        .form-group {
+            margin-bottom: var(--space-md);
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: var(--space-xs);
+            font-weight: 600;
+        }
+        
+        .form-control {
+            display: block;
+            width: 100%;
+            padding: var(--space-sm) var(--space-md);
+            font-size: var(--font-sm);
+            line-height: 1.5;
+            color: var(--gray-900);
+            background-color: var(--white);
+            background-clip: padding-box;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--radius-sm);
+            transition: var(--transition-normal);
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(0, 166, 81, 0.25);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-select {
+            display: block;
+            width: 100%;
+            padding: var(--space-sm) var(--space-md);
+            font-size: var(--font-sm);
+            line-height: 1.5;
+            color: var(--gray-900);
+            background-color: var(--white);
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23333' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right var(--space-md) center;
+            background-size: 16px 12px;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--radius-sm);
+            appearance: none;
+        }
+        
+        .form-select:focus {
+            border-color: var(--primary-color);
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(0, 166, 81, 0.25);
+        }
+        
+        .form-check {
+            display: block;
+            min-height: var(--font-md);
+            padding-left: 1.5em;
+            margin-bottom: var(--space-xs);
+        }
+        
+        .form-check-input {
+            float: left;
+            margin-left: -1.5em;
+            width: 1em;
+            height: 1em;
+            margin-top: 0.25em;
+            vertical-align: top;
+            background-color: var(--white);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            border: 1px solid var(--gray-300);
+            appearance: none;
+            print-color-adjust: exact;
+        }
+        
+        .form-check-input[type="checkbox"] {
+            border-radius: var(--radius-sm);
+        }
+        
+        .form-check-input[type="radio"] {
+            border-radius: var(--radius-round);
+        }
+        
+        .form-check-input:active {
+            filter: brightness(90%);
+        }
+        
+        .form-check-input:focus {
+            border-color: var(--primary-color);
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(0, 166, 81, 0.25);
+        }
+        
+        .form-check-input:checked {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .form-check-input:checked[type="checkbox"] {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
+        }
+        
+        .form-check-input:checked[type="radio"] {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");
+        }
+        
+        .form-check-label {
+            cursor: pointer;
+        }
+        
+        .invalid-feedback {
+            display: none;
+            width: 100%;
+            margin-top: var(--space-xs);
+            font-size: var(--font-xs);
+            color: var(--error-color);
+        }
+        
+        .is-invalid ~ .invalid-feedback {
+            display: block;
+        }
+        
+        .is-invalid {
+            border-color: var(--error-color);
+        }
+        
+        .is-invalid:focus {
+            box-shadow: 0 0 0 0.2rem rgba(229, 57, 53, 0.25);
+        }
+        
+        /* Alerts */
+        .alert {
+            position: relative;
+            padding: var(--space-md);
+            margin-bottom: var(--space-md);
+            border: 1px solid transparent;
+            border-radius: var(--radius-sm);
+        }
+        
+        .alert-primary {
+            color: #084298;
+            background-color: #cfe2ff;
+            border-color: #b6d4fe;
+        }
+        
+        .alert-secondary {
+            color: #41464b;
+            background-color: #e2e3e5;
+            border-color: #d3d6d8;
+        }
+        
+        .alert-success {
+            color: #0f5132;
+            background-color: #d1e7dd;
+            border-color: #badbcc;
+        }
+        
+        .alert-danger {
+            color: #842029;
+            background-color: #f8d7da;
+            border-color: #f5c2c7;
+        }
+        
+        .alert-warning {
+            color: #664d03;
+            background-color: #fff3cd;
+            border-color: #ffecb5;
+        }
+        
+        .alert-info {
+            color: #055160;
+            background-color: #cff4fc;
+            border-color: #b6effb;
+        }
+        
+        .alert-light {
+            color: #636464;
+            background-color: #fefefe;
+            border-color: #fdfdfe;
+        }
+        
+        .alert-dark {
+            color: #141619;
+            background-color: #d3d3d4;
+            border-color: #bcbebf;
+        }
+        
+        /* Cards */
+        .card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            word-wrap: break-word;
+            background-color: var(--white);
+            background-clip: border-box;
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            transition: var(--transition-normal);
+        }
+        
+        .card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-5px);
+        }
+        
+        .card-body {
+            flex: 1 1 auto;
+            padding: var(--space-md);
+        }
+        
+        .card-title {
+            margin-bottom: var(--space-sm);
+            font-size: var(--font-lg);
+        }
+        
+        .card-subtitle {
+            margin-top: calc(-0.5 * var(--space-sm));
+            margin-bottom: 0;
+            font-size: var(--font-sm);
+            color: var(--gray-600);
+        }
+        
+        .card-text:last-child {
+            margin-bottom: 0;
+        }
+        
+        .card-img-top {
+            width: 100%;
+            border-top-left-radius: calc(var(--radius-md) - 1px);
+            border-top-right-radius: calc(var(--radius-md) - 1px);
+        }
+        
+        .card-img-bottom {
+            width: 100%;
+            border-bottom-right-radius: calc(var(--radius-md) - 1px);
+            border-bottom-left-radius: calc(var(--radius-md) - 1px);
+        }
+        
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: var(--space-xs) var(--space-sm);
+            font-size: var(--font-xs);
+            font-weight: 700;
+            line-height: 1;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: var(--radius-sm);
+            transition: var(--transition-fast);
+        }
+        
+        .badge-primary {
+            color: var(--white);
+            background-color: var(--primary-color);
+        }
+        
+        .badge-secondary {
+            color: var(--black);
+            background-color: var(--secondary-color);
+        }
+        
+        .badge-success {
+            color: var(--white);
+            background-color: var(--success-color);
+        }
+        
+        .badge-danger {
+            color: var(--white);
+            background-color: var(--error-color);
+        }
+        
+        .badge-warning {
+            color: var(--black);
+            background-color: var(--warning-color);
+        }
+        
+        .badge-info {
+            color: var(--white);
+            background-color: var(--info-color);
+        }
+        
+        .badge-light {
+            color: var(--black);
+            background-color: var(--gray-100);
+        }
+        
+        .badge-dark {
+            color: var(--white);
+            background-color: var(--gray-900);
+        }
+        
+        /* Header Styles */
+        .announcement-bar {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: var(--space-xs) 0;
+            font-size: var(--font-xs);
+            text-align: center;
+        }
+        
+        .header {
+            background-color: var(--white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: var(--z-index-sticky);
+        }
+        
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: var(--space-md) 0;
         }
+        
         .logo img {
             height: 50px;
             width: auto;
         }
-        nav ul {
+        
+        .nav-main {
             display: flex;
-            gap: 2rem;
+            align-items: center;
         }
-        nav a {
+        
+        .nav-links {
+            display: flex;
+        }
+        
+        .nav-links > li {
             position: relative;
-            font-weight: 500;
-            padding: 0.5rem 0;
+            margin: 0 var(--space-md);
         }
-        nav a::after {
+        
+        .nav-links > li > a {
+            font-weight: 600;
+            padding: var(--space-sm) 0;
+            display: block;
+            position: relative;
+            color: var(--gray-800);
+        }
+        
+        .nav-links > li > a::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--primary);
-            transition: var(--transition);
+            background-color: var(--primary-color);
+            transition: var(--transition-normal);
         }
-        nav a:hover::after {
+        
+        .nav-links > li > a:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-links > li > a:hover::after {
             width: 100%;
         }
+        
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--white);
+            box-shadow: var(--shadow-lg);
+            border-radius: var(--radius-md);
+            padding: var(--space-sm) 0;
+            min-width: 220px;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-normal);
+            z-index: var(--z-index-dropdown);
+        }
+        
+        .nav-links > li:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .dropdown li {
+            padding: var(--space-xs) var(--space-md);
+        }
+        
+        .dropdown li a {
+            display: block;
+            transition: var(--transition-fast);
+            color: var(--gray-700);
+        }
+        
+        .dropdown li a:hover {
+            color: var(--primary-color);
+            padding-left: var(--space-sm);
+        }
+        
         .header-actions {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
         }
-        .cart-btn {
-            position: relative;
+        
+        .header-actions a {
+            margin-left: var(--space-md);
+            font-size: var(--font-md);
+            transition: var(--transition-fast);
+            color: var(--gray-800);
         }
-        .cart-count {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: var(--accent);
-            color: var(--light);
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.75rem;
-            font-weight: 700;
+        
+        .header-actions a:hover {
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: var(--font-lg);
+            margin-left: var(--space-md);
         }
         
         /* Hero Section */
         .hero {
-            height: 100vh;
-            min-height: 800px;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/hero-bg.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 600px;
             display: flex;
             align-items: center;
-            padding-top: 80px;
-            color: var(--light);
+            color: var(--white);
+            text-align: center;
+            position: relative;
         }
+        
         .hero-content {
-            max-width: 600px;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
         }
+        
         .hero h1 {
-            margin-bottom: 1.5rem;
-            animation: fadeIn 1s ease forwards;
+            font-size: var(--font-xxxl);
+            margin-bottom: var(--space-md);
+            font-weight: 700;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
+        
         .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 2.5rem;
-            opacity: 0;
-            animation: fadeIn 1s ease 0.3s forwards;
+            font-size: var(--font-lg);
+            margin-bottom: var(--space-xl);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
+        
         .hero-buttons {
             display: flex;
-            gap: 1rem;
-            opacity: 0;
-            animation: fadeIn 1s ease 0.6s forwards;
+            justify-content: center;
+            gap: var(--space-md);
         }
         
         /* Promo Banner */
         .promo-banner {
-            background: var(--accent);
-            color: var(--light);
-            padding: 1rem;
+            background-color: var(--secondary-color);
+            color: var(--black);
             text-align: center;
+            padding: var(--space-sm) 0;
+            font-weight: 700;
+            font-size: var(--font-md);
         }
-        .promo-banner p {
-            margin: 0;
-            font-weight: 600;
+        
+        .promo-banner span {
+            color: var(--error-color);
+            font-weight: 800;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: var(--space-xxxl) 0;
+            background-color: var(--white);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: var(--space-xxl);
+        }
+        
+        .section-title h2 {
+            font-size: var(--font-xxl);
+            color: var(--black);
+            margin-bottom: var(--space-md);
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .section-title p {
+            color: var(--gray-600);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: var(--font-md);
+        }
+        
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+        }
+        
+        .feature-card {
+            background-color: var(--gray-100);
+            border-radius: var(--radius-md);
+            padding: var(--space-xl) var(--space-lg);
+            text-align: center;
+            transition: var(--transition-normal);
+            border: 1px solid var(--gray-200);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
+        }
+        
+        .feature-icon {
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: var(--space-md);
+        }
+        
+        .feature-card h3 {
+            font-size: var(--font-lg);
+            margin-bottom: var(--space-sm);
+            color: var(--black);
+        }
+        
+        .feature-card p {
+            color: var(--gray-600);
         }
         
         /* Products Section */
-        .products-section {
-            padding: 6rem 0;
-            background: var(--secondary);
+        .products {
+            padding: var(--space-xxxl) 0;
+            background-color: var(--gray-100);
         }
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-        .products-grid {
+        
+        .products-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--space-lg);
         }
+        
         .product-card {
-            background: var(--light);
-            border-radius: var(--radius);
+            background-color: var(--white);
+            border-radius: var(--radius-md);
             overflow: hidden;
             box-shadow: var(--shadow-sm);
-            transition: var(--transition);
+            transition: var(--transition-normal);
+            position: relative;
         }
+        
         .product-card:hover {
             transform: translateY(-10px);
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-lg);
         }
+        
+        .product-badge {
+            position: absolute;
+            top: var(--space-md);
+            right: var(--space-md);
+            background-color: var(--error-color);
+            color: var(--white);
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: var(--font-xs);
+            z-index: 10;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
         .product-image {
             height: 300px;
             overflow: hidden;
         }
+        
         .product-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: var(--transition);
+            transition: var(--transition-slow);
         }
+        
         .product-card:hover .product-image img {
             transform: scale(1.05);
         }
+        
         .product-info {
-            padding: 2rem;
+            padding: var(--space-lg);
         }
-        .product-title {
-            color: var(--primary);
-            margin-bottom: 0.75rem;
+        
+        .product-info h3 {
+            font-size: var(--font-lg);
+            margin-bottom: var(--space-sm);
+            color: var(--black);
         }
+        
         .product-price {
             display: flex;
             align-items: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: var(--space-md);
         }
+        
         .current-price {
-            font-size: 1.75rem;
+            font-size: var(--font-xl);
             font-weight: 700;
-            color: var(--accent);
+            color: var(--primary-color);
         }
+        
         .old-price {
-            font-size: 1.25rem;
+            font-size: var(--font-md);
+            color: var(--gray-500);
             text-decoration: line-through;
-            color: #999;
-            margin-left: 1rem;
+            margin-left: var(--space-sm);
         }
-        .discount-badge {
-            background: var(--accent);
-            color: var(--light);
-            padding: 0.25rem 0.75rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            margin-left: 1rem;
-        }
+        
         .product-description {
-            color: #666;
-            margin-bottom: 2rem;
-        }
-        .product-actions {
-            display: flex;
-            gap: 1rem;
+            color: var(--gray-600);
+            margin-bottom: var(--space-lg);
         }
         
-        /* Features Section */
-        .features-section {
-            padding: 6rem 0;
-            background: var(--light);
+        .product-specs {
+            margin-bottom: var(--space-lg);
         }
-        .features-grid {
+        
+        .product-specs ul {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-        .feature-card {
-            text-align: center;
-            padding: 2.5rem 2rem;
-            border-radius: var(--radius);
-            transition: var(--transition);
-        }
-        .feature-card:hover {
-            background: var(--secondary);
-            transform: translateY(-5px);
-        }
-        .feature-icon {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-        }
-        .feature-title {
-            margin-bottom: 1rem;
-            color: var(--primary);
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-xs);
         }
         
-        /* Testimonials */
-        .testimonials-section {
-            padding: 6rem 0;
-            background: var(--secondary);
-        }
-        .testimonials-slider {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        .testimonial-card {
-            background: var(--light);
-            padding: 3rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-sm);
-            margin: 1rem;
-        }
-        .testimonial-text {
-            font-style: italic;
-            font-size: 1.25rem;
-            color: #555;
-            margin-bottom: 2rem;
-        }
-        .testimonial-author {
+        .product-specs li {
             display: flex;
             align-items: center;
-        }
-        .author-image {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-right: 1.5rem;
-        }
-        .author-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .author-name {
-            color: var(--primary);
-            margin-bottom: 0.25rem;
-        }
-        .author-title {
-            color: #777;
-            font-size: 0.9rem;
+            font-size: var(--font-xs);
+            color: var(--gray-600);
         }
         
-        /* Newsletter */
-        .newsletter-section {
-            padding: 6rem 0;
-            background: var(--primary);
-            color: var(--light);
+        .product-specs i {
+            margin-right: var(--space-xs);
+            color: var(--primary-color);
+            font-size: var(--font-sm);
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: var(--space-sm);
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: var(--space-xxxl) 0;
+            background-color: var(--white);
+        }
+        
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .testimonial-slide {
+            background-color: var(--gray-100);
+            padding: var(--space-xl);
+            border-radius: var(--radius-md);
+            text-align: center;
+            display: none;
+        }
+        
+        .testimonial-slide.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .testimonial-text {
+            font-size: var(--font-md);
+            font-style: italic;
+            color: var(--gray-700);
+            margin-bottom: var(--space-md);
+            position: relative;
+            line-height: 1.8;
+        }
+        
+        .testimonial-text::before,
+        .testimonial-text::after {
+            content: '"';
+            font-size: var(--font-xl);
+            color: var(--primary-color);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .testimonial-author img {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-round);
+            object-fit: cover;
+            margin-bottom: var(--space-sm);
+            border: 3px solid var(--primary-light);
+        }
+        
+        .testimonial-author-name {
+            font-weight: 700;
+            color: var(--black);
+        }
+        
+        .testimonial-author-title {
+            font-size: var(--font-xs);
+            color: var(--gray-500);
+        }
+        
+        .testimonial-slider-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: var(--space-lg);
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            background-color: var(--gray-300);
+            border-radius: var(--radius-round);
+            margin: 0 var(--space-xs);
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+        
+        .slider-dot.active {
+            background-color: var(--primary-color);
+            transform: scale(1.2);
+        }
+        
+        /* Newsletter Section */
+        .newsletter {
+            padding: var(--space-xxl) 0;
+            background-color: var(--primary-color);
+            color: var(--white);
             text-align: center;
         }
-        .newsletter-form {
+        
+        .newsletter h2 {
+            font-size: var(--font-xxl);
+            margin-bottom: var(--space-md);
+        }
+        
+        .newsletter p {
+            margin-bottom: var(--space-lg);
             max-width: 600px;
-            margin: 2.5rem auto 0;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: var(--font-md);
+        }
+        
+        .newsletter-form {
             display: flex;
+            max-width: 500px;
+            margin: 0 auto;
         }
-        .newsletter-input {
+        
+        .newsletter-form input {
             flex: 1;
-            padding: 1rem 1.5rem;
+            padding: var(--space-md);
             border: none;
-            border-radius: 50px 0 0 50px;
-            font-size: 1rem;
+            border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+            font-size: var(--font-sm);
         }
-        .newsletter-btn {
-            padding: 0 2.5rem;
-            background: var(--accent);
-            color: var(--light);
+        
+        .newsletter-form button {
+            padding: var(--space-md) var(--space-lg);
+            background-color: var(--black);
+            color: var(--white);
             border: none;
-            border-radius: 0 50px 50px 0;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
             font-weight: 600;
             cursor: pointer;
-            transition: var(--transition);
+            transition: var(--transition-fast);
         }
-        .newsletter-btn:hover {
-            background: #c1121f;
+        
+        .newsletter-form button:hover {
+            background-color: var(--gray-800);
+        }
+        
+        /* Contact Form Section */
+        .contact {
+            padding: var(--space-xxxl) 0;
+            background-color: var(--gray-100);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-xxl);
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-lg);
+        }
+        
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+        }
+        
+        .contact-info-icon {
+            font-size: var(--font-lg);
+            color: var(--primary-color);
+            margin-top: var(--space-xs);
+        }
+        
+        .contact-info-content h3 {
+            font-size: var(--font-md);
+            margin-bottom: var(--space-xs);
+            color: var(--black);
+        }
+        
+        .contact-info-content p {
+            color: var(--gray-600);
+        }
+        
+        .contact-info-content a {
+            color: var(--gray-600);
+            transition: var(--transition-fast);
+        }
+        
+        .contact-info-content a:hover {
+            color: var(--primary-color);
+        }
+        
+        .contact-form {
+            background-color: var(--white);
+            padding: var(--space-xl);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .contact-form h3 {
+            font-size: var(--font-xl);
+            margin-bottom: var(--space-md);
+            color: var(--black);
+        }
+        
+        .contact-form p {
+            margin-bottom: var(--space-lg);
+            color: var(--gray-600);
+        }
+        
+        /* FAQ Section */
+        .faq {
+            padding: var(--space-xxxl) 0;
+            background-color: var(--white);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: var(--space-sm);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: var(--space-md);
+            background-color: var(--gray-100);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--black);
+            transition: var(--transition-fast);
+        }
+        
+        .faq-question:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .faq-question i {
+            transition: var(--transition-fast);
+        }
+        
+        .faq-answer {
+            padding: 0 var(--space-md);
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition-slow);
+        }
+        
+        .faq-item.active .faq-question {
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: var(--space-md);
+            max-height: 500px;
         }
         
         /* Footer */
-        footer {
-            background: var(--dark);
-            color: var(--light);
-            padding: 5rem 0 2rem;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 4rem;
-        }
-        .footer-column h3 {
-            font-size: 1.25rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 0.75rem;
-        }
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background: var(--primary);
-        }
-        .footer-column ul li {
-            margin-bottom: 0.75rem;
-        }
-        .footer-column a {
-            color: #bbb;
-            transition: var(--transition);
-        }
-        .footer-column a:hover {
-            color: var(--light);
-            padding-left: 5px;
-        }
-        .social-links {
-            display: flex;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-        .social-links a {
-            font-size: 1.25rem;
-        }
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid #444;
-            color: #bbb;
+        .footer {
+            background-color: var(--black);
+            color: var(--white);
+            padding: var(--space-xxxl) 0 var(--space-md) 0;
         }
         
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-xxl);
+            margin-bottom: var(--space-xxl);
+        }
+        
+        .footer-logo img {
+            height: 40px;
+            margin-bottom: var(--space-md);
+        }
+        
+        .footer-about p {
+            margin-bottom: var(--space-md);
+            color: var(--gray-400);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: var(--space-sm);
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-round);
+            transition: var(--transition-fast);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links h3 {
+            font-size: var(--font-md);
+            margin-bottom: var(--space-md);
+            position: relative;
+            padding-bottom: var(--space-sm);
+            color: var(--white);
+        }
+        
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .footer-links li {
+            margin-bottom: var(--space-sm);
+        }
+        
+        .footer-links a {
+            color: var(--gray-400);
+            transition: var(--transition-fast);
+            font-size: var(--font-sm);
+        }
+        
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: var(--space-xs);
+        }
+        
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--space-sm);
+            color: var(--gray-400);
+            font-size: var(--font-sm);
+        }
+        
+        .footer-contact i {
+            margin-right: var(--space-sm);
+            color: var(--primary-color);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: var(--space-md);
+            margin-top: var(--space-md);
+            border-top: 1px solid var(--gray-800);
+            color: var(--gray-500);
+            font-size: var(--font-xs);
+        }
+        
+        .footer-bottom a {
+            color: var(--gray-400);
+            transition: var(--transition-fast);
+        }
+        
+        .footer-bottom a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Cookie Consent */
+        .cookie-consent {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--black);
+            color: var(--white);
+            padding: var(--space-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: var(--z-index-toast);
+            transform: translateY(100%);
+            transition: var(--transition-slow);
+        }
+        
+        .cookie-consent.active {
+            transform: translateY(0);
+        }
+        
+        .cookie-consent p {
+            margin-right: var(--space-md);
+            font-size: var(--font-sm);
+        }
+        
+        .cookie-consent a {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+        
+        .cookie-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-size: var(--font-sm);
+            white-space: nowrap;
+            transition: var(--transition-fast);
+        }
+        
+        .cookie-btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: var(--space-xl);
+            right: var(--space-xl);
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: var(--radius-round);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: var(--font-md);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-normal);
+            z-index: var(--z-index-fixed);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: var(--z-index-modal);
+            justify-content: center;
+            align-items: center;
+            padding: var(--space-md);
+        }
+        
+        .modal-content {
+            background-color: var(--white);
+            border-radius: var(--radius-md);
+            width: 100%;
+            max-width: 500px;
+            padding: var(--space-xl);
+            position: relative;
+            animation: modalFadeIn 0.3s;
+            box-shadow: var(--shadow-xl);
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
+        .close-modal {
+            position: absolute;
+            top: var(--space-md);
+            right: var(--space-md);
+            font-size: var(--font-lg);
+            cursor: pointer;
+            color: var(--gray-500);
+            transition: var(--transition-fast);
+        }
+        
+        .close-modal:hover {
+            color: var(--black);
+            transform: rotate(90deg);
+        }
+        
+        .modal-title {
+            font-size: var(--font-xl);
+            margin-bottom: var(--space-md);
+            color: var(--primary-color);
+        }
+        
+        /* Product Quick View Modal */
+        .product-modal .modal-content {
+            max-width: 800px;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        .product-modal-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        
+        .product-modal-image {
+            height: 100%;
+            min-height: 400px;
+            background-color: var(--gray-100);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-xl);
+        }
+        
+        .product-modal-image img {
+            max-width: 100%;
+            max-height: 350px;
+            object-fit: contain;
+        }
+        
+        .product-modal-info {
+            padding: var(--space-xl);
+        }
+        
+        .product-modal-title {
+            font-size: var(--font-xl);
+            margin-bottom: var(--space-sm);
+            color: var(--black);
+        }
+        
+        .product-modal-price {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--space-md);
+        }
+        
+        .product-modal-current {
+            font-size: var(--font-xl);
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .product-modal-old {
+            font-size: var(--font-md);
+            color: var(--gray-500);
+            text-decoration: line-through;
+            margin-left: var(--space-sm);
+        }
+        
+        .product-modal-description {
+            margin-bottom: var(--space-lg);
+            color: var(--gray-600);
+        }
+        
+        .product-modal-specs {
+            margin-bottom: var(--space-lg);
+        }
+        
+        .product-modal-specs h4 {
+            font-size: var(--font-md);
+            margin-bottom: var(--space-sm);
+            color: var(--black);
+        }
+        
+        .product-modal-specs ul {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-sm);
+        }
+        
+        .product-modal-specs li {
+            display: flex;
+            align-items: center;
+            font-size: var(--font-sm);
+            color: var(--gray-600);
+        }
+        
+        .product-modal-specs i {
+            margin-right: var(--space-xs);
+            color: var(--primary-color);
+        }
+        
+        .product-modal-actions {
+            display: flex;
+            gap: var(--space-sm);
+        }
+        
         /* Responsive */
-        @media (max-width: 1200px) {
-            .container { padding: 0 40px; }
-        }
         @media (max-width: 992px) {
-            nav ul { display: none; }
-            .mobile-menu-btn { display: block; }
+            :root {
+                --font-scale: 1.2;
+            }
+            
+            .hero h1 {
+                font-size: var(--font-xxl);
+            }
+            
+            .hero p {
+                font-size: var(--font-md);
+            }
+            
+            .section-title h2 {
+                font-size: var(--font-xl);
+            }
+            
+            .product-modal-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-modal-image {
+                min-height: 300px;
+            }
         }
+        
         @media (max-width: 768px) {
-            .hero { height: auto; padding: 120px 0 80px; }
-            .product-actions { flex-direction: column; }
-            .btn { width: 100%; }
-            .newsletter-form { flex-direction: column; }
-            .newsletter-input { border-radius: 50px; margin-bottom: 1rem; }
-            .newsletter-btn { border-radius: 50px; padding: 1rem; }
+            :root {
+                --font-scale: 1.15;
+            }
+            
+            .nav-main {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 80px);
+                background-color: var(--white);
+                box-shadow: var(--shadow-lg);
+                transition: var(--transition-normal);
+                z-index: var(--z-index-modal);
+                flex-direction: column;
+                padding: var(--space-xl) var(--space-lg);
+            }
+            
+            .nav-main.active {
+                left: 0;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .nav-links > li {
+                margin: 0 0 var(--space-md) 0;
+            }
+            
+            .dropdown {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                box-shadow: none;
+                padding: var(--space-sm) 0 0 var(--space-md);
+                display: none;
+            }
+            
+            .nav-links > li:hover .dropdown {
+                display: block;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero {
+                height: 500px;
+            }
+            
+            .hero h1 {
+                font-size: var(--font-xl);
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: var(--space-sm);
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                border-radius: var(--radius-sm);
+                margin-bottom: var(--space-sm);
+            }
+            
+            .newsletter-form button {
+                border-radius: var(--radius-sm);
+            }
+            
+            .product-actions {
+                flex-direction: column;
+            }
+            
+            .product-actions .btn {
+                width: 100%;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+                gap: var(--space-xl);
+            }
         }
+        
         @media (max-width: 576px) {
-            .container { padding: 0 20px; }
-            .hero h1 { font-size: 2.5rem; }
-            .products-grid { grid-template-columns: 1fr; }
+            :root {
+                --font-scale: 1.1;
+            }
+            
+            .hero {
+                height: 400px;
+            }
+            
+            .section-title h2 {
+                font-size: var(--font-lg);
+            }
+            
+            .features-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .products-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .back-to-top {
+                bottom: var(--space-lg);
+                right: var(--space-lg);
+                width: 40px;
+                height: 40px;
+                font-size: var(--font-sm);
+            }
         }
+        
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Utility Classes */
+        .text-primary {
+            color: var(--primary-color) !important;
+        }
+        
+        .text-secondary {
+            color: var(--secondary-color) !important;
+        }
+        
+        .text-white {
+            color: var(--white) !important;
+        }
+        
+        .text-black {
+            color: var(--black) !important;
+        }
+        
+        .text-center {
+            text-align: center !important;
+        }
+        
+        .text-left {
+            text-align: left !important;
+        }
+        
+        .text-right {
+            text-align: right !important;
+        }
+        
+        .bg-primary {
+            background-color: var(--primary-color) !important;
+        }
+        
+        .bg-secondary {
+            background-color: var(--secondary-color) !important;
+        }
+        
+        .bg-white {
+            background-color: var(--white) !important;
+        }
+        
+        .bg-gray {
+            background-color: var(--gray-100) !important;
+        }
+        
+        .mt-0 { margin-top: 0 !important; }
+        .mt-1 { margin-top: var(--space-xs) !important; }
+        .mt-2 { margin-top: var(--space-sm) !important; }
+        .mt-3 { margin-top: var(--space-md) !important; }
+        .mt-4 { margin-top: var(--space-lg) !important; }
+        .mt-5 { margin-top: var(--space-xl) !important; }
+        
+        .mb-0 { margin-bottom: 0 !important; }
+        .mb-1 { margin-bottom: var(--space-xs) !important; }
+        .mb-2 { margin-bottom: var(--space-sm) !important; }
+        .mb-3 { margin-bottom: var(--space-md) !important; }
+        .mb-4 { margin-bottom: var(--space-lg) !important; }
+        .mb-5 { margin-bottom: var(--space-xl) !important; }
+        
+        .pt-0 { padding-top: 0 !important; }
+        .pt-1 { padding-top: var(--space-xs) !important; }
+        .pt-2 { padding-top: var(--space-sm) !important; }
+        .pt-3 { padding-top: var(--space-md) !important; }
+        .pt-4 { padding-top: var(--space-lg) !important; }
+        .pt-5 { padding-top: var(--space-xl) !important; }
+        
+        .pb-0 { padding-bottom: 0 !important; }
+        .pb-1 { padding-bottom: var(--space-xs) !important; }
+        .pb-2 { padding-bottom: var(--space-sm) !important; }
+        .pb-3 { padding-bottom: var(--space-md) !important; }
+        .pb-4 { padding-bottom: var(--space-lg) !important; }
+        .pb-5 { padding-bottom: var(--space-xl) !important; }
+        
+        .d-block { display: block !important; }
+        .d-inline { display: inline !important; }
+        .d-inline-block { display: inline-block !important; }
+        .d-flex { display: flex !important; }
+        .d-none { display: none !important; }
+        
+        .justify-content-start { justify-content: flex-start !important; }
+        .justify-content-end { justify-content: flex-end !important; }
+        .justify-content-center { justify-content: center !important; }
+        .justify-content-between { justify-content: space-between !important; }
+        .justify-content-around { justify-content: space-around !important; }
+        
+        .align-items-start { align-items: flex-start !important; }
+        .align-items-end { align-items: flex-end !important; }
+        .align-items-center { align-items: center !important; }
+        .align-items-baseline { align-items: baseline !important; }
+        .align-items-stretch { align-items: stretch !important; }
     </style>
 </head>
 <body>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        <div class="container">
+            Livraison gratuite à partir de 150€ d'achat | Paiement sécurisé | Service client 24/7
+        </div>
+    </div>
+
     <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <a href="/" class="logo">
-                <img src="thermomixdinshaiaa881.img" alt="Thermomix">
-            </a>
-            
-            <nav>
-                <ul>
-                    <li><a href="index.html" class="active">Accueil</a></li>
-                    <li><a href="produits.html">Produits</a></li>
-                    <li><a href="recettes.html">Recettes</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="apropos.html">À propos</a></li>
-                </ul>
-            </nav>
-            
-            <div class="header-actions">
-                <a href="panier.html" class="cart-btn">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-count">0</span>
-                </a>
-                <a href="login.html" class="btn btn-secondary">Connexion</a>
+    <header class="header">
+        <div class="container">
+            <div class="header-container">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="thermomixdinshaiaa881.img" alt="Thermomix" width="180" height="50">
+                    </a>
+                </div>
+
+                <nav class="nav-main" id="navMain">
+                    <ul class="nav-links">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li>
+                            <a href="#">Produits <i class="fas fa-chevron-down"></i></a>
+                            <ul class="dropdown">
+                                <li><a href="tm6.html">Thermomix TM6</a></li>
+                                <li><a href="tm7.html">Thermomix TM7</a></li>
+                                <li><a href="accessoires.html">Accessoires</a></li>
+                                <li><a href="recettes.html">Recettes</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="fonctionnalites.html">Fonctionnalités</a></li>
+                        <li><a href="recettes.html">Recettes</a></li>
+                        <li><a href="guide.html">Guide</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-actions">
+                    <a href="recherche.html" aria-label="Recherche"><i class="fas fa-search"></i></a>
+                    <a href="compte.html" aria-label="Mon compte"><i class="fas fa-user"></i></a>
+                    <a href="panier.html" aria-label="Panier"><i class="fas fa-shopping-cart"></i></a>
+                    <div class="hamburger" id="hamburger" aria-label="Menu">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -501,351 +1928,1271 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Découvrez la révolution culinaire</h1>
-                <p>Thermomix® TM6 et TM7 - La cuisine intelligente réinventée</p>
+                <h1>Découvrez la révolution culinaire avec Thermomix®</h1>
+                <p>12 fonctions en 1 seul robot pour transformer votre cuisine au quotidien</p>
                 <div class="hero-buttons">
-                    <a href="produits.html" class="btn btn-primary">Voir les produits</a>
-                    <a href="demo.html" class="btn btn-secondary">Réserver une démo</a>
+                    <a href="#products" class="btn btn-primary btn-lg">Découvrir les produits</a>
+                    <a href="demo.html" class="btn btn-outline btn-lg">Voir la démo</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Promo Banner -->
-    <section class="promo-banner">
+    <div class="promo-banner">
         <div class="container">
-            <p>Promotion exceptionnelle ! Jusqu'à <strong>40% de réduction</strong> sur les modèles TM6</p>
+            PROMOTION EXCEPTIONNELLE : <span>-40%</span> sur toute la gamme Thermomix® | Offre valable jusqu'au 31/12/2023
         </div>
-    </section>
-
-    <!-- Products Section -->
-    <section class="products-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Nos Produits Phares</h2>
-                <p>Découvrez la gamme Thermomix</p>
-            </div>
-            
-            <div class="products-grid">
-                <!-- Produit TM6 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="images/tm6.jpg" alt="Thermomix TM6">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Thermomix® TM6</h3>
-                        <div class="product-price">
-                            <span class="current-price">1 199€</span>
-                            <span class="old-price">1 999€</span>
-                            <span class="discount-badge">-40%</span>
-                        </div>
-                        <p class="product-description">
-                            Le robot culinaire intelligent avec écran tactile et connectivité Wi-Fi. 12 fonctions en 1 appareil.
-                        </p>
-                        <div class="product-actions">
-                            <a href="traitement.html?produit=tm6&action=details" class="btn btn-secondary">Voir détails</a>
-                            <a href="traitement.html?produit=tm6&action=acheter" class="btn btn-primary">Acheter</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Produit TM7 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="images/tm7.jpg" alt="Thermomix TM7">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Thermomix® TM7</h3>
-                        <div class="product-price">
-                            <span class="current-price">1 499€</span>
-                        </div>
-                        <p class="product-description">
-                            La dernière innovation avec écran HD 7", assistant vocal et accès à plus de 20 000 recettes.
-                        </p>
-                        <div class="product-actions">
-                            <a href="traitement.html?produit=tm7&action=details" class="btn btn-secondary">Voir détails</a>
-                            <a href="traitement.html?produit=tm7&action=acheter" class="btn btn-primary">Acheter</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
 
     <!-- Features Section -->
-    <section class="features-section">
+    <section class="features" id="features">
         <div class="container">
             <div class="section-title">
-                <h2>Pourquoi choisir Thermomix?</h2>
-                <p>Découvrez ce qui fait notre différence</p>
+                <h2>Pourquoi choisir Thermomix® ?</h2>
+                <p>Découvrez comment Thermomix® simplifie votre quotidien et révolutionne votre cuisine</p>
             </div>
-            
-            <div class="features-grid">
+
+            <div class="features-container">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Gain de temps</h3>
+                    <p>Préparez des repas savoureux en un temps record grâce aux fonctions automatisées et aux recettes guidées pas à pas.</p>
+                </div>
+
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-utensils"></i>
                     </div>
-                    <h3 class="feature-title">12 en 1</h3>
-                    <p>Un seul appareil pour toutes vos préparations culinaires</p>
+                    <h3>12 en 1</h3>
+                    <p>Un seul appareil remplace 12 ustensiles de cuisine différents : mixeur, robot cuiseur, balance, etc.</p>
                 </div>
-                
+
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-mobile-alt"></i>
+                        <i class="fas fa-heart"></i>
                     </div>
-                    <h3 class="feature-title">Connecté</h3>
-                    <p>Contrôlez votre Thermomix depuis votre smartphone</p>
+                    <h3>Santé & Nutrition</h3>
+                    <p>Cuisson douce qui préserve les nutriments pour une alimentation plus saine et équilibrée.</p>
                 </div>
-                
+
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-book"></i>
+                        <i class="fas fa-leaf"></i>
                     </div>
-                    <h3 class="feature-title">+10,000 recettes</h3>
-                    <p>Accès illimité à notre bibliothèque de recettes</p>
+                    <h3>Écologique</h3>
+                    <p>Réduisez votre consommation d'énergie et vos déchets grâce à une cuisine tout-en-un.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Intelligent</h3>
+                    <p>Technologie innovante avec reconnaissance des ingrédients et assistance vocale.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <h3>Polyvalent</h3>
+                    <p>Préparez tout type de plats : entrées, plats principaux, desserts, boissons et plus encore.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nos Produits Phares</h2>
+                <p>Découvrez notre gamme de robots culinaires haut de gamme</p>
+            </div>
+
+            <div class="products-container">
+                <!-- Product 1 - TM6 -->
+                <div class="product-card">
+                    <div class="product-badge">-40%</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1585238342024-78d90f58f6b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Thermomix TM6" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3>Thermomix® TM6</h3>
+                        <div class="product-price">
+                            <span class="current-price">899€</span>
+                            <span class="old-price">1499€</span>
+                        </div>
+                        <p class="product-description">Le robot culinaire intelligent avec écran tactile et plus de 40,000 recettes guidées.</p>
+                        
+                        <div class="product-specs">
+                            <ul>
+                                <li><i class="fas fa-check"></i> 12 fonctions en 1</li>
+                                <li><i class="fas fa-check"></i> Écran tactile couleur</li>
+                                <li><i class="fas fa-check"></i> 40,000+ recettes</li>
+                                <li><i class="fas fa-check"></i> Cuisson précise</li>
+                                <li><i class="fas fa-check"></i> Contrôle via app</li>
+                                <li><i class="fas fa-check"></i> Garantie 2 ans</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary">Acheter maintenant</a>
+                            <a href="#" class="btn btn-secondary btn-quick-view" data-product="tm6">Voir les détails</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 - TM7 -->
+                <div class="product-card">
+                    <div class="product-badge">Nouveau</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1556910638-9a0cc496705e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Thermomix TM7" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3>Thermomix® TM7</h3>
+                        <div class="product-price">
+                            <span class="current-price">1199€</span>
+                            <span class="old-price">1999€</span>
+                        </div>
+                        <p class="product-description">La dernière innovation avec reconnaissance des ingrédients et assistant vocal intégré.</p>
+                        
+                        <div class="product-specs">
+                            <ul>
+                                <li><i class="fas fa-check"></i> 15 fonctions en 1</li>
+                                <li><i class="fas fa-check"></i> Reconnaissance ingrédients</li>
+                                <li><i class="fas fa-check"></i> Assistant vocal</li>
+                                <li><i class="fas fa-check"></i> Écran HD 7"</li>
+                                <li><i class="fas fa-check"></i> 50,000+ recettes</li>
+                                <li><i class="fas fa-check"></i> Garantie 3 ans</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary">Acheter maintenant</a>
+                            <a href="#" class="btn btn-secondary btn-quick-view" data-product="tm7">Voir les détails</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 - Accessories -->
+                <div class="product-card">
+                    <div class="product-badge">Promo</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Accessoires Thermomix" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3>Pack Accessoires Premium</h3>
+                        <div class="product-price">
+                            <span class="current-price">199€</span>
+                            <span class="old-price">299€</span>
+                        </div>
+                        <p class="product-description">Tous les accessoires essentiels pour tirer le meilleur parti de votre Thermomix®.</p>
+                        
+                        <div class="product-specs">
+                            <ul>
+                                <li><i class="fas fa-check"></i> 5 bols supplémentaires</li>
+                                <li><i class="fas fa-check"></i> Set de couteaux</li>
+                                <li><i class="fas fa-check"></i> Livre de recettes</li>
+                                <li><i class="fas fa-check"></i> Support de rangement</li>
+                                <li><i class="fas fa-check"></i> Gants de protection</li>
+                                <li><i class="fas fa-check"></i> Guide d'utilisation</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary">Acheter maintenant</a>
+                            <a href="#" class="btn btn-secondary btn-quick-view" data-product="accessories">Voir les détails</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="section bg-gray">
+        <div class="container">
+            <div class="section-title">
+                <h2>Comment ça marche</h2>
+                <p>Découvrez en quelques étapes simples comment Thermomix® révolutionne votre cuisine</p>
+            </div>
+            
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Sélectionnez votre recette</h3>
+                        <p>Parcourez notre bibliothèque de plus de 50,000 recettes ou créez les vôtres.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Ajoutez les ingrédients</h3>
+                        <p>Suivez les instructions à l'écran pour ajouter les ingrédients dans le bol.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Lancez la préparation</h3>
+                        <p>Thermomix® guide chaque étape de la préparation avec des instructions claires.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Dégustez!</h3>
+                        <p>Savourez des plats délicieux préparés facilement et rapidement.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section class="testimonials-section">
+    <section class="testimonials bg-white">
         <div class="container">
             <div class="section-title">
                 <h2>Témoignages</h2>
-                <p>Ce que nos clients disent de nous</p>
+                <p>Découvrez ce que nos clients disent de Thermomix®</p>
+            </div>
+
+            <div class="testimonial-slider">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-slide active">
+                    <p class="testimonial-text">Le Thermomix a complètement transformé ma façon de cuisiner. Je gagne tellement de temps et mes enfants adorent les repas que je prépare maintenant. La qualité des plats est exceptionnelle et les recettes guidées sont parfaites pour quelqu'un comme moi qui n'avait pas beaucoup d'expérience en cuisine.</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Sophie D." loading="lazy">
+                        <div class="testimonial-author-name">Sophie D.</div>
+                        <div class="testimonial-author-title">Paris, France</div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-slide">
+                    <p class="testimonial-text">Après 6 mois d'utilisation, je ne pourrais plus m'en passer. C'est devenu indispensable dans ma cuisine et j'ai même perdu du poids grâce à une alimentation plus saine. Les fonctions automatisées me permettent de préparer des repas équilibrés même après une longue journée de travail.</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Marc T." loading="lazy">
+                        <div class="testimonial-author-name">Marc T.</div>
+                        <div class="testimonial-author-title">Lyon, France</div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-slide">
+                    <p class="testimonial-text">Investissement initial élevé mais rentabilisé en quelques mois. Les recettes guidées sont parfaites pour quelqu'un comme moi qui ne savait pas cuisiner. Maintenant je prépare des plats qui impressionnent mes invités et je passe moins de temps en cuisine qu'avant.</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Julie P." loading="lazy">
+                        <div class="testimonial-author-name">Julie P.</div>
+                        <div class="testimonial-author-title">Bordeaux, France</div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 4 -->
+                <div class="testimonial-slide">
+                    <p class="testimonial-text">En tant que chef à domicile, le Thermomix m'a permis d'optimiser mon temps de préparation tout en maintenant une qualité professionnelle. Mes clients adorent les textures parfaites et les saveurs préservées. C'est un outil indispensable pour tout professionnel de la cuisine.</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Pierre L." loading="lazy">
+                        <div class="testimonial-author-name">Pierre L.</div>
+                        <div class="testimonial-author-title">Chef à domicile, Marseille</div>
+                    </div>
+                </div>
+
+                <div class="testimonial-slider-nav">
+                    <div class="slider-dot active" data-slide="0"></div>
+                    <div class="slider-dot" data-slide="1"></div>
+                    <div class="slider-dot" data-slide="2"></div>
+                    <div class="slider-dot" data-slide="3"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="section bg-gray">
+        <div class="container">
+            <div class="section-title">
+                <h2>Comparaison des modèles</h2>
+                <p>Découvrez quel Thermomix® correspond le mieux à vos besoins</p>
             </div>
             
-            <div class="testimonials-slider">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">
-                        "Le Thermomix a révolutionné ma façon de cuisiner. Je gagne un temps précieux tout en préparant des plats délicieux et équilibrés."
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="author-image">
-                            <img src="images/client1.jpg" alt="Sophie Martin">
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fonctionnalités</th>
+                            <th>TM6</th>
+                            <th>TM7</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Fonctions</td>
+                            <td>12 en 1</td>
+                            <td>15 en 1</td>
+                        </tr>
+                        <tr>
+                            <td>Écran</td>
+                            <td>Tactile 6"</td>
+                            <td>Tactile HD 7"</td>
+                        </tr>
+                        <tr>
+                            <td>Recettes intégrées</td>
+                            <td>40,000+</td>
+                            <td>50,000+</td>
+                        </tr>
+                        <tr>
+                            <td>Reconnaissance ingrédients</td>
+                            <td><i class="fas fa-times"></i></td>
+                            <td><i class="fas fa-check"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Assistant vocal</td>
+                            <td><i class="fas fa-times"></i></td>
+                            <td><i class="fas fa-check"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Connectivité</td>
+                            <td>Wi-Fi</td>
+                            <td>Wi-Fi + Bluetooth</td>
+                        </tr>
+                        <tr>
+                            <td>Garantie</td>
+                            <td>2 ans</td>
+                            <td>3 ans</td>
+                        </tr>
+                        <tr>
+                            <td>Prix</td>
+                            <td>899€ <span class="old-price">1499€</span></td>
+                            <td>1199€ <span class="old-price">1999€</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recipes Section -->
+    <section class="section bg-white">
+        <div class="container">
+            <div class="section-title">
+                <h2>Recettes populaires</h2>
+                <p>Découvrez quelques-unes des recettes que vous pouvez préparer avec Thermomix®</p>
+            </div>
+            
+            <div class="recipes-container">
+                <div class="recipe-card">
+                    <div class="recipe-image">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Salade healthy" loading="lazy">
+                    </div>
+                    <div class="recipe-content">
+                        <h3>Salade Healthy</h3>
+                        <div class="recipe-meta">
+                            <span><i class="fas fa-clock"></i> 15 min</span>
+                            <span><i class="fas fa-utensils"></i> 2 pers.</span>
+                            <span><i class="fas fa-fire"></i> 320 kcal</span>
                         </div>
-                        <div class="author-info">
-                            <h4 class="author-name">Sophie Martin</h4>
-                            <p class="author-title">Client depuis 2020</p>
+                        <p>Une salade fraîche et équilibrée préparée en quelques minutes.</p>
+                        <a href="#" class="btn btn-outline">Voir la recette</a>
+                    </div>
+                </div>
+                
+                <div class="recipe-card">
+                    <div class="recipe-image">
+                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Bowl végétarien" loading="lazy">
+                    </div>
+                    <div class="recipe-content">
+                        <h3>Bowl Végétarien</h3>
+                        <div class="recipe-meta">
+                            <span><i class="fas fa-clock"></i> 20 min</span>
+                            <span><i class="fas fa-utensils"></i> 2 pers.</span>
+                            <span><i class="fas fa-fire"></i> 380 kcal</span>
                         </div>
+                        <p>Un bowl coloré et riche en nutriments pour un repas complet.</p>
+                        <a href="#" class="btn btn-outline">Voir la recette</a>
+                    </div>
+                </div>
+                
+                <div class="recipe-card">
+                    <div class="recipe-image">
+                        <img src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Pain maison" loading="lazy">
+                    </div>
+                    <div class="recipe-content">
+                        <h3>Pain Maison</h3>
+                        <div class="recipe-meta">
+                            <span><i class="fas fa-clock"></i> 2h</span>
+                            <span><i class="fas fa-utensils"></i> 1 pain</span>
+                            <span><i class="fas fa-fire"></i> 1200 kcal</span>
+                        </div>
+                        <p>Un pain artisanal croustillant à l'extérieur et moelleux à l'intérieur.</p>
+                        <a href="#" class="btn btn-outline">Voir la recette</a>
+                    </div>
+                </div>
+                
+                <div class="recipe-card">
+                    <div class="recipe-image">
+                        <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Dessert chocolat" loading="lazy">
+                    </div>
+                    <div class="recipe-content">
+                        <h3>Mousse au Chocolat</h3>
+                        <div class="recipe-meta">
+                            <span><i class="fas fa-clock"></i> 30 min</span>
+                            <span><i class="fas fa-utensils"></i> 4 pers.</span>
+                            <span><i class="fas fa-fire"></i> 450 kcal</span>
+                        </div>
+                        <p>Une mousse onctueuse et légère qui fond dans la bouche.</p>
+                        <a href="#" class="btn btn-outline">Voir la recette</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="recettes.html" class="btn btn-primary btn-lg">Voir toutes les recettes</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Abonnez-vous à notre newsletter</h2>
+            <p>Recevez des recettes exclusives, des conseils et des offres spéciales directement dans votre boîte mail.</p>
+            
+            <form id="newsletterForm" class="newsletter-form">
+                <input type="email" placeholder="Votre adresse email" required>
+                <button type="submit">S'abonner</button>
+            </form>
+            
+            <div class="newsletter-disclaimer">
+                <small>En vous abonnant, vous acceptez de recevoir des emails de Thermomix®. Vous pouvez vous désabonner à tout moment.</small>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq bg-gray">
+        <div class="container">
+            <div class="section-title">
+                <h2>Questions fréquentes</h2>
+                <p>Trouvez des réponses aux questions les plus posées sur Thermomix®</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Quelle est la différence entre TM6 et TM7 ?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Le TM7 est la dernière version de Thermomix avec des fonctionnalités avancées comme la reconnaissance des ingrédients et un assistant vocal intégré. Il possède également un écran plus grand, plus de recettes intégrées et une connectivité améliorée. Le TM6 reste un excellent choix avec toutes les fonctions de base à un prix plus abordable.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Thermomix® est-il difficile à utiliser ?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolument pas ! Thermomix® a été conçu pour être intuitif et facile à utiliser, même pour les débutants en cuisine. Les recettes guidées pas à pas et l'interface simple rendent la préparation des plats accessible à tous. De plus, nos conseillers sont disponibles pour vous former et répondre à toutes vos questions.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Puis-je préparer tous types de plats avec Thermomix® ?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Oui, Thermomix® permet de préparer une très large variété de plats : entrées, plats principaux, desserts, pains, boissons, sauces, soupes, et bien plus encore. Avec ses multiples fonctions et accessoires, les possibilités sont quasiment infinies.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Comment puis-je obtenir un service après-vente ?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Notre service client est disponible par téléphone, email et chat en ligne 7j/7. En cas de problème technique, nous avons un réseau de techniciens agréés dans toute la France. Tous nos produits bénéficient d'une garantie minimale de 2 ans.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>L'offre promotionnelle de -40% est-elle limitée ?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Oui, cette offre exceptionnelle est valable jusqu'au 31/12/2023 ou jusqu'à épuisement des stocks. Nous vous conseillons de profiter rapidement de cette réduction importante sur nos produits phares.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Newsletter Section -->
-    <section class="newsletter-section">
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
         <div class="container">
             <div class="section-title">
-                <h2>Restez informé</h2>
-                <p>Abonnez-vous à notre newsletter pour recevoir nos offres exclusives</p>
+                <h2>Contactez-nous</h2>
+                <p>Nous sommes à votre disposition pour toute question ou demande d'information</p>
             </div>
             
-            <form class="newsletter-form" id="newsletterForm" action="traitement.html" method="POST">
-                <input type="email" name="email" class="newsletter-input" placeholder="Votre adresse email" required>
-                <button type="submit" class="newsletter-btn">S'abonner</button>
-            </form>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h3>Adresse</h3>
+                            <p>123 Avenue de la Cuisine<br>75001 Paris, France</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h3>Téléphone</h3>
+                            <p><a href="tel:+33123456789">+33 1 23 45 67 89</a><br>Lun-Ven : 9h-18h</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h3>Email</h3>
+                            <p><a href="mailto:contact@thermomix.fr">contact@thermomix.fr</a><br>Réponse sous 24h</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h3>Démonstration</h3>
+                            <p>Prenez rendez-vous pour une démonstration gratuite à domicile ou en magasin.</p>
+                            <a href="#" class="btn btn-outline">Prendre RDV</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Envoyez-nous un message</h3>
+                    <p>Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.</p>
+                    
+                    <form id="contactForm" action="traitement.html" method="POST">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Nom complet *</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                            <div class="invalid-feedback">Veuillez entrer votre nom complet.</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Adresse email *</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                            <div class="invalid-feedback">Veuillez entrer une adresse email valide.</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Numéro de téléphone</label>
+                            <input type="tel" id="phone" name="phone" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Sujet *</label>
+                            <select id="subject" name="subject" class="form-select" required>
+                                <option value="">Sélectionnez un sujet</option>
+                                <option value="product">Question sur un produit</option>
+                                <option value="order">Commande</option>
+                                <option value="support">Support technique</option>
+                                <option value="demo">Demande de démonstration</option>
+                                <option value="other">Autre</option>
+                            </select>
+                            <div class="invalid-feedback">Veuillez sélectionner un sujet.</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message *</label>
+                            <textarea id="message" name="message" class="form-control" required></textarea>
+                            <div class="invalid-feedback">Veuillez entrer votre message.</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="consent" required>
+                                <label class="form-check-label" for="consent">
+                                    J'accepte la politique de confidentialité et de traitement des données *
+                                </label>
+                                <div class="invalid-feedback">Vous devez accepter pour continuer.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block">Envoyer le message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stores Section -->
+    <section class="section bg-white">
+        <div class="container">
+            <div class="section-title">
+                <h2>Retrouvez-nous en magasin</h2>
+                <p>Découvrez nos produits en personne et bénéficiez de conseils experts</p>
+            </div>
+            
+            <div class="stores-container">
+                <div class="store-card">
+                    <div class="store-image">
+                        <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Boutique Paris" loading="lazy">
+                    </div>
+                    <div class="store-info">
+                        <h3>Paris - Champs-Élysées</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Av. des Champs-Élysées, 75008 Paris</p>
+                        <p><i class="fas fa-phone"></i> <a href="tel:+33123456789">01 23 45 67 89</a></p>
+                        <p><i class="fas fa-clock"></i> Lun-Sam : 10h-20h</p>
+                        <a href="#" class="btn btn-outline">Voir sur la carte</a>
+                    </div>
+                </div>
+                
+                <div class="store-card">
+                    <div class="store-image">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Boutique Lyon" loading="lazy">
+                    </div>
+                    <div class="store-info">
+                        <h3>Lyon - Part-Dieu</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> 456 Rue de la République, 69003 Lyon</p>
+                        <p><i class="fas fa-phone"></i> <a href="tel:+33423456789">04 23 45 67 89</a></p>
+                        <p><i class="fas fa-clock"></i> Lun-Sam : 10h-19h</p>
+                        <a href="#" class="btn btn-outline">Voir sur la carte</a>
+                    </div>
+                </div>
+                
+                <div class="store-card">
+                    <div class="store-image">
+                        <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Boutique Marseille" loading="lazy">
+                    </div>
+                    <div class="store-info">
+                        <h3>Marseille - Vieux Port</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> 789 Quai du Port, 13002 Marseille</p>
+                        <p><i class="fas fa-phone"></i> <a href="tel:+33493456789">04 93 45 67 89</a></p>
+                        <p><i class="fas fa-clock"></i> Lun-Sam : 10h-19h</p>
+                        <a href="#" class="btn btn-outline">Voir sur la carte</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="boutiques.html" class="btn btn-primary">Voir toutes nos boutiques</a>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="footer">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <h3>Thermomix</h3>
-                    <ul>
-                        <li><a href="apropos.html">À propos de nous</a></li>
-                        <li><a href="histoire.html">Notre histoire</a></li>
-                        <li><a href="carrieres.html">Carrières</a></li>
-                    </ul>
+            <div class="footer-container">
+                <div class="footer-logo">
+                    <img src="thermomixdinshaiaa881.img" alt="Thermomix" width="150" height="40" loading="lazy">
+                    <div class="footer-about">
+                        <p>Thermomix® révolutionne la cuisine depuis plus de 50 ans avec des innovations constantes pour simplifier votre quotidien.</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
                 </div>
-                
-                <div class="footer-column">
+
+                <div class="footer-links">
                     <h3>Produits</h3>
                     <ul>
                         <li><a href="tm6.html">Thermomix TM6</a></li>
                         <li><a href="tm7.html">Thermomix TM7</a></li>
                         <li><a href="accessoires.html">Accessoires</a></li>
+                        <li><a href="recettes.html">Recettes</a></li>
+                        <li><a href="cookidoo.html">Cookidoo</a></li>
+                        <li><a href="promotions.html">Promotions</a></li>
                     </ul>
                 </div>
-                
-                <div class="footer-column">
+
+                <div class="footer-links">
+                    <h3>Entreprise</h3>
+                    <ul>
+                        <li><a href="about.html">À propos</a></li>
+                        <li><a href="histoire.html">Notre histoire</a></li>
+                        <li><a href="carrieres.html">Carrières</a></li>
+                        <li><a href="presse.html">Presse</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="evenements.html">Événements</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
                     <h3>Support</h3>
                     <ul>
-                        <li><a href="contact.html">Contactez-nous</a></li>
                         <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="manuels.html">Manuels</a></li>
                         <li><a href="garantie.html">Garantie</a></li>
+                        <li><a href="service-client.html">Service client</a></li>
+                        <li><a href="conseillers.html">Trouver un conseiller</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
-                
-                <div class="footer-column">
-                    <h3>Légal</h3>
-                    <ul>
-                        <li><a href="mentions-legales.html">Mentions légales</a></li>
-                        <li><a href="cgv.html">Conditions générales</a></li>
-                        <li><a href="confidentialite.html">Confidentialité</a></li>
-                    </ul>
+
+                <div class="footer-contact">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Rue de la Cuisine, 75001 Paris, France</p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:+33123456789">+33 1 23 45 67 89</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:contact@thermomix.fr">contact@thermomix.fr</a></p>
+                    <p><i class="fas fa-clock"></i> Lun-Ven: 9h-18h</p>
+                    
+                    <div class="footer-apps mt-3">
+                        <h4>Téléchargez notre app</h4>
+                        <div class="app-buttons">
+                            <a href="#" class="app-btn">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/1200px-Download_on_the_App_Store_Badge.svg.png" alt="App Store" width="120" loading="lazy">
+                            </a>
+                            <a href="#" class="app-btn">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/1200px-Google_Play_Store_badge_EN.svg.png" alt="Google Play" width="135" loading="lazy">
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
+
             <div class="footer-bottom">
-                <p>&copy; 2023 Thermomix. Tous droits réservés.</p>
+                <p>&copy; 2023 Thermomix. Tous droits réservés. | <a href="confidentialite.html">Politique de confidentialité</a> | <a href="cookies.html">Cookies</a> | <a href="conditions.html">Conditions générales</a> | <a href="mentions-legales.html">Mentions légales</a></p>
             </div>
         </div>
     </footer>
 
+    <!-- Cookie Consent -->
+    <div class="cookie-consent">
+        <div class="container">
+            <div class="cookie-content">
+                <p>Nous utilisons des cookies pour améliorer votre expérience sur notre site. En continuant votre navigation, vous acceptez notre <a href="cookies.html">politique de cookies</a>.</p>
+                <button class="cookie-btn">Accepter</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Newsletter Modal -->
+    <div class="modal" id="newsletterModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 class="modal-title">Merci pour votre abonnement !</h3>
+            <p>Vous recevrez bientôt nos meilleures recettes et offres exclusives dans votre boîte mail.</p>
+            <div class="modal-icon">
+                <i class="fas fa-envelope-open-text"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Quick View Modal -->
+    <div class="modal product-modal" id="productModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="product-modal-container">
+                <div class="product-modal-image">
+                    <img src="" alt="" id="modalProductImage" loading="lazy">
+                </div>
+                <div class="product-modal-info">
+                    <h3 class="product-modal-title" id="modalProductTitle"></h3>
+                    <div class="product-modal-price">
+                        <span class="product-modal-current" id="modalProductCurrentPrice"></span>
+                        <span class="product-modal-old" id="modalProductOldPrice"></span>
+                    </div>
+                    <p class="product-modal-description" id="modalProductDescription"></p>
+                    
+                    <div class="product-modal-specs">
+                        <h4>Caractéristiques</h4>
+                        <ul id="modalProductSpecs"></ul>
+                    </div>
+                    
+                    <div class="product-modal-actions">
+                        <a href="#" class="btn btn-primary" id="modalProductBuyBtn">Acheter maintenant</a>
+                        <a href="#" class="btn btn-outline" id="modalProductDetailsBtn">Voir tous les détails</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
     <!-- JavaScript -->
     <script>
-        // Gestion du panier
-        class Cart {
-            constructor() {
-                this.key = 'thermomix_cart';
-                this.init();
-            }
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMain = document.getElementById('navMain');
+        
+        hamburger.addEventListener('click', () => {
+            navMain.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMain.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+        
+        // Testimonial Slider
+        const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+        const dots = document.querySelectorAll('.slider-dot');
+        let currentTestimonial = 0;
+        let slideInterval;
+        
+        function showTestimonial(n) {
+            testimonialSlides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
             
-            init() {
-                if (!localStorage.getItem(this.key)) {
-                    localStorage.setItem(this.key, JSON.stringify([]));
-                }
-                this.updateCartCount();
-            }
+            currentTestimonial = (n + testimonialSlides.length) % testimonialSlides.length;
+            testimonialSlides[currentTestimonial].classList.add('active');
+            dots[currentTestimonial].classList.add('active');
+        }
+        
+        function nextTestimonial() {
+            showTestimonial(currentTestimonial + 1);
+        }
+        
+        function startSlider() {
+            slideInterval = setInterval(nextTestimonial, 5000);
+        }
+        
+        function pauseSlider() {
+            clearInterval(slideInterval);
+        }
+        
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                pauseSlider();
+                showTestimonial(index);
+                startSlider();
+            });
+        });
+        
+        // Start auto slide
+        startSlider();
+        
+        // Pause on hover
+        const slider = document.querySelector('.testimonial-slider');
+        slider.addEventListener('mouseenter', pauseSlider);
+        slider.addEventListener('mouseleave', startSlider);
+        
+        // Newsletter Form
+        const newsletterForm = document.getElementById('newsletterForm');
+        const newsletterModal = document.getElementById('newsletterModal');
+        const closeModal = document.querySelectorAll('.close-modal');
+        
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = newsletterForm.querySelector('input').value;
             
-            addItem(productId, quantity = 1) {
-                const cart = this.getCart();
-                const existingItem = cart.find(item => item.id === productId);
-                
-                if (existingItem) {
-                    existingItem.quantity += quantity;
+            // In a real implementation, you would send this to your server
+            console.log('Email submitted:', email);
+            
+            // Show success modal
+            newsletterModal.style.display = 'flex';
+            newsletterForm.reset();
+        });
+        
+        // Close modal
+        closeModal.forEach(btn => {
+            btn.addEventListener('click', () => {
+                newsletterModal.style.display = 'none';
+            });
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === newsletterModal) {
+                newsletterModal.style.display = 'none';
+            }
+        });
+        
+        // Contact Form
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Validate form
+            let isValid = true;
+            const requiredFields = contactForm.querySelectorAll('[required]');
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.classList.add('is-invalid');
+                    isValid = false;
                 } else {
-                    cart.push({ id: productId, quantity: 1 });
+                    field.classList.remove('is-invalid');
                 }
+            });
+            
+            if (isValid) {
+                // Collect form data
+                const formData = {
+                    name: contactForm.querySelector('#name').value,
+                    email: contactForm.querySelector('#email').value,
+                    phone: contactForm.querySelector('#phone').value,
+                    subject: contactForm.querySelector('#subject').value,
+                    message: contactForm.querySelector('#message').value
+                };
                 
-                this.saveCart(cart);
+                // In a real implementation, you would send this to your server
+                console.log('Form submitted:', formData);
+                
+                // Redirect to traitement.html with form data
+                const queryString = new URLSearchParams(formData).toString();
+                window.location.href = `traitement.html?${queryString}`;
+            }
+        });
+        
+        // Cookie Consent
+        const cookieConsent = document.querySelector('.cookie-consent');
+        const cookieBtn = document.querySelector('.cookie-btn');
+        
+        function checkCookieConsent() {
+            if (!localStorage.getItem('cookieConsent')) {
+                setTimeout(() => {
+                    cookieConsent.classList.add('active');
+                }, 2000);
+            }
+        }
+        
+        cookieBtn.addEventListener('click', () => {
+            cookieConsent.classList.remove('active');
+            localStorage.setItem('cookieConsent', 'true');
+        });
+        
+        // Check cookie consent on page load
+        checkCookieConsent();
+        
+        // Back to Top Button
+        const backToTop = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+        
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Product Quick View
+        const quickViewButtons = document.querySelectorAll('.btn-quick-view');
+        const productModal = document.getElementById('productModal');
+        
+        // Product data
+        const products = {
+            tm6: {
+                title: 'Thermomix® TM6',
+                image: 'https://images.unsplash.com/photo-1585238342024-78d90f58f6b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                currentPrice: '899€',
+                oldPrice: '1499€',
+                description: 'Le robot culinaire intelligent avec écran tactile et plus de 40,000 recettes guidées. Le TM6 combine 12 fonctions en 1 seul appareil pour révolutionner votre cuisine quotidienne.',
+                specs: [
+                    '12 fonctions en 1',
+                    'Écran tactile couleur 6 pouces',
+                    '40,000+ recettes guidées',
+                    'Cuisson précise à 1°C près',
+                    'Contrôle via application mobile',
+                    'Garantie 2 ans',
+                    'Poids : 7.5 kg',
+                    'Dimensions : 30 x 30 x 42 cm'
+                ],
+                buyLink: '#',
+                detailsLink: 'tm6.html'
+            },
+            tm7: {
+                title: 'Thermomix® TM7',
+                image: 'https://images.unsplash.com/photo-1556910638-9a0cc496705e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                currentPrice: '1199€',
+                oldPrice: '1999€',
+                description: 'La dernière innovation avec reconnaissance des ingrédients et assistant vocal intégré. Le TM7 offre 15 fonctions en 1 avec une technologie de pointe pour une expérience culinaire inégalée.',
+                specs: [
+                    '15 fonctions en 1',
+                    'Reconnaissance intelligente des ingrédients',
+                    'Assistant vocal intégré',
+                    'Écran tactile HD 7 pouces',
+                    '50,000+ recettes guidées',
+                    'Connectivité Wi-Fi et Bluetooth',
+                    'Garantie 3 ans',
+                    'Poids : 8.2 kg',
+                    'Dimensions : 32 x 32 x 45 cm'
+                ],
+                buyLink: '#',
+                detailsLink: 'tm7.html'
+            },
+            accessories: {
+                title: 'Pack Accessoires Premium',
+                image: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                currentPrice: '199€',
+                oldPrice: '299€',
+                description: 'Tous les accessoires essentiels pour tirer le meilleur parti de votre Thermomix®. Ce pack premium comprend tout ce dont vous avez besoin pour explorer toutes les possibilités de votre robot.',
+                specs: [
+                    '5 bols supplémentaires en verre trempé',
+                    'Set de 3 couteaux haute performance',
+                    'Livre de recettes exclusives (200 pages)',
+                    'Support de rangement mural',
+                    'Gants de protection en silicone',
+                    'Spatules et cuillères de mesure',
+                    'Guide d\'utilisation détaillé',
+                    'Boîte de rangement premium'
+                ],
+                buyLink: '#',
+                detailsLink: 'accessoires.html'
+            }
+        };
+        
+        quickViewButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const productId = button.getAttribute('data-product');
+                const product = products[productId];
+                
+                // Populate modal with product data
+                document.getElementById('modalProductImage').src = product.image;
+                document.getElementById('modalProductImage').alt = product.title;
+                document.getElementById('modalProductTitle').textContent = product.title;
+                document.getElementById('modalProductCurrentPrice').textContent = product.currentPrice;
+                document.getElementById('modalProductOldPrice').textContent = product.oldPrice;
+                document.getElementById('modalProductDescription').textContent = product.description;
+                
+                const specsList = document.getElementById('modalProductSpecs');
+                specsList.innerHTML = '';
+                product.specs.forEach(spec => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<i class="fas fa-check"></i> ${spec}`;
+                    specsList.appendChild(li);
+                });
+                
+                document.getElementById('modalProductBuyBtn').href = product.buyLink;
+                document.getElementById('modalProductDetailsBtn').href = product.detailsLink;
+                
+                // Show modal
+                productModal.style.display = 'flex';
+            });
+        });
+        
+        // Form Validation
+        function validateForm(form) {
+            let isValid = true;
+            const inputs = form.querySelectorAll('[required]');
+            
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    input.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    input.classList.remove('is-invalid');
+                }
+            });
+            
+            return isValid;
+        }
+        
+        // Scroll Animation
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.feature-card, .product-card, .step, .recipe-card, .store-card');
+            const windowHeight = window.innerHeight;
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const animationPoint = windowHeight * 0.8;
+                
+                if (elementPosition < animationPoint) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        // Set initial state for animation
+        document.querySelectorAll('.feature-card, .product-card, .step, .recipe-card, .store-card').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+        
+        // Initialize animations on page load
+        animateOnScroll();
+        
+        // Responsive Navigation
+        function handleResponsiveNav() {
+            if (window.innerWidth <= 768) {
+                document.querySelectorAll('.footer-links h3').forEach(header => {
+                    header.addEventListener('click', () => {
+                        const list = header.nextElementSibling;
+                        list.style.display = list.style.display === 'none' ? 'block' : 'none';
+                    });
+                    
+                    // Initially hide on mobile
+                    header.nextElementSibling.style.display = 'none';
+                });
+            } else {
+                document.querySelectorAll('.footer-links ul').forEach(list => {
+                    list.style.display = 'block';
+                });
+            }
+        }
+        
+        window.addEventListener('resize', handleResponsiveNav);
+        window.addEventListener('load', handleResponsiveNav);
+        
+        // Shopping Cart Functionality
+        class ShoppingCart {
+            constructor() {
+                this.items = [];
+                this.load();
+            }
+            
+            addItem(item) {
+                this.items.push(item);
+                this.save();
                 this.updateCartCount();
-                this.showNotification('Produit ajouté au panier');
             }
             
-            getCart() {
-                return JSON.parse(localStorage.getItem(this.key)) || [];
+            removeItem(id) {
+                this.items = this.items.filter(item => item.id !== id);
+                this.save();
+                this.updateCartCount();
             }
             
-            saveCart(cart) {
-                localStorage.setItem(this.key, JSON.stringify(cart));
+            getTotal() {
+                return this.items.reduce((total, item) => total + item.price, 0);
+            }
+            
+            getCount() {
+                return this.items.length;
+            }
+            
+            save() {
+                localStorage.setItem('cart', JSON.stringify(this.items));
+            }
+            
+            load() {
+                const items = localStorage.getItem('cart');
+                this.items = items ? JSON.parse(items) : [];
+                this.updateCartCount();
             }
             
             updateCartCount() {
-                const cart = this.getCart();
-                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-                document.querySelectorAll('.cart-count').forEach(el => {
-                    el.textContent = totalItems;
-                });
-            }
-            
-            showNotification(message) {
-                const notification = document.createElement('div');
-                notification.className = 'notification';
-                notification.innerHTML = `
-                    <p>${message}</p>
-                    <a href="panier.html">Voir le panier</a>
-                `;
-                document.body.appendChild(notification);
+                const count = this.getCount();
+                const cartIcon = document.querySelector('.header-actions a[aria-label="Panier"]');
                 
-                setTimeout(() => {
-                    notification.classList.add('hide');
-                    setTimeout(() => notification.remove(), 500);
-                }, 3000);
+                if (cartIcon) {
+                    // Remove existing badge if any
+                    const existingBadge = cartIcon.querySelector('.cart-badge');
+                    if (existingBadge) {
+                        cartIcon.removeChild(existingBadge);
+                    }
+                    
+                    // Add new badge if items exist
+                    if (count > 0) {
+                        const badge = document.createElement('span');
+                        badge.className = 'cart-badge';
+                        badge.textContent = count;
+                        cartIcon.appendChild(badge);
+                    }
+                }
             }
         }
         
-        // Initialisation
-        document.addEventListener('DOMContentLoaded', function() {
-            const cart = new Cart();
-            
-            // Gestion des boutons "Ajouter au panier"
-            document.querySelectorAll('[href*="action=acheter"]').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const urlParams = new URLSearchParams(this.search);
-                    const productId = urlParams.get('produit');
-                    cart.addItem(productId);
-                    
-                    // Redirection vers la page de traitement
-                    setTimeout(() => {
-                        window.location.href = this.href;
-                    }, 1000);
+        // Initialize cart
+        const cart = new ShoppingCart();
+        
+        // Add to cart buttons
+        document.querySelectorAll('.product-actions .btn-primary').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const productCard = e.target.closest('.product-card');
+                const productName = productCard.querySelector('h3').textContent;
+                const productPrice = parseFloat(productCard.querySelector('.current-price').textContent.replace('€', '').trim());
+                const productImage = productCard.querySelector('.product-image img').src;
+                
+                cart.addItem({
+                    id: Date.now(),
+                    name: productName,
+                    price: productPrice,
+                    image: productImage
                 });
+                
+                // Show added notification
+                alert(`${productName} a été ajouté à votre panier.`);
             });
+        });
+        
+        // More sophisticated features could be added here
+        // For example: Product comparison, wishlist, etc.
+        
+        // Initialize all features when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Thermomix website initialized successfully');
             
-            // Gestion du formulaire newsletter
-            const newsletterForm = document.getElementById('newsletterForm');
-            if (newsletterForm) {
-                newsletterForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    const email = this.elements['email'].value;
-                    localStorage.setItem('newsletter_email', email);
-                    window.location.href = 'traitement.html?action=newsletter';
-                });
-            }
-            
-            // Animation au scroll
-            const animateOnScroll = function() {
-                const elements = document.querySelectorAll('.product-card, .feature-card, .testimonial-card');
-                elements.forEach(element => {
-                    const elementPosition = element.getBoundingClientRect().top;
-                    const screenPosition = window.innerHeight / 1.3;
-                    
-                    if (elementPosition < screenPosition) {
-                        element.style.opacity = '1';
-                        element.style.transform = 'translateY(0)';
-                    }
-                });
-            };
-            
-            window.addEventListener('scroll', animateOnScroll);
-            animateOnScroll();
+            // Load cart count
+            cart.updateCartCount();
         });
     </script>
-    
-    <style>
-        /* Notification */
-        .notification {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--primary);
-            color: white;
-            padding: 1rem 1.5rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-md);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            z-index: 1000;
-            animation: slideIn 0.5s ease forwards;
-        }
-        
-        .notification a {
-            color: white;
-            text-decoration: underline;
-            font-weight: 600;
-        }
-        
-        .notification.hide {
-            animation: slideOut 0.5s ease forwards;
-        }
-        
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-        
-        @keyframes slideOut {
-            from { transform: translateX(0); opacity: 1; }
-            to { transform: translateX(100%); opacity: 0; }
-        }
-    </style>
 </body>
 </html>
