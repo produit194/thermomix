@@ -6,6 +6,8 @@
     <meta name="description" content="Thermomix® - Le robot culinaire multifonction révolutionnaire. Découvrez les modèles TM6 et TM7 avec promotion exclusive de -40%">
     <meta name="keywords" content="thermomix, tm6, tm7, robot cuisine, promotion, recettes">
     <title>Thermomix® | Robot Culinaire Intelligent | Promotion -40%</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -44,7 +46,12 @@
             vertical-align: baseline;
             box-sizing: border-box;
         }
-        
+:root {
+    /* Add these if not already present */
+    --z-index-sticky: 1000;
+    --z-index-dropdown: 1100;
+    --font-xs: 0.75rem;
+   }
         /* HTML5 display-role reset for older browsers */
         article, aside, details, figcaption, figure, 
         footer, header, hgroup, menu, nav, section {
@@ -630,15 +637,114 @@
             background-color: var(--gray-900);
         }
         
-        /* Header Styles */
-        .announcement-bar {
-            background-color: var(--primary-dark);
-            color: var(--white);
-            padding: var(--space-xs) 0;
-            font-size: var(--font-xs);
-            text-align: center;
-        }
-        
+/* Improved Announcement Bar */
+.announcement-bar {
+    background-color: var(--primary-dark);
+    color: var(--white);
+    padding: 8px 0;
+    font-size: var(--font-xs);
+    position: relative;
+    z-index: var(--z-index-sticky);
+}
+
+.announcement-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.announcement-message {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.announcement-message .icon {
+    margin-right: 4px;
+    color: var(--secondary-color);
+}
+
+.announcement-links {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.announcement-links a {
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: var(--transition-fast);
+}
+
+.announcement-links a:hover {
+    color: var(--secondary-color);
+}
+
+.separator {
+    color: rgba(255, 255, 255, 0.3);
+    margin: 0 4px;
+}
+
+.language-switcher {
+    position: relative;
+    cursor: pointer;
+}
+
+.current-language {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.language-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--white);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+    padding: 8px 0;
+    min-width: 80px;
+    display: none;
+    z-index: var(--z-index-dropdown);
+}
+
+.language-dropdown a {
+    color: var(--gray-800);
+    padding: 4px 12px;
+    display: block;
+    white-space: nowrap;
+}
+
+.language-dropdown a:hover {
+    background-color: var(--gray-100);
+    color: var(--primary-color);
+}
+
+.language-switcher:hover .language-dropdown {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .announcement-content {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+    
+    .announcement-message {
+        justify-content: center;
+    }
+    
+    .announcement-links {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}        
         .header {
             background-color: var(--white);
             box-shadow: var(--shadow-sm);
@@ -1876,13 +1982,34 @@
     </style>
 </head>
 <body>
-    <!-- Announcement Bar -->
-    <div class="announcement-bar">
-        <div class="container">
-            Livraison gratuite à partir de 150€ d'achat | Paiement sécurisé | Service client 24/7
+<!-- Announcement Bar - Improved Version -->
+<div class="announcement-bar">
+    <div class="container">
+        <div class="announcement-content">
+            <div class="announcement-message">
+                <span class="icon"><i class="fas fa-truck"></i></span>
+                <span>Livraison gratuite à partir de 150€ | </span>
+                <span class="icon"><i class="fas fa-shield-alt"></i></span>
+                <span>Paiement 100% sécurisé | </span>
+                <span class="icon"><i class="fas fa-headset"></i></span>
+                <span>Service client 24/7</span>
+            </div>
+            <div class="announcement-links">
+                <a href="conseillers.html"><i class="fas fa-map-marker-alt"></i> Trouver un conseiller</a>
+                <a href="contact.html"><i class="fas fa-phone-alt"></i> Nous contacter</a>
+                <span class="separator">|</span>
+                <div class="language-switcher">
+                    <span class="current-language"><i class="fas fa-globe"></i> FR</span>
+                    <div class="language-dropdown">
+                        <a href="#en">EN</a>
+                        <a href="#de">DE</a>
+                        <a href="#es">ES</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
+</div>
     <!-- Header -->
     <header class="header">
         <div class="container">
@@ -2765,7 +2892,19 @@
                 hamburger.classList.remove('active');
             });
         });
-        
+        // Language Switcher Interaction
+const languageSwitcher = document.querySelector('.language-switcher');
+if (languageSwitcher) {
+    languageSwitcher.addEventListener('click', (e) => {
+        e.stopPropagation();
+        document.querySelector('.language-dropdown').classList.toggle('show');
+    });
+    
+    // Close when clicking outside
+    document.addEventListener('click', () => {
+        document.querySelector('.language-dropdown').classList.remove('show');
+    });
+}
         // Testimonial Slider
         const testimonialSlides = document.querySelectorAll('.testimonial-slide');
         const dots = document.querySelectorAll('.slider-dot');
