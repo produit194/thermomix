@@ -3107,463 +3107,499 @@
 </div>
 
 <!-- JavaScript -->
-    <script>
-        // Mobile Menu Toggle
-        const hamburger = document.getElementById('hamburger');
-        const navMain = document.getElementById('navMain');
-        
-        hamburger.addEventListener('click', () => {
-            navMain.classList.toggle('active');
-            hamburger.classList.toggle('active');
-        });
-        
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navMain.classList.remove('active');
-                hamburger.classList.remove('active');
-            });
-        });
-        // Language Switcher Interaction
-const languageSwitcher = document.querySelector('.language-switcher');
-if (languageSwitcher) {
-    languageSwitcher.addEventListener('click', (e) => {
-        e.stopPropagation();
-        document.querySelector('.language-dropdown').classList.toggle('show');
+<script>
+    // Mobile Menu Toggle
+    const hamburger = document.getElementById('hamburger');
+    const navMain = document.getElementById('navMain');
+    
+    hamburger.addEventListener('click', () => {
+        navMain.classList.toggle('active');
+        hamburger.classList.toggle('active');
+        document.body.classList.toggle('no-scroll');
     });
     
-    // Close when clicking outside
-    document.addEventListener('click', () => {
-        document.querySelector('.language-dropdown').classList.remove('show');
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMain.classList.remove('active');
+            hamburger.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        });
     });
-}
-        // Testimonial Slider
-        const testimonialSlides = document.querySelectorAll('.testimonial-slide');
-        const dots = document.querySelectorAll('.slider-dot');
-        let currentTestimonial = 0;
-        let slideInterval;
-        
-        function showTestimonial(n) {
-            testimonialSlides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
-            currentTestimonial = (n + testimonialSlides.length) % testimonialSlides.length;
-            testimonialSlides[currentTestimonial].classList.add('active');
-            dots[currentTestimonial].classList.add('active');
-        }
-        
-        function nextTestimonial() {
-            showTestimonial(currentTestimonial + 1);
-        }
-        
-        function startSlider() {
-            slideInterval = setInterval(nextTestimonial, 5000);
-        }
-        
-        function pauseSlider() {
-            clearInterval(slideInterval);
-        }
-        
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                pauseSlider();
-                showTestimonial(index);
-                startSlider();
-            });
+    
+    // Language Switcher Interaction
+    const languageSwitcher = document.querySelector('.language-switcher');
+    if (languageSwitcher) {
+        languageSwitcher.addEventListener('click', (e) => {
+            e.stopPropagation();
+            document.querySelector('.language-dropdown').classList.toggle('show');
         });
         
-        // Start auto slide
-        startSlider();
+        // Close when clicking outside
+        document.addEventListener('click', () => {
+            document.querySelector('.language-dropdown').classList.remove('show');
+        });
+    }
+    
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('.header');
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+    
+    // Testimonial Slider
+    const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+    const dots = document.querySelectorAll('.slider-dot');
+    let currentTestimonial = 0;
+    let slideInterval;
+    
+    function showTestimonial(n) {
+        testimonialSlides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
         
-        // Pause on hover
-        const slider = document.querySelector('.testimonial-slider');
-        slider.addEventListener('mouseenter', pauseSlider);
-        slider.addEventListener('mouseleave', startSlider);
+        currentTestimonial = (n + testimonialSlides.length) % testimonialSlides.length;
+        testimonialSlides[currentTestimonial].classList.add('active');
+        dots[currentTestimonial].classList.add('active');
+    }
+    
+    function nextTestimonial() {
+        showTestimonial(currentTestimonial + 1);
+    }
+    
+    function startSlider() {
+        slideInterval = setInterval(nextTestimonial, 5000);
+    }
+    
+    function pauseSlider() {
+        clearInterval(slideInterval);
+    }
+    
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            pauseSlider();
+            showTestimonial(index);
+            startSlider();
+        });
+    });
+    
+    // Start auto slide
+    startSlider();
+    
+    // Pause on hover
+    const slider = document.querySelector('.testimonial-slider');
+    slider.addEventListener('mouseenter', pauseSlider);
+    slider.addEventListener('mouseleave', startSlider);
+    
+    // Newsletter Form
+    const newsletterForm = document.getElementById('newsletterForm');
+    const newsletterModal = document.getElementById('newsletterModal');
+    const closeModal = document.querySelectorAll('.close-modal');
+    
+    newsletterForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const emailInput = newsletterForm.querySelector('input');
+        const email = emailInput.value;
         
-        // Newsletter Form
-        const newsletterForm = document.getElementById('newsletterForm');
-        const newsletterModal = document.getElementById('newsletterModal');
-        const closeModal = document.querySelectorAll('.close-modal');
+        // Simple validation
+        if (!email.includes('@') || !email.includes('.')) {
+            emailInput.classList.add('is-invalid');
+            return;
+        }
         
-        newsletterForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = newsletterForm.querySelector('input').value;
-            
+        // Show loading state
+        const submitBtn = newsletterForm.querySelector('button');
+        const originalText = submitBtn.textContent;
+        submitBtn.innerHTML = '<span class="loading-spinner"></span>';
+        submitBtn.disabled = true;
+        
+        // Simulate API call
+        setTimeout(() => {
             // In a real implementation, you would send this to your server
             console.log('Email submitted:', email);
             
             // Show success modal
             newsletterModal.style.display = 'flex';
             newsletterForm.reset();
-        });
-        
-        // Close modal
-        closeModal.forEach(btn => {
-            btn.addEventListener('click', () => {
-                newsletterModal.style.display = 'none';
+            
+            // Reset button
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        }, 1500);
+    });
+    
+    // Close modal
+    closeModal.forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.style.display = 'none';
             });
         });
+    });
+    
+    // Close modal when clicking outside
+    window.addEventListener('click', (e) => {
+        if (e.target.classList.contains('modal')) {
+            e.target.style.display = 'none';
+        }
+    });
+    
+    // Contact Form
+    const contactForm = document.getElementById('contactForm');
+    
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
         
-        // Close modal when clicking outside
-        window.addEventListener('click', (e) => {
-            if (e.target === newsletterModal) {
-                newsletterModal.style.display = 'none';
+        // Validate form
+        let isValid = true;
+        const requiredFields = contactForm.querySelectorAll('[required]');
+        
+        requiredFields.forEach(field => {
+            if (!field.value.trim()) {
+                field.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                field.classList.remove('is-invalid');
             }
         });
         
-        // Contact Form
-        const contactForm = document.getElementById('contactForm');
-        
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
+        if (isValid) {
+            // Show loading state
+            const submitBtn = contactForm.querySelector('button');
+            const originalText = submitBtn.textContent;
+            submitBtn.innerHTML = '<span class="loading-spinner"></span> Envoi en cours...';
+            submitBtn.disabled = true;
             
-            // Validate form
-            let isValid = true;
-            const requiredFields = contactForm.querySelectorAll('[required]');
+            // Collect form data
+            const formData = {
+                name: contactForm.querySelector('#name').value,
+                email: contactForm.querySelector('#email').value,
+                phone: contactForm.querySelector('#phone').value,
+                subject: contactForm.querySelector('#subject').value,
+                message: contactForm.querySelector('#message').value
+            };
             
-            requiredFields.forEach(field => {
-                if (!field.value.trim()) {
-                    field.classList.add('is-invalid');
-                    isValid = false;
-                } else {
-                    field.classList.remove('is-invalid');
-                }
-            });
-            
-            if (isValid) {
-                // Collect form data
-                const formData = {
-                    name: contactForm.querySelector('#name').value,
-                    email: contactForm.querySelector('#email').value,
-                    phone: contactForm.querySelector('#phone').value,
-                    subject: contactForm.querySelector('#subject').value,
-                    message: contactForm.querySelector('#message').value
-                };
-                
+            // Simulate form submission
+            setTimeout(() => {
                 // In a real implementation, you would send this to your server
                 console.log('Form submitted:', formData);
                 
-                // Redirect to traitement.html with form data
-                const queryString = new URLSearchParams(formData).toString();
-                window.location.href = `traitement.html?${queryString}`;
-            }
-        });
-        
-        // Cookie Consent
-        const cookieConsent = document.querySelector('.cookie-consent');
-        const cookieBtn = document.querySelector('.cookie-btn');
-        
-        function checkCookieConsent() {
-            if (!localStorage.getItem('cookieConsent')) {
-                setTimeout(() => {
-                    cookieConsent.classList.add('active');
-                }, 2000);
-            }
+                // Show success message
+                alert('Merci pour votre message ! Nous vous contacterons bientôt.');
+                
+                // Reset form
+                contactForm.reset();
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                
+                // In a real implementation, you would redirect to a thank you page
+                // window.location.href = 'merci.html';
+            }, 1500);
         }
-        
-        cookieBtn.addEventListener('click', () => {
-            cookieConsent.classList.remove('active');
-            localStorage.setItem('cookieConsent', 'true');
+    });
+    
+    // Cookie Consent
+    const cookieConsent = document.querySelector('.cookie-consent');
+    const cookieBtn = document.querySelector('.cookie-btn');
+    
+    function checkCookieConsent() {
+        if (!localStorage.getItem('cookieConsent')) {
+            setTimeout(() => {
+                cookieConsent.classList.add('active');
+            }, 2000);
+        }
+    }
+    
+    cookieBtn.addEventListener('click', () => {
+        cookieConsent.classList.remove('active');
+        localStorage.setItem('cookieConsent', 'true');
+    });
+    
+    // Check cookie consent on page load
+    checkCookieConsent();
+    
+    // Back to Top Button
+    const backToTop = document.querySelector('.back-to-top');
+    
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTop.classList.add('active');
+        } else {
+            backToTop.classList.remove('active');
+        }
+    });
+    
+    backToTop.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
         });
+    });
+    
+    // FAQ Accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
         
-        // Check cookie consent on page load
-        checkCookieConsent();
-        
-        // Back to Top Button
-        const backToTop = document.querySelector('.back-to-top');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTop.classList.add('active');
-            } else {
-                backToTop.classList.remove('active');
-            }
+        question.addEventListener('click', () => {
+            // Close all other items
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                }
+            });
+            
+            // Toggle current item
+            item.classList.toggle('active');
         });
-        
-        backToTop.addEventListener('click', (e) => {
+    });
+    
+    // Product Quick View
+    const quickViewButtons = document.querySelectorAll('.btn-quick-view');
+    const productModal = document.getElementById('productModal');
+    
+    // Product data
+    const products = {
+        tm6: {
+            title: 'Thermomix® TM6',
+            image: 'https://images.unsplash.com/photo-1585238342024-78d90f58f6b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+            currentPrice: '899€',
+            oldPrice: '1499€',
+            description: 'Le robot culinaire intelligent avec écran tactile et plus de 40,000 recettes guidées. Le TM6 combine 12 fonctions en 1 seul appareil pour révolutionner votre cuisine quotidienne.',
+            specs: [
+                '12 fonctions en 1',
+                'Écran tactile couleur 6 pouces',
+                '40,000+ recettes guidées',
+                'Cuisson précise à 1°C près',
+                'Contrôle via application mobile',
+                'Garantie 2 ans',
+                'Poids : 7.5 kg',
+                'Dimensions : 30 x 30 x 42 cm'
+            ],
+            buyLink: '#',
+            detailsLink: 'tm6.html'
+        },
+        tm7: {
+            title: 'Thermomix® TM7',
+            image: 'https://images.unsplash.com/photo-1556910638-9a0cc496705e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+            currentPrice: '1199€',
+            oldPrice: '1999€',
+            description: 'La dernière innovation avec reconnaissance des ingrédients et assistant vocal intégré. Le TM7 offre 15 fonctions en 1 avec une technologie de pointe pour une expérience culinaire inégalée.',
+            specs: [
+                '15 fonctions en 1',
+                'Reconnaissance intelligente des ingrédients',
+                'Assistant vocal intégré',
+                'Écran tactile HD 7 pouces',
+                '50,000+ recettes guidées',
+                'Connectivité Wi-Fi et Bluetooth',
+                'Garantie 3 ans',
+                'Poids : 8.2 kg',
+                'Dimensions : 32 x 32 x 45 cm'
+            ],
+            buyLink: '#',
+            detailsLink: 'tm7.html'
+        },
+        accessories: {
+            title: 'Pack Accessoires Premium',
+            image: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+            currentPrice: '199€',
+            oldPrice: '299€',
+            description: 'Tous les accessoires essentiels pour tirer le meilleur parti de votre Thermomix®. Ce pack premium comprend tout ce dont vous avez besoin pour explorer toutes les possibilités de votre robot.',
+            specs: [
+                '5 bols supplémentaires en verre trempé',
+                'Set de 3 couteaux haute performance',
+                'Livre de recettes exclusives (200 pages)',
+                'Support de rangement mural',
+                'Gants de protection en silicone',
+                'Spatules et cuillères de mesure',
+                'Guide d\'utilisation détaillé',
+                'Boîte de rangement premium'
+            ],
+            buyLink: '#',
+            detailsLink: 'accessoires.html'
+        }
+    };
+    
+    quickViewButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
             e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-        
-        // FAQ Accordion
-        const faqItems = document.querySelectorAll('.faq-item');
-        
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
+            const productId = button.getAttribute('data-product');
+            const product = products[productId];
             
-            question.addEventListener('click', () => {
-                // Close all other items
-                faqItems.forEach(otherItem => {
-                    if (otherItem !== item) {
-                        otherItem.classList.remove('active');
-                    }
-                });
-                
-                // Toggle current item
-                item.classList.toggle('active');
+            // Populate modal with product data
+            document.getElementById('modalProductImage').src = product.image;
+            document.getElementById('modalProductImage').alt = product.title;
+            document.getElementById('modalProductTitle').textContent = product.title;
+            document.getElementById('modalProductCurrentPrice').textContent = product.currentPrice;
+            document.getElementById('modalProductOldPrice').textContent = product.oldPrice;
+            document.getElementById('modalProductDescription').textContent = product.description;
+            
+            const specsList = document.getElementById('modalProductSpecs');
+            specsList.innerHTML = '';
+            product.specs.forEach(spec => {
+                const li = document.createElement('li');
+                li.innerHTML = `<i class="fas fa-check"></i> ${spec}`;
+                specsList.appendChild(li);
             });
+            
+            document.getElementById('modalProductBuyBtn').href = product.buyLink;
+            document.getElementById('modalProductDetailsBtn').href = product.detailsLink;
+            
+            // Show modal
+            productModal.style.display = 'flex';
+            document.body.classList.add('no-scroll');
         });
+    });
+    
+    // Scroll Animation
+    function animateOnScroll() {
+        const elements = document.querySelectorAll('.feature-card, .product-card, .step, .recipe-card, .store-card');
+        const windowHeight = window.innerHeight;
+        const scrollOffset = window.scrollY + windowHeight;
         
-        // Product Quick View
-        const quickViewButtons = document.querySelectorAll('.btn-quick-view');
-        const productModal = document.getElementById('productModal');
-        
-        // Product data
-        const products = {
-            tm6: {
-                title: 'Thermomix® TM6',
-                image: 'https://images.unsplash.com/photo-1585238342024-78d90f58f6b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                currentPrice: '899€',
-                oldPrice: '1499€',
-                description: 'Le robot culinaire intelligent avec écran tactile et plus de 40,000 recettes guidées. Le TM6 combine 12 fonctions en 1 seul appareil pour révolutionner votre cuisine quotidienne.',
-                specs: [
-                    '12 fonctions en 1',
-                    'Écran tactile couleur 6 pouces',
-                    '40,000+ recettes guidées',
-                    'Cuisson précise à 1°C près',
-                    'Contrôle via application mobile',
-                    'Garantie 2 ans',
-                    'Poids : 7.5 kg',
-                    'Dimensions : 30 x 30 x 42 cm'
-                ],
-                buyLink: '#',
-                detailsLink: 'tm6.html'
-            },
-            tm7: {
-                title: 'Thermomix® TM7',
-                image: 'https://images.unsplash.com/photo-1556910638-9a0cc496705e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                currentPrice: '1199€',
-                oldPrice: '1999€',
-                description: 'La dernière innovation avec reconnaissance des ingrédients et assistant vocal intégré. Le TM7 offre 15 fonctions en 1 avec une technologie de pointe pour une expérience culinaire inégalée.',
-                specs: [
-                    '15 fonctions en 1',
-                    'Reconnaissance intelligente des ingrédients',
-                    'Assistant vocal intégré',
-                    'Écran tactile HD 7 pouces',
-                    '50,000+ recettes guidées',
-                    'Connectivité Wi-Fi et Bluetooth',
-                    'Garantie 3 ans',
-                    'Poids : 8.2 kg',
-                    'Dimensions : 32 x 32 x 45 cm'
-                ],
-                buyLink: '#',
-                detailsLink: 'tm7.html'
-            },
-            accessories: {
-                title: 'Pack Accessoires Premium',
-                image: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-                currentPrice: '199€',
-                oldPrice: '299€',
-                description: 'Tous les accessoires essentiels pour tirer le meilleur parti de votre Thermomix®. Ce pack premium comprend tout ce dont vous avez besoin pour explorer toutes les possibilités de votre robot.',
-                specs: [
-                    '5 bols supplémentaires en verre trempé',
-                    'Set de 3 couteaux haute performance',
-                    'Livre de recettes exclusives (200 pages)',
-                    'Support de rangement mural',
-                    'Gants de protection en silicone',
-                    'Spatules et cuillères de mesure',
-                    'Guide d\'utilisation détaillé',
-                    'Boîte de rangement premium'
-                ],
-                buyLink: '#',
-                detailsLink: 'accessoires.html'
+        elements.forEach(element => {
+            const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+            const animationPoint = windowHeight * 0.8;
+            
+            if (scrollOffset > elementPosition + animationPoint) {
+                element.classList.add('animated');
             }
-        };
-        
-        quickViewButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                const productId = button.getAttribute('data-product');
-                const product = products[productId];
-                
-                // Populate modal with product data
-                document.getElementById('modalProductImage').src = product.image;
-                document.getElementById('modalProductImage').alt = product.title;
-                document.getElementById('modalProductTitle').textContent = product.title;
-                document.getElementById('modalProductCurrentPrice').textContent = product.currentPrice;
-                document.getElementById('modalProductOldPrice').textContent = product.oldPrice;
-                document.getElementById('modalProductDescription').textContent = product.description;
-                
-                const specsList = document.getElementById('modalProductSpecs');
-                specsList.innerHTML = '';
-                product.specs.forEach(spec => {
-                    const li = document.createElement('li');
-                    li.innerHTML = `<i class="fas fa-check"></i> ${spec}`;
-                    specsList.appendChild(li);
-                });
-                
-                document.getElementById('modalProductBuyBtn').href = product.buyLink;
-                document.getElementById('modalProductDetailsBtn').href = product.detailsLink;
-                
-                // Show modal
-                productModal.style.display = 'flex';
-            });
         });
+    }
+    
+    // Set initial state for animation
+    document.querySelectorAll('.feature-card, .product-card, .step, .recipe-card, .store-card').forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    });
+    
+    window.addEventListener('scroll', animateOnScroll);
+    window.addEventListener('load', animateOnScroll);
+    
+    // Initialize animations on page load
+    animateOnScroll();
+    
+    // Shopping Cart Functionality
+    class ShoppingCart {
+        constructor() {
+            this.items = [];
+            this.load();
+        }
         
-        // Form Validation
-        function validateForm(form) {
-            let isValid = true;
-            const inputs = form.querySelectorAll('[required]');
+        addItem(item) {
+            this.items.push(item);
+            this.save();
+            this.updateCartCount();
+        }
+        
+        removeItem(id) {
+            this.items = this.items.filter(item => item.id !== id);
+            this.save();
+            this.updateCartCount();
+        }
+        
+        getTotal() {
+            return this.items.reduce((total, item) => total + item.price, 0);
+        }
+        
+        getCount() {
+            return this.items.length;
+        }
+        
+        save() {
+            localStorage.setItem('cart', JSON.stringify(this.items));
+        }
+        
+        load() {
+            const items = localStorage.getItem('cart');
+            this.items = items ? JSON.parse(items) : [];
+            this.updateCartCount();
+        }
+        
+        updateCartCount() {
+            const count = this.getCount();
+            const cartIcon = document.querySelector('.header-actions a[aria-label="Panier"]');
             
-            inputs.forEach(input => {
-                if (!input.value.trim()) {
-                    input.classList.add('is-invalid');
-                    isValid = false;
-                } else {
-                    input.classList.remove('is-invalid');
+            if (cartIcon) {
+                // Remove existing badge if any
+                const existingBadge = cartIcon.querySelector('.cart-badge');
+                if (existingBadge) {
+                    cartIcon.removeChild(existingBadge);
                 }
-            });
-            
-            return isValid;
-        }
-        
-        // Scroll Animation
-        function animateOnScroll() {
-            const elements = document.querySelectorAll('.feature-card, .product-card, .step, .recipe-card, .store-card');
-            const windowHeight = window.innerHeight;
-            
-            elements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const animationPoint = windowHeight * 0.8;
                 
-                if (elementPosition < animationPoint) {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                }
-            });
-        }
-        
-        // Set initial state for animation
-        document.querySelectorAll('.feature-card, .product-card, .step, .recipe-card, .store-card').forEach(element => {
-            element.style.opacity = '0';
-            element.style.transform = 'translateY(20px)';
-            element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        });
-        
-        window.addEventListener('scroll', animateOnScroll);
-        window.addEventListener('load', animateOnScroll);
-        
-        // Initialize animations on page load
-        animateOnScroll();
-        
-        // Responsive Navigation
-        function handleResponsiveNav() {
-            if (window.innerWidth <= 768) {
-                document.querySelectorAll('.footer-links h3').forEach(header => {
-                    header.addEventListener('click', () => {
-                        const list = header.nextElementSibling;
-                        list.style.display = list.style.display === 'none' ? 'block' : 'none';
-                    });
-                    
-                    // Initially hide on mobile
-                    header.nextElementSibling.style.display = 'none';
-                });
-            } else {
-                document.querySelectorAll('.footer-links ul').forEach(list => {
-                    list.style.display = 'block';
-                });
-            }
-        }
-        
-        window.addEventListener('resize', handleResponsiveNav);
-        window.addEventListener('load', handleResponsiveNav);
-        
-        // Shopping Cart Functionality
-        class ShoppingCart {
-            constructor() {
-                this.items = [];
-                this.load();
-            }
-            
-            addItem(item) {
-                this.items.push(item);
-                this.save();
-                this.updateCartCount();
-            }
-            
-            removeItem(id) {
-                this.items = this.items.filter(item => item.id !== id);
-                this.save();
-                this.updateCartCount();
-            }
-            
-            getTotal() {
-                return this.items.reduce((total, item) => total + item.price, 0);
-            }
-            
-            getCount() {
-                return this.items.length;
-            }
-            
-            save() {
-                localStorage.setItem('cart', JSON.stringify(this.items));
-            }
-            
-            load() {
-                const items = localStorage.getItem('cart');
-                this.items = items ? JSON.parse(items) : [];
-                this.updateCartCount();
-            }
-            
-            updateCartCount() {
-                const count = this.getCount();
-                const cartIcon = document.querySelector('.header-actions a[aria-label="Panier"]');
-                
-                if (cartIcon) {
-                    // Remove existing badge if any
-                    const existingBadge = cartIcon.querySelector('.cart-badge');
-                    if (existingBadge) {
-                        cartIcon.removeChild(existingBadge);
-                    }
-                    
-                    // Add new badge if items exist
-                    if (count > 0) {
-                        const badge = document.createElement('span');
-                        badge.className = 'cart-badge';
-                        badge.textContent = count;
-                        cartIcon.appendChild(badge);
-                    }
+                // Add new badge if items exist
+                if (count > 0) {
+                    const badge = document.createElement('span');
+                    badge.className = 'cart-badge';
+                    badge.textContent = count;
+                    cartIcon.appendChild(badge);
                 }
             }
         }
-        
-        // Initialize cart
-        const cart = new ShoppingCart();
-        
-        // Add to cart buttons
-        document.querySelectorAll('.product-actions .btn-primary').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const productCard = e.target.closest('.product-card');
-                const productName = productCard.querySelector('h3').textContent;
-                const productPrice = parseFloat(productCard.querySelector('.current-price').textContent.replace('€', '').trim());
-                const productImage = productCard.querySelector('.product-image img').src;
-                
-                cart.addItem({
-                    id: Date.now(),
-                    name: productName,
-                    price: productPrice,
-                    image: productImage
-                });
-                
-                // Show added notification
-                alert(`${productName} a été ajouté à votre panier.`);
-            });
-        });
-        
-        // More sophisticated features could be added here
-        // For example: Product comparison, wishlist, etc.
-        
-        // Initialize all features when DOM is loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('Thermomix website initialized successfully');
+    }
+    
+    // Initialize cart
+    const cart = new ShoppingCart();
+    
+    // Add to cart buttons
+    document.querySelectorAll('.product-actions .btn-primary').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const productCard = e.target.closest('.product-card');
+            const productName = productCard.querySelector('h3').textContent;
+            const productPrice = parseFloat(productCard.querySelector('.current-price').textContent.replace('€', '').trim());
+            const productImage = productCard.querySelector('.product-image img').src;
             
-            // Load cart count
-            cart.updateCartCount();
+            cart.addItem({
+                id: Date.now(),
+                name: productName,
+                price: productPrice,
+                image: productImage
+            });
+            
+            // Show added notification
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.innerHTML = `
+                <div class="notification-content">
+                    <img src="${productImage}" alt="${productName}" width="40" height="40">
+                    <div>
+                        <p>${productName} a été ajouté à votre panier.</p>
+                        <a href="panier.html" class="btn btn-sm">Voir le panier</a>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 10);
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
         });
-    </script>
+    });
+    
+    // Initialize all features when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log('Thermomix website initialized successfully');
+        
+        // Load cart count
+        cart.updateCartCount();
+        
+        // Show header after page load to prevent flash of unstyled content
+        document.querySelector('.header').style.opacity = '1';
+    });
+</script>
 </body>
 </html>
