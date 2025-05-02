@@ -9,11 +9,16 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Thermomix® | Robot Culinaire Intelligent | Promotion -40%</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.thermomix.fr" />
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <title>Thermomix® | Robot Culinaire Intelligent | Promotion -40%</title>
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -55,12 +60,20 @@
             overflow-x: hidden;
         }
         
-        img, picture, video, canvas, svg {
+        /* Optimized image handling */
+        img {
             display: block;
             max-width: 100%;
             height: auto;
+            border: 0;
         }
         
+        picture, video, canvas, svg {
+            display: block;
+            max-width: 100%;
+        }
+        
+        /* Form elements */
         input, button, textarea, select {
             font: inherit;
         }
@@ -71,12 +84,19 @@
         }
         
         button:focus {
-            outline: none;
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
         }
         
+        /* Links and lists */
         a {
             text-decoration: none;
             color: inherit;
+        }
+        
+        a:focus-visible {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
         }
         
         ul, ol {
@@ -495,6 +515,7 @@
             z-index: var(--z-index-sticky);
             height: var(--header-height);
             transition: var(--transition-normal);
+            opacity: 0;
         }
         
         .header.scrolled {
@@ -2213,31 +2234,70 @@
             white-space: nowrap;
             border-width: 0;
         }
+        
+        /* Accessibility improvements */
+        .visually-hidden:not(:focus):not(:active) {
+            clip: rect(0 0 0 0); 
+            clip-path: inset(50%);
+            height: 1px;
+            overflow: hidden;
+            position: absolute;
+            white-space: nowrap; 
+            width: 1px;
+        }
+        
+        /* Focus styles for better accessibility */
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        select:focus-visible,
+        textarea:focus-visible {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+        
+        /* Skip to content link */
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            top: 0;
+            background: var(--primary-color);
+            color: white;
+            padding: 10px;
+            z-index: 1000;
+        }
+        
+        .skip-link:focus {
+            left: 0;
+        }
     </style>
 </head>
 <body>
+<!-- Skip to content link for accessibility -->
+<a href="#main-content" class="skip-link visually-hidden">Aller au contenu principal</a>
+
 <!-- Announcement Bar -->
 <div class="announcement-bar">
     <div class="container">
         <div class="announcement-content">
             <div class="announcement-message">
-                <span class="icon"><i class="fas fa-truck"></i></span>
+                <span class="icon"><i class="fas fa-truck" aria-hidden="true"></i></span>
                 <span>Livraison gratuite à partir de 150€ | </span>
-                <span class="icon"><i class="fas fa-shield-alt"></i></span>
+                <span class="icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></span>
                 <span>Paiement 100% sécurisé | </span>
-                <span class="icon"><i class="fas fa-headset"></i></span>
+                <span class="icon"><i class="fas fa-headset" aria-hidden="true"></i></span>
                 <span>Service client 24/7</span>
             </div>
             <div class="announcement-links">
-                <a href="conseillers.html"><i class="fas fa-map-marker-alt"></i> Trouver un conseiller</a>
-                <a href="contact.html"><i class="fas fa-phone-alt"></i> Nous contacter</a>
+                <a href="conseillers.html"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Trouver un conseiller</a>
+                <a href="contact.html"><i class="fas fa-phone-alt" aria-hidden="true"></i> Nous contacter</a>
                 <span class="separator">|</span>
-                <div class="language-switcher">
-                    <span class="current-language"><i class="fas fa-globe"></i> FR</span>
+                <div class="language-switcher" aria-label="Sélecteur de langue">
+                    <span class="current-language"><i class="fas fa-globe" aria-hidden="true"></i> FR</span>
                     <div class="language-dropdown">
-                        <a href="#en">EN</a>
-                        <a href="#de">DE</a>
-                        <a href="#es">ES</a>
+                        <a href="#en" lang="en">EN</a>
+                        <a href="#de" lang="de">DE</a>
+                        <a href="#es" lang="es">ES</a>
                     </div>
                 </div>
             </div>
@@ -2255,12 +2315,12 @@
                 </a>
             </div>
 
-            <nav class="nav-main" id="navMain">
+            <nav class="nav-main" id="navMain" aria-label="Navigation principale">
                 <ul class="nav-links">
                     <li><a href="index.html">Accueil</a></li>
                     <li>
-                        <a href="#">Produits <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown">
+                        <a href="#">Produits <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <ul class="dropdown" aria-label="Sous-menu produits">
                             <li><a href="tm6.html">Thermomix TM6</a></li>
                             <li><a href="tm7.html">Thermomix TM7</a></li>
                             <li><a href="accessoires.html">Accessoires</a></li>
@@ -2275,698 +2335,703 @@
             </nav>
 
             <div class="header-actions">
-                <a href="recherche.html" aria-label="Recherche"><i class="fas fa-search"></i></a>
-                <a href="compte.html" aria-label="Mon compte"><i class="fas fa-user"></i></a>
-                <a href="panier.html" aria-label="Panier"><i class="fas fa-shopping-cart"></i></a>
-                <div class="hamburger" id="hamburger" aria-label="Menu">
-                    <i class="fas fa-bars"></i>
-                </div>
+                <a href="recherche.html" aria-label="Recherche"><i class="fas fa-search" aria-hidden="true"></i></a>
+                <a href="compte.html" aria-label="Mon compte"><i class="fas fa-user" aria-hidden="true"></i></a>
+                <a href="panier.html" aria-label="Panier"><i class="fas fa-shopping-cart" aria-hidden="true"></i></a>
+                <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="navMain">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </button>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Hero Section -->
-<section class="hero">
-    <div class="container">
-        <div class="hero-content">
-            <h1>Découvrez la révolution culinaire avec Thermomix®</h1>
-            <p>12 fonctions en 1 seul robot pour transformer votre cuisine au quotidien</p>
-            <div class="hero-buttons">
-                <a href="#products" class="btn btn-primary btn-lg">Découvrir les produits</a>
-                <a href="demo.html" class="btn btn-outline btn-lg">Voir la démo</a>
+<!-- Main Content -->
+<main id="main-content">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Découvrez la révolution culinaire avec Thermomix®</h1>
+                <p>12 fonctions en 1 seul robot pour transformer votre cuisine au quotidien</p>
+                <div class="hero-buttons">
+                    <a href="#products" class="btn btn-primary btn-lg">Découvrir les produits</a>
+                    <a href="demo.html" class="btn btn-outline btn-lg">Voir la démo</a>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Promo Banner -->
+    <div class="promo-banner">
+        <div class="container">
+            PROMOTION EXCEPTIONNELLE : <span>-40%</span> sur toute la gamme Thermomix® | Offre valable jusqu'au 31/12/2023
         </div>
     </div>
-</section>
 
-<!-- Promo Banner -->
-<div class="promo-banner">
-    <div class="container">
-        PROMOTION EXCEPTIONNELLE : <span>-40%</span> sur toute la gamme Thermomix® | Offre valable jusqu'au 31/12/2023
-    </div>
-</div>
-
-<!-- Features Section -->
-<section class="features" id="features">
-    <div class="container">
-        <div class="section-title">
-            <h2>Pourquoi choisir Thermomix® ?</h2>
-            <p>Découvrez comment Thermomix® simplifie votre quotidien et révolutionne votre cuisine</p>
-        </div>
-
-        <div class="features-container">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-clock"></i>
-                </div>
-                <h3>Gain de temps</h3>
-                <p>Préparez des repas savoureux en un temps record grâce aux fonctions automatisées et aux recettes guidées pas à pas.</p>
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pourquoi choisir Thermomix® ?</h2>
+                <p>Découvrez comment Thermomix® simplifie votre quotidien et révolutionne votre cuisine</p>
             </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-utensils"></i>
+            <div class="features-container">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock" aria-hidden="true"></i>
+                    </div>
+                    <h3>Gain de temps</h3>
+                    <p>Préparez des repas savoureux en un temps record grâce aux fonctions automatisées et aux recettes guidées pas à pas.</p>
                 </div>
-                <h3>12 en 1</h3>
-                <p>Un seul appareil remplace 12 ustensiles de cuisine différents : mixeur, robot cuiseur, balance, etc.</p>
-            </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-heart"></i>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-utensils" aria-hidden="true"></i>
+                    </div>
+                    <h3>12 en 1</h3>
+                    <p>Un seul appareil remplace 12 ustensiles de cuisine différents : mixeur, robot cuiseur, balance, etc.</p>
                 </div>
-                <h3>Santé & Nutrition</h3>
-                <p>Cuisson douce qui préserve les nutriments pour une alimentation plus saine et équilibrée.</p>
-            </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-leaf"></i>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart" aria-hidden="true"></i>
+                    </div>
+                    <h3>Santé & Nutrition</h3>
+                    <p>Cuisson douce qui préserve les nutriments pour une alimentation plus saine et équilibrée.</p>
                 </div>
-                <h3>Écologique</h3>
-                <p>Réduisez votre consommation d'énergie et vos déchets grâce à une cuisine tout-en-un.</p>
-            </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-brain"></i>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf" aria-hidden="true"></i>
+                    </div>
+                    <h3>Écologique</h3>
+                    <p>Réduisez votre consommation d'énergie et vos déchets grâce à une cuisine tout-en-un.</p>
                 </div>
-                <h3>Intelligent</h3>
-                <p>Technologie innovante avec reconnaissance des ingrédients et assistance vocale.</p>
-            </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-infinity"></i>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain" aria-hidden="true"></i>
+                    </div>
+                    <h3>Intelligent</h3>
+                    <p>Technologie innovante avec reconnaissance des ingrédients et assistance vocale.</p>
                 </div>
-                <h3>Polyvalent</h3>
-                <p>Préparez tout type de plats : entrées, plats principaux, desserts, boissons et plus encore.</p>
-            </div>
-        </div>
-    </div>
-</section>
 
-<!-- Products Section -->
-<section class="products" id="products">
-    <div class="container">
-        <div class="section-title">
-            <h2>Nos Produits Phares</h2>
-            <p>Découvrez notre gamme de robots culinaires haut de gamme</p>
-        </div>
-
-        <div class="products-container">
-            <!-- Product 1 - TM6 -->
-            <div class="product-card">
-                <div class="product-badge">-40%</div>
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1585238342024-78d90f58f6b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Thermomix TM6" loading="lazy">
-                </div>
-                <div class="product-info">
-                    <h3>Thermomix® TM6</h3>
-                    <div class="product-price">
-                        <span class="current-price">899€</span>
-                        <span class="old-price">1499€</span>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-infinity" aria-hidden="true"></i>
                     </div>
-                    <p class="product-description">Le robot culinaire intelligent avec écran tactile et plus de 40,000 recettes guidées.</p>
-                    
-                    <div class="product-specs">
-                        <ul>
-                            <li><i class="fas fa-check"></i> 12 fonctions en 1</li>
-                            <li><i class="fas fa-check"></i> Écran tactile couleur</li>
-                            <li><i class="fas fa-check"></i> 40,000+ recettes</li>
-                            <li><i class="fas fa-check"></i> Cuisson précise</li>
-                            <li><i class="fas fa-check"></i> Contrôle via app</li>
-                            <li><i class="fas fa-check"></i> Garantie 2 ans</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="product-actions">
-                        <a href="#" class="btn btn-primary">Acheter maintenant</a>
-                        <a href="#" class="btn btn-secondary btn-quick-view" data-product="tm6">Voir les détails</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 2 - TM7 -->
-            <div class="product-card">
-                <div class="product-badge">Nouveau</div>
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1556910638-9a0cc496705e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Thermomix TM7" loading="lazy">
-                </div>
-                <div class="product-info">
-                    <h3>Thermomix® TM7</h3>
-                    <div class="product-price">
-                        <span class="current-price">1199€</span>
-                        <span class="old-price">1999€</span>
-                    </div>
-                    <p class="product-description">La dernière innovation avec reconnaissance des ingrédients et assistant vocal intégré.</p>
-                    
-                    <div class="product-specs">
-                        <ul>
-                            <li><i class="fas fa-check"></i> 15 fonctions en 1</li>
-                            <li><i class="fas fa-check"></i> Reconnaissance ingrédients</li>
-                            <li><i class="fas fa-check"></i> Assistant vocal</li>
-                            <li><i class="fas fa-check"></i> Écran HD 7"</li>
-                            <li><i class="fas fa-check"></i> 50,000+ recettes</li>
-                            <li><i class="fas fa-check"></i> Garantie 3 ans</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="product-actions">
-                        <a href="#" class="btn btn-primary">Acheter maintenant</a>
-                        <a href="#" class="btn btn-secondary btn-quick-view" data-product="tm7">Voir les détails</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product 3 - Accessories -->
-            <div class="product-card">
-                <div class="product-badge">Promo</div>
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Accessoires Thermomix" loading="lazy">
-                </div>
-                <div class="product-info">
-                    <h3>Pack Accessoires Premium</h3>
-                    <div class="product-price">
-                        <span class="current-price">199€</span>
-                        <span class="old-price">299€</span>
-                    </div>
-                    <p class="product-description">Tous les accessoires essentiels pour tirer le meilleur parti de votre Thermomix®.</p>
-                    
-                    <div class="product-specs">
-                        <ul>
-                            <li><i class="fas fa-check"></i> 5 bols supplémentaires</li>
-                            <li><i class="fas fa-check"></i> Set de couteaux</li>
-                            <li><i class="fas fa-check"></i> Livre de recettes</li>
-                            <li><i class="fas fa-check"></i> Support de rangement</li>
-                            <li><i class="fas fa-check"></i> Gants de protection</li>
-                            <li><i class="fas fa-check"></i> Guide d'utilisation</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="product-actions">
-                        <a href="#" class="btn btn-primary">Acheter maintenant</a>
-                        <a href="#" class="btn btn-secondary btn-quick-view" data-product="accessories">Voir les détails</a>
-                    </div>
+                    <h3>Polyvalent</h3>
+                    <p>Préparez tout type de plats : entrées, plats principaux, desserts, boissons et plus encore.</p>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- How It Works Section -->
-<section class="steps-section">
-    <div class="container">
-        <div class="section-title">
-            <h2>Comment ça marche</h2>
-            <p>Découvrez en quelques étapes simples comment Thermomix® révolutionne votre cuisine</p>
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nos Produits Phares</h2>
+                <p>Découvrez notre gamme de robots culinaires haut de gamme</p>
+            </div>
+
+            <div class="products-container">
+                <!-- Product 1 - TM6 -->
+                <article class="product-card">
+                    <div class="product-badge">-40%</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1585238342024-78d90f58f6b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Thermomix TM6 - Robot culinaire multifonction avec écran tactile" loading="lazy" width="800" height="600">
+                    </div>
+                    <div class="product-info">
+                        <h3>Thermomix® TM6</h3>
+                        <div class="product-price">
+                            <span class="current-price">899€</span>
+                            <span class="old-price">1499€</span>
+                        </div>
+                        <p class="product-description">Le robot culinaire intelligent avec écran tactile et plus de 40,000 recettes guidées.</p>
+                        
+                        <div class="product-specs">
+                            <ul>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> 12 fonctions en 1</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Écran tactile couleur</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> 40,000+ recettes</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Cuisson précise</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Contrôle via app</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Garantie 2 ans</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary">Acheter maintenant</a>
+                            <button class="btn btn-secondary btn-quick-view" data-product="tm6">Voir les détails</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Product 2 - TM7 -->
+                <article class="product-card">
+                    <div class="product-badge">Nouveau</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1556910638-9a0cc496705e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Thermomix TM7 - Dernier modèle avec reconnaissance des ingrédients" loading="lazy" width="800" height="600">
+                    </div>
+                    <div class="product-info">
+                        <h3>Thermomix® TM7</h3>
+                        <div class="product-price">
+                            <span class="current-price">1199€</span>
+                            <span class="old-price">1999€</span>
+                        </div>
+                        <p class="product-description">La dernière innovation avec reconnaissance des ingrédients et assistant vocal intégré.</p>
+                        
+                        <div class="product-specs">
+                            <ul>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> 15 fonctions en 1</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Reconnaissance ingrédients</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Assistant vocal</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Écran HD 7"</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> 50,000+ recettes</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Garantie 3 ans</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary">Acheter maintenant</a>
+                            <button class="btn btn-secondary btn-quick-view" data-product="tm7">Voir les détails</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Product 3 - Accessories -->
+                <article class="product-card">
+                    <div class="product-badge">Promo</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Pack Accessoires Premium pour Thermomix" loading="lazy" width="800" height="600">
+                    </div>
+                    <div class="product-info">
+                        <h3>Pack Accessoires Premium</h3>
+                        <div class="product-price">
+                            <span class="current-price">199€</span>
+                            <span class="old-price">299€</span>
+                        </div>
+                        <p class="product-description">Tous les accessoires essentiels pour tirer le meilleur parti de votre Thermomix®.</p>
+                        
+                        <div class="product-specs">
+                            <ul>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> 5 bols supplémentaires</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Set de couteaux</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Livre de recettes</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Support de rangement</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Gants de protection</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Guide d'utilisation</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary">Acheter maintenant</a>
+                            <button class="btn btn-secondary btn-quick-view" data-product="accessories">Voir les détails</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
         </div>
-        
-        <div class="steps-container">
-            <div class="step">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                    <h3>Sélectionnez votre recette</h3>
-                    <p>Parcourez notre bibliothèque de plus de 50,000 recettes ou créez les vôtres.</p>
-                </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="steps-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Comment ça marche</h2>
+                <p>Découvrez en quelques étapes simples comment Thermomix® révolutionne votre cuisine</p>
             </div>
             
-            <div class="step">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                    <h3>Ajoutez les ingrédients</h3>
-                    <p>Suivez les instructions à l'écran pour ajouter les ingrédients dans le bol.</p>
-                </div>
-            </div>
-            
-            <div class="step">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                    <h3>Lancez la préparation</h3>
-                    <p>Thermomix® guide chaque étape de la préparation avec des instructions claires.</p>
-                </div>
-            </div>
-            
-            <div class="step">
-                <div class="step-number">4</div>
-                <div class="step-content">
-                    <h3>Dégustez!</h3>
-                    <p>Savourez des plats délicieux préparés facilement et rapidement.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Testimonials Section -->
-<section class="testimonials">
-    <div class="container">
-        <div class="section-title">
-            <h2>Témoignages</h2>
-            <p>Découvrez ce que nos clients disent de Thermomix®</p>
-        </div>
-
-        <div class="testimonial-slider">
-            <!-- Testimonial 1 -->
-            <div class="testimonial-slide active">
-                <p class="testimonial-text">Le Thermomix a complètement transformé ma façon de cuisiner. Je gagne tellement de temps et mes enfants adorent les repas que je prépare maintenant. La qualité des plats est exceptionnelle et les recettes guidées sont parfaites pour quelqu'un comme moi qui n'avait pas beaucoup d'expérience en cuisine.</p>
-                <div class="testimonial-author">
-                    <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Sophie D." loading="lazy">
-                    <div class="testimonial-author-name">Sophie D.</div>
-                    <div class="testimonial-author-title">Paris, France</div>
-                </div>
-            </div>
-
-            <!-- Testimonial 2 -->
-            <div class="testimonial-slide">
-                <p class="testimonial-text">Après 6 mois d'utilisation, je ne pourrais plus m'en passer. C'est devenu indispensable dans ma cuisine et j'ai même perdu du poids grâce à une alimentation plus saine. Les fonctions automatisées me permettent de préparer des repas équilibrés même après une longue journée de travail.</p>
-                <div class="testimonial-author">
-                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Marc T." loading="lazy">
-                    <div class="testimonial-author-name">Marc T.</div>
-                    <div class="testimonial-author-title">Lyon, France</div>
-                </div>
-            </div>
-
-            <!-- Testimonial 3 -->
-            <div class="testimonial-slide">
-                <p class="testimonial-text">Investissement initial élevé mais rentabilisé en quelques mois. Les recettes guidées sont parfaites pour quelqu'un comme moi qui ne savait pas cuisiner. Maintenant je prépare des plats qui impressionnent mes invités et je passe moins de temps en cuisine qu'avant.</p>
-                <div class="testimonial-author">
-                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Julie P." loading="lazy">
-                    <div class="testimonial-author-name">Julie P.</div>
-                    <div class="testimonial-author-title">Bordeaux, France</div>
-                </div>
-            </div>
-
-            <!-- Testimonial 4 -->
-            <div class="testimonial-slide">
-                <p class="testimonial-text">En tant que chef à domicile, le Thermomix m'a permis d'optimiser mon temps de préparation tout en maintenant une qualité professionnelle. Mes clients adorent les textures parfaites et les saveurs préservées. C'est un outil indispensable pour tout professionnel de la cuisine.</p>
-                <div class="testimonial-author">
-                    <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Pierre L." loading="lazy">
-                    <div class="testimonial-author-name">Pierre L.</div>
-                    <div class="testimonial-author-title">Chef à domicile, Marseille</div>
-                </div>
-            </div>
-
-            <div class="testimonial-slider-nav">
-                <div class="slider-dot active" data-slide="0"></div>
-                <div class="slider-dot" data-slide="1"></div>
-                <div class="slider-dot" data-slide="2"></div>
-                <div class="slider-dot" data-slide="3"></div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Comparison Section -->
-<section class="comparison">
-    <div class="container">
-        <div class="section-title">
-            <h2>Comparaison des modèles</h2>
-            <p>Découvrez quel Thermomix® correspond le mieux à vos besoins</p>
-        </div>
-        
-        <div class="comparison-table">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Fonctionnalités</th>
-                        <th>TM6</th>
-                        <th>TM7</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Fonctions</td>
-                        <td>12 en 1</td>
-                        <td>15 en 1</td>
-                    </tr>
-                    <tr>
-                        <td>Écran</td>
-                        <td>Tactile 6"</td>
-                        <td>Tactile HD 7"</td>
-                    </tr>
-                    <tr>
-                        <td>Recettes intégrées</td>
-                        <td>40,000+</td>
-                        <td>50,000+</td>
-                    </tr>
-                    <tr>
-                        <td>Reconnaissance ingrédients</td>
-                        <td><i class="fas fa-times"></i></td>
-                        <td><i class="fas fa-check"></i></td>
-                    </tr>
-                    <tr>
-                        <td>Assistant vocal</td>
-                        <td><i class="fas fa-times"></i></td>
-                        <td><i class="fas fa-check"></i></td>
-                    </tr>
-                    <tr>
-                        <td>Connectivité</td>
-                        <td>Wi-Fi</td>
-                        <td>Wi-Fi + Bluetooth</td>
-                    </tr>
-                    <tr>
-                        <td>Garantie</td>
-                        <td>2 ans</td>
-                        <td>3 ans</td>
-                    </tr>
-                    <tr>
-                        <td>Prix</td>
-                        <td>899€ <span class="old-price">1499€</span></td>
-                        <td>1199€ <span class="old-price">1999€</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</section>
-
-<!-- Recipes Section -->
-<section class="recipes">
-    <div class="container">
-        <div class="section-title">
-            <h2>Recettes populaires</h2>
-            <p>Découvrez quelques-unes des recettes que vous pouvez préparer avec Thermomix®</p>
-        </div>
-        
-        <div class="recipes-container">
-            <div class="recipe-card">
-                <div class="recipe-image">
-                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Salade healthy" loading="lazy">
-                </div>
-                <div class="recipe-content">
-                    <h3>Salade Healthy</h3>
-                    <div class="recipe-meta">
-                        <span><i class="fas fa-clock"></i> 15 min</span>
-                        <span><i class="fas fa-utensils"></i> 2 pers.</span>
-                        <span><i class="fas fa-fire"></i> 320 kcal</span>
-                    </div>
-                    <p>Une salade fraîche et équilibrée préparée en quelques minutes.</p>
-                    <a href="#" class="btn btn-outline">Voir la recette</a>
-                </div>
-            </div>
-            
-            <div class="recipe-card">
-                <div class="recipe-image">
-                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Bowl végétarien" loading="lazy">
-                </div>
-                <div class="recipe-content">
-                    <h3>Bowl Végétarien</h3>
-                    <div class="recipe-meta">
-                        <span><i class="fas fa-clock"></i> 20 min</span>
-                        <span><i class="fas fa-utensils"></i> 2 pers.</span>
-                        <span><i class="fas fa-fire"></i> 380 kcal</span>
-                    </div>
-                    <p>Un bowl coloré et riche en nutriments pour un repas complet.</p>
-                    <a href="#" class="btn btn-outline">Voir la recette</a>
-                </div>
-            </div>
-            
-            <div class="recipe-card">
-                <div class="recipe-image">
-                    <img src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Pain maison" loading="lazy">
-                </div>
-                <div class="recipe-content">
-                    <h3>Pain Maison</h3>
-                    <div class="recipe-meta">
-                        <span><i class="fas fa-clock"></i> 2h</span>
-                        <span><i class="fas fa-utensils"></i> 1 pain</span>
-                        <span><i class="fas fa-fire"></i> 1200 kcal</span>
-                    </div>
-                    <p>Un pain artisanal croustillant à l'extérieur et moelleux à l'intérieur.</p>
-                    <a href="#" class="btn btn-outline">Voir la recette</a>
-                </div>
-            </div>
-            
-            <div class="recipe-card">
-                <div class="recipe-image">
-                    <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Dessert chocolat" loading="lazy">
-                </div>
-                <div class="recipe-content">
-                    <h3>Mousse au Chocolat</h3>
-                    <div class="recipe-meta">
-                        <span><i class="fas fa-clock"></i> 30 min</span>
-                        <span><i class="fas fa-utensils"></i> 4 pers.</span>
-                        <span><i class="fas fa-fire"></i> 450 kcal</span>
-                    </div>
-                    <p>Une mousse onctueuse et légère qui fond dans la bouche.</p>
-                    <a href="#" class="btn btn-outline">Voir la recette</a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="text-center mt-5">
-            <a href="recettes.html" class="btn btn-primary btn-lg">Voir toutes les recettes</a>
-        </div>
-    </div>
-</section>
-
-<!-- Newsletter Section -->
-<section class="newsletter">
-    <div class="container">
-        <h2>Abonnez-vous à notre newsletter</h2>
-        <p>Recevez des recettes exclusives, des conseils et des offres spéciales directement dans votre boîte mail.</p>
-        
-        <form id="newsletterForm" class="newsletter-form">
-            <input type="email" placeholder="Votre adresse email" required>
-            <button type="submit">S'abonner</button>
-        </form>
-        
-        <div class="newsletter-disclaimer">
-            <small>En vous abonnant, vous acceptez de recevoir des emails de Thermomix®. Vous pouvez vous désabonner à tout moment.</small>
-        </div>
-    </div>
-</section>
-
-<!-- FAQ Section -->
-<section class="faq">
-    <div class="container">
-        <div class="section-title">
-            <h2>Questions fréquentes</h2>
-            <p>Trouvez des réponses aux questions les plus posées sur Thermomix®</p>
-        </div>
-        
-        <div class="faq-container">
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Quelle est la différence entre TM6 et TM7 ?</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>Le TM7 est la dernière version de Thermomix avec des fonctionnalités avancées comme la reconnaissance des ingrédients et un assistant vocal intégré. Il possède également un écran plus grand, plus de recettes intégrées et une connectivité améliorée. Le TM6 reste un excellent choix avec toutes les fonctions de base à un prix plus abordable.</p>
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Thermomix® est-il difficile à utiliser ?</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>Absolument pas ! Thermomix® a été conçu pour être intuitif et facile à utiliser, même pour les débutants en cuisine. Les recettes guidées pas à pas et l'interface simple rendent la préparation des plats accessible à tous. De plus, nos conseillers sont disponibles pour vous former et répondre à toutes vos questions.</p>
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Puis-je préparer tous types de plats avec Thermomix® ?</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>Oui, Thermomix® permet de préparer une très large variété de plats : entrées, plats principaux, desserts, pains, boissons, sauces, soupes, et bien plus encore. Avec ses multiples fonctions et accessoires, les possibilités sont quasiment infinies.</p>
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Comment puis-je obtenir un service après-vente ?</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>Notre service client est disponible par téléphone, email et chat en ligne 7j/7. En cas de problème technique, nous avons un réseau de techniciens agréés dans toute la France. Tous nos produits bénéficient d'une garantie minimale de 2 ans.</p>
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>L'offre promotionnelle de -40% est-elle limitée ?</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>Oui, cette offre exceptionnelle est valable jusqu'au 31/12/2023 ou jusqu'à épuisement des stocks. Nous vous conseillons de profiter rapidement de cette réduction importante sur nos produits phares.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Contact Section -->
-<section class="contact" id="contact">
-    <div class="container">
-        <div class="section-title">
-            <h2>Contactez-nous</h2>
-            <p>Nous sommes à votre disposition pour toute question ou demande d'information</p>
-        </div>
-        
-        <div class="contact-container">
-            <div class="contact-info">
-                <div class="contact-info-item">
-                    <div class="contact-info-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div class="contact-info-content">
-                        <h3>Adresse</h3>
-                        <p>123 Avenue de la Cuisine<br>75001 Paris, France</p>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Sélectionnez votre recette</h3>
+                        <p>Parcourez notre bibliothèque de plus de 50,000 recettes ou créez les vôtres.</p>
                     </div>
                 </div>
                 
-                <div class="contact-info-item">
-                    <div class="contact-info-icon">
-                        <i class="fas fa-phone-alt"></i>
-                    </div>
-                    <div class="contact-info-content">
-                        <h3>Téléphone</h3>
-                        <p><a href="tel:+33123456789">+33 1 23 45 67 89</a><br>Lun-Ven : 9h-18h</p>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Ajoutez les ingrédients</h3>
+                        <p>Suivez les instructions à l'écran pour ajouter les ingrédients dans le bol.</p>
                     </div>
                 </div>
                 
-                <div class="contact-info-item">
-                    <div class="contact-info-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="contact-info-content">
-                        <h3>Email</h3>
-                        <p><a href="mailto:contact@thermomix.fr">contact@thermomix.fr</a><br>Réponse sous 24h</p>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Lancez la préparation</h3>
+                        <p>Thermomix® guide chaque étape de la préparation avec des instructions claires.</p>
                     </div>
                 </div>
                 
-                <div class="contact-info-item">
-                    <div class="contact-info-icon">
-                        <i class="fas fa-calendar-alt"></i>
-                    </div>
-                    <div class="contact-info-content">
-                        <h3>Démonstration</h3>
-                        <p>Prenez rendez-vous pour une démonstration gratuite à domicile ou en magasin.</p>
-                        <a href="#" class="btn btn-outline">Prendre RDV</a>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Dégustez!</h3>
+                        <p>Savourez des plats délicieux préparés facilement et rapidement.</p>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Témoignages</h2>
+                <p>Découvrez ce que nos clients disent de Thermomix®</p>
+            </div>
+
+            <div class="testimonial-slider">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-slide active" role="group" aria-label="Témoignage 1 sur 4">
+                    <p class="testimonial-text">Le Thermomix a complètement transformé ma façon de cuisiner. Je gagne tellement de temps et mes enfants adorent les repas que je prépare maintenant. La qualité des plats est exceptionnelle et les recettes guidées sont parfaites pour quelqu'un comme moi qui n'avait pas beaucoup d'expérience en cuisine.</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Portrait de Sophie D." loading="lazy" width="80" height="80">
+                        <div class="testimonial-author-name">Sophie D.</div>
+                        <div class="testimonial-author-title">Paris, France</div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-slide" role="group" aria-label="Témoignage 2 sur 4">
+                    <p class="testimonial-text">Après 6 mois d'utilisation, je ne pourrais plus m'en passer. C'est devenu indispensable dans ma cuisine et j'ai même perdu du poids grâce à une alimentation plus saine. Les fonctions automatisées me permettent de préparer des repas équilibrés même après une longue journée de travail.</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Portrait de Marc T." loading="lazy" width="80" height="80">
+                        <div class="testimonial-author-name">Marc T.</div>
+                        <div class="testimonial-author-title">Lyon, France</div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-slide" role="group" aria-label="Témoignage 3 sur 4">
+                    <p class="testimonial-text">Investissement initial élevé mais rentabilisé en quelques mois. Les recettes guidées sont parfaites pour quelqu'un comme moi qui ne savait pas cuisiner. Maintenant je prépare des plats qui impressionnent mes invités et je passe moins de temps en cuisine qu'avant.</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Portrait de Julie P." loading="lazy" width="80" height="80">
+                        <div class="testimonial-author-name">Julie P.</div>
+                        <div class="testimonial-author-title">Bordeaux, France</div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 4 -->
+                <div class="testimonial-slide" role="group" aria-label="Témoignage 4 sur 4">
+                    <p class="testimonial-text">En tant que chef à domicile, le Thermomix m'a permis d'optimiser mon temps de préparation tout en maintenant une qualité professionnelle. Mes clients adorent les textures parfaites et les saveurs préservées. C'est un outil indispensable pour tout professionnel de la cuisine.</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Portrait de Pierre L." loading="lazy" width="80" height="80">
+                        <div class="testimonial-author-name">Pierre L.</div>
+                        <div class="testimonial-author-title">Chef à domicile, Marseille</div>
+                    </div>
+                </div>
+
+                <div class="testimonial-slider-nav" aria-label="Navigation des témoignages">
+                    <button class="slider-dot active" data-slide="0" aria-label="Afficher le témoignage 1" aria-current="true"></button>
+                    <button class="slider-dot" data-slide="1" aria-label="Afficher le témoignage 2"></button>
+                    <button class="slider-dot" data-slide="2" aria-label="Afficher le témoignage 3"></button>
+                    <button class="slider-dot" data-slide="3" aria-label="Afficher le témoignage 4"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="comparison">
+        <div class="container">
+            <div class="section-title">
+                <h2>Comparaison des modèles</h2>
+                <p>Découvrez quel Thermomix® correspond le mieux à vos besoins</p>
+            </div>
             
-            <div class="contact-form">
-                <h3>Envoyez-nous un message</h3>
-                <p>Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.</p>
+            <div class="comparison-table">
+                <table>
+                    <caption class="visually-hidden">Comparaison des caractéristiques entre Thermomix TM6 et TM7</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Fonctionnalités</th>
+                            <th scope="col">TM6</th>
+                            <th scope="col">TM7</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Fonctions</th>
+                            <td>12 en 1</td>
+                            <td>15 en 1</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Écran</th>
+                            <td>Tactile 6"</td>
+                            <td>Tactile HD 7"</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Recettes intégrées</th>
+                            <td>40,000+</td>
+                            <td>50,000+</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Reconnaissance ingrédients</th>
+                            <td><i class="fas fa-times" aria-hidden="true"></i></td>
+                            <td><i class="fas fa-check" aria-hidden="true"></i></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Assistant vocal</th>
+                            <td><i class="fas fa-times" aria-hidden="true"></i></td>
+                            <td><i class="fas fa-check" aria-hidden="true"></i></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Connectivité</th>
+                            <td>Wi-Fi</td>
+                            <td>Wi-Fi + Bluetooth</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Garantie</th>
+                            <td>2 ans</td>
+                            <td>3 ans</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Prix</th>
+                            <td>899€ <span class="old-price">1499€</span></td>
+                            <td>1199€ <span class="old-price">1999€</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recipes Section -->
+    <section class="recipes">
+        <div class="container">
+            <div class="section-title">
+                <h2>Recettes populaires</h2>
+                <p>Découvrez quelques-unes des recettes que vous pouvez préparer avec Thermomix®</p>
+            </div>
+            
+            <div class="recipes-container">
+                <article class="recipe-card">
+                    <div class="recipe-image">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Salade healthy préparée avec Thermomix" loading="lazy" width="800" height="600">
+                    </div>
+                    <div class="recipe-content">
+                        <h3>Salade Healthy</h3>
+                        <div class="recipe-meta">
+                            <span><i class="fas fa-clock" aria-hidden="true"></i> 15 min</span>
+                            <span><i class="fas fa-utensils" aria-hidden="true"></i> 2 pers.</span>
+                            <span><i class="fas fa-fire" aria-hidden="true"></i> 320 kcal</span>
+                        </div>
+                        <p>Une salade fraîche et équilibrée préparée en quelques minutes.</p>
+                        <a href="#" class="btn btn-outline">Voir la recette</a>
+                    </div>
+                </article>
                 
-                <form id="contactForm" action="traitement.html" method="POST">
-                    <div class="form-group">
-                        <label for="name" class="form-label">Nom complet *</label>
-                        <input type="text" id="name" name="name" class="form-control" required>
-                        <div class="invalid-feedback">Veuillez entrer votre nom complet.</div>
+                <article class="recipe-card">
+                    <div class="recipe-image">
+                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Bowl végétarien préparé avec Thermomix" loading="lazy" width="800" height="600">
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="email" class="form-label">Adresse email *</label>
-                        <input type="email" id="email" name="email" class="form-control" required>
-                        <div class="invalid-feedback">Veuillez entrer une adresse email valide.</div>
+                    <div class="recipe-content">
+                        <h3>Bowl Végétarien</h3>
+                        <div class="recipe-meta">
+                            <span><i class="fas fa-clock" aria-hidden="true"></i> 20 min</span>
+                            <span><i class="fas fa-utensils" aria-hidden="true"></i> 2 pers.</span>
+                            <span><i class="fas fa-fire" aria-hidden="true"></i> 380 kcal</span>
+                        </div>
+                        <p>Un bowl coloré et riche en nutriments pour un repas complet.</p>
+                        <a href="#" class="btn btn-outline">Voir la recette</a>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="phone" class="form-label">Numéro de téléphone</label>
-                        <input type="tel" id="phone" name="phone" class="form-control">
+                </article>
+                
+                <article class="recipe-card">
+                    <div class="recipe-image">
+                        <img src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Pain maison préparé avec Thermomix" loading="lazy" width="800" height="600">
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="subject" class="form-label">Sujet *</label>
-                        <select id="subject" name="subject" class="form-select" required>
-                            <option value="">Sélectionnez un sujet</option>
-                            <option value="product">Question sur un produit</option>
-                            <option value="order">Commande</option>
-                            <option value="support">Support technique</option>
-                            <option value="demo">Demande de démonstration</option>
-                            <option value="other">Autre</option>
-                        </select>
-                        <div class="invalid-feedback">Veuillez sélectionner un sujet.</div>
+                    <div class="recipe-content">
+                        <h3>Pain Maison</h3>
+                        <div class="recipe-meta">
+                            <span><i class="fas fa-clock" aria-hidden="true"></i> 2h</span>
+                            <span><i class="fas fa-utensils" aria-hidden="true"></i> 1 pain</span>
+                            <span><i class="fas fa-fire" aria-hidden="true"></i> 1200 kcal</span>
+                        </div>
+                        <p>Un pain artisanal croustillant à l'extérieur et moelleux à l'intérieur.</p>
+                        <a href="#" class="btn btn-outline">Voir la recette</a>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="message" class="form-label">Message *</label>
-                        <textarea id="message" name="message" class="form-control" required></textarea>
-                        <div class="invalid-feedback">Veuillez entrer votre message.</div>
+                </article>
+                
+                <article class="recipe-card">
+                    <div class="recipe-image">
+                        <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Dessert au chocolat préparé avec Thermomix" loading="lazy" width="800" height="600">
                     </div>
-                    
-                    <div class="form-group">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="consent" required>
-                            <label class="form-check-label" for="consent">
-                                J'accepte la politique de confidentialité et de traitement des données *
-                            </label>
-                            <div class="invalid-feedback">Vous devez accepter pour continuer.</div>
+                    <div class="recipe-content">
+                        <h3>Mousse au Chocolat</h3>
+                        <div class="recipe-meta">
+                            <span><i class="fas fa-clock" aria-hidden="true"></i> 30 min</span>
+                            <span><i class="fas fa-utensils" aria-hidden="true"></i> 4 pers.</span>
+                            <span><i class="fas fa-fire" aria-hidden="true"></i> 450 kcal</span>
+                        </div>
+                        <p>Une mousse onctueuse et légère qui fond dans la bouche.</p>
+                        <a href="#" class="btn btn-outline">Voir la recette</a>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="recettes.html" class="btn btn-primary btn-lg">Voir toutes les recettes</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Abonnez-vous à notre newsletter</h2>
+            <p>Recevez des recettes exclusives, des conseils et des offres spéciales directement dans votre boîte mail.</p>
+            
+            <form id="newsletterForm" class="newsletter-form">
+                <label for="newsletter-email" class="visually-hidden">Votre adresse email</label>
+                <input type="email" id="newsletter-email" placeholder="Votre adresse email" required>
+                <button type="submit">S'abonner</button>
+            </form>
+            
+            <div class="newsletter-disclaimer">
+                <small>En vous abonnant, vous acceptez de recevoir des emails de Thermomix®. Vous pouvez vous désabonner à tout moment.</small>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Questions fréquentes</h2>
+                <p>Trouvez des réponses aux questions les plus posées sur Thermomix®</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
+                        <span>Quelle est la différence entre TM6 et TM7 ?</span>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </div>
+                    <div class="faq-answer" id="faq-answer-1">
+                        <p>Le TM7 est la dernière version de Thermomix avec des fonctionnalités avancées comme la reconnaissance des ingrédients et un assistant vocal intégré. Il possède également un écran plus grand, plus de recettes intégrées et une connectivité améliorée. Le TM6 reste un excellent choix avec toutes les fonctions de base à un prix plus abordable.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
+                        <span>Thermomix® est-il difficile à utiliser ?</span>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </div>
+                    <div class="faq-answer" id="faq-answer-2">
+                        <p>Absolument pas ! Thermomix® a été conçu pour être intuitif et facile à utiliser, même pour les débutants en cuisine. Les recettes guidées pas à pas et l'interface simple rendent la préparation des plats accessible à tous. De plus, nos conseillers sont disponibles pour vous former et répondre à toutes vos questions.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
+                        <span>Puis-je préparer tous types de plats avec Thermomix® ?</span>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </div>
+                    <div class="faq-answer" id="faq-answer-3">
+                        <p>Oui, Thermomix® permet de préparer une très large variété de plats : entrées, plats principaux, desserts, pains, boissons, sauces, soupes, et bien plus encore. Avec ses multiples fonctions et accessoires, les possibilités sont quasiment infinies.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">
+                        <span>Comment puis-je obtenir un service après-vente ?</span>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </div>
+                    <div class="faq-answer" id="faq-answer-4">
+                        <p>Notre service client est disponible par téléphone, email et chat en ligne 7j/7. En cas de problème technique, nous avons un réseau de techniciens agréés dans toute la France. Tous nos produits bénéficient d'une garantie minimale de 2 ans.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" aria-expanded="false" aria-controls="faq-answer-5">
+                        <span>L'offre promotionnelle de -40% est-elle limitée ?</span>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </div>
+                    <div class="faq-answer" id="faq-answer-5">
+                        <p>Oui, cette offre exceptionnelle est valable jusqu'au 31/12/2023 ou jusqu'à épuisement des stocks. Nous vous conseillons de profiter rapidement de cette réduction importante sur nos produits phares.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contactez-nous</h2>
+                <p>Nous sommes à votre disposition pour toute question ou demande d'information</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h3>Adresse</h3>
+                            <p>123 Avenue de la Cuisine<br>75001 Paris, France</p>
                         </div>
                     </div>
                     
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block">Envoyer le message</button>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-phone-alt" aria-hidden="true"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h3>Téléphone</h3>
+                            <p><a href="tel:+33123456789">+33 1 23 45 67 89</a><br>Lun-Ven : 9h-18h</p>
+                        </div>
                     </div>
-                </form>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h3>Email</h3>
+                            <p><a href="mailto:contact@thermomix.fr">contact@thermomix.fr</a><br>Réponse sous 24h</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h3>Démonstration</h3>
+                            <p>Prenez rendez-vous pour une démonstration gratuite à domicile ou en magasin.</p>
+                            <a href="#" class="btn btn-outline">Prendre RDV</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Envoyez-nous un message</h3>
+                    <p>Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.</p>
+                    
+                    <form id="contactForm" action="traitement.html" method="POST">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Nom complet *</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                            <div class="invalid-feedback">Veuillez entrer votre nom complet.</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Adresse email *</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                            <div class="invalid-feedback">Veuillez entrer une adresse email valide.</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Numéro de téléphone</label>
+                            <input type="tel" id="phone" name="phone" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Sujet *</label>
+                            <select id="subject" name="subject" class="form-control" required>
+                                <option value="">Sélectionnez un sujet</option>
+                                <option value="product">Question sur un produit</option>
+                                <option value="order">Commande</option>
+                                <option value="support">Support technique</option>
+                                <option value="demo">Demande de démonstration</option>
+                                <option value="other">Autre</option>
+                            </select>
+                            <div class="invalid-feedback">Veuillez sélectionner un sujet.</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message *</label>
+                            <textarea id="message" name="message" class="form-control" required></textarea>
+                            <div class="invalid-feedback">Veuillez entrer votre message.</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="consent" required>
+                                <label class="form-check-label" for="consent">
+                                    J'accepte la politique de confidentialité et de traitement des données *
+                                </label>
+                                <div class="invalid-feedback">Vous devez accepter pour continuer.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block">Envoyer le message</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Stores Section -->
-<section class="stores">
-    <div class="container">
-        <div class="section-title">
-            <h2>Retrouvez-nous en magasin</h2>
-            <p>Découvrez nos produits en personne et bénéficiez de conseils experts</p>
-        </div>
-        
-        <div class="stores-container">
-            <div class="store-card">
-                <div class="store-image">
-                    <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Boutique Paris" loading="lazy">
-                </div>
-                <div class="store-info">
-                    <h3>Paris - Champs-Élysées</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> 123 Av. des Champs-Élysées, 75008 Paris</p>
-                    <p><i class="fas fa-phone"></i> <a href="tel:+33123456789">01 23 45 67 89</a></p>
-                    <p><i class="fas fa-clock"></i> Lun-Sam : 10h-20h</p>
-                    <a href="#" class="btn btn-outline">Voir sur la carte</a>
-                </div>
+    <!-- Stores Section -->
+    <section class="stores">
+        <div class="container">
+            <div class="section-title">
+                <h2>Retrouvez-nous en magasin</h2>
+                <p>Découvrez nos produits en personne et bénéficiez de conseils experts</p>
             </div>
             
-            <div class="store-card">
-                <div class="store-image">
-                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Boutique Lyon" loading="lazy">
-                </div>
-                <div class="store-info">
-                    <h3>Lyon - Part-Dieu</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> 456 Rue de la République, 69003 Lyon</p>
-                    <p><i class="fas fa-phone"></i> <a href="tel:+33423456789">04 23 45 67 89</a></p>
-                    <p><i class="fas fa-clock"></i> Lun-Sam : 10h-19h</p>
-                    <a href="#" class="btn btn-outline">Voir sur la carte</a>
-                </div>
+            <div class="stores-container">
+                <article class="store-card">
+                    <div class="store-image">
+                        <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Boutique Thermomix Paris - Champs-Élysées" loading="lazy" width="800" height="600">
+                    </div>
+                    <div class="store-info">
+                        <h3>Paris - Champs-Élysées</h3>
+                        <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> 123 Av. des Champs-Élysées, 75008 Paris</p>
+                        <p><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+33123456789">01 23 45 67 89</a></p>
+                        <p><i class="fas fa-clock" aria-hidden="true"></i> Lun-Sam : 10h-20h</p>
+                        <a href="#" class="btn btn-outline">Voir sur la carte</a>
+                    </div>
+                </article>
+                
+                <article class="store-card">
+                    <div class="store-image">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Boutique Thermomix Lyon - Part-Dieu" loading="lazy" width="800" height="600">
+                    </div>
+                    <div class="store-info">
+                        <h3>Lyon - Part-Dieu</h3>
+                        <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> 456 Rue de la République, 69003 Lyon</p>
+                        <p><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+33423456789">04 23 45 67 89</a></p>
+                        <p><i class="fas fa-clock" aria-hidden="true"></i> Lun-Sam : 10h-19h</p>
+                        <a href="#" class="btn btn-outline">Voir sur la carte</a>
+                    </div>
+                </article>
+                
+                <article class="store-card">
+                    <div class="store-image">
+                        <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Boutique Thermomix Marseille - Vieux Port" loading="lazy" width="800" height="600">
+                    </div>
+                    <div class="store-info">
+                        <h3>Marseille - Vieux Port</h3>
+                        <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> 789 Quai du Port, 13002 Marseille</p>
+                        <p><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+33493456789">04 93 45 67 89</a></p>
+                        <p><i class="fas fa-clock" aria-hidden="true"></i> Lun-Sam : 10h-19h</p>
+                        <a href="#" class="btn btn-outline">Voir sur la carte</a>
+                    </div>
+                </article>
             </div>
             
-            <div class="store-card">
-                <div class="store-image">
-                    <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Boutique Marseille" loading="lazy">
-                </div>
-                <div class="store-info">
-                    <h3>Marseille - Vieux Port</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> 789 Quai du Port, 13002 Marseille</p>
-                    <p><i class="fas fa-phone"></i> <a href="tel:+33493456789">04 93 45 67 89</a></p>
-                    <p><i class="fas fa-clock"></i> Lun-Sam : 10h-19h</p>
-                    <a href="#" class="btn btn-outline">Voir sur la carte</a>
-                </div>
+            <div class="text-center mt-5">
+                <a href="boutiques.html" class="btn btn-primary">Voir toutes nos boutiques</a>
             </div>
         </div>
-        
-        <div class="text-center mt-5">
-            <a href="boutiques.html" class="btn btn-primary">Voir toutes nos boutiques</a>
-        </div>
-    </div>
-</section>
+    </section>
+</main>
 
 <!-- Footer -->
 <footer class="footer">
@@ -2978,11 +3043,11 @@
                     <p>Thermomix® révolutionne la cuisine depuis plus de 50 ans avec des innovations constantes pour simplifier votre quotidien.</p>
                 </div>
                 <div class="social-links">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a>
                 </div>
             </div>
 
@@ -3024,19 +3089,19 @@
 
             <div class="footer-contact">
                 <h3>Contact</h3>
-                <p><i class="fas fa-map-marker-alt"></i> 123 Rue de la Cuisine, 75001 Paris, France</p>
-                <p><i class="fas fa-phone"></i> <a href="tel:+33123456789">+33 1 23 45 67 89</a></p>
-                <p><i class="fas fa-envelope"></i> <a href="mailto:contact@thermomix.fr">contact@thermomix.fr</a></p>
-                <p><i class="fas fa-clock"></i> Lun-Ven: 9h-18h</p>
+                <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> 123 Rue de la Cuisine, 75001 Paris, France</p>
+                <p><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+33123456789">+33 1 23 45 67 89</a></p>
+                <p><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:contact@thermomix.fr">contact@thermomix.fr</a></p>
+                <p><i class="fas fa-clock" aria-hidden="true"></i> Lun-Ven: 9h-18h</p>
                 
                 <div class="footer-apps">
                     <h4>Téléchargez notre app</h4>
                     <div class="app-buttons">
                         <a href="#" class="app-btn">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/1200px-Download_on_the_App_Store_Badge.svg.png" alt="App Store" width="120" loading="lazy">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/1200px-Download_on_the_App_Store_Badge.svg.png" alt="Télécharger sur l'App Store" width="120" loading="lazy">
                         </a>
                         <a href="#" class="app-btn">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/1200px-Google_Play_Store_badge_EN.svg.png" alt="Google Play" width="135" loading="lazy">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/1200px-Google_Play_Store_badge_EN.svg.png" alt="Disponible sur Google Play" width="135" loading="lazy">
                         </a>
                     </div>
                 </div>
@@ -3060,32 +3125,32 @@
 </div>
 
 <!-- Back to Top -->
-<div class="back-to-top">
-    <i class="fas fa-arrow-up"></i>
-</div>
+<button class="back-to-top" aria-label="Retour en haut de page">
+    <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</button>
 
 <!-- Newsletter Modal -->
-<div class="modal" id="newsletterModal">
+<div class="modal" id="newsletterModal" role="dialog" aria-modal="true" aria-labelledby="newsletterModalTitle">
     <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <h3 class="modal-title">Merci pour votre abonnement !</h3>
+        <button class="close-modal" aria-label="Fermer la fenêtre modale">&times;</button>
+        <h3 class="modal-title" id="newsletterModalTitle">Merci pour votre abonnement !</h3>
         <p>Vous recevrez bientôt nos meilleures recettes et offres exclusives dans votre boîte mail.</p>
         <div class="modal-icon">
-            <i class="fas fa-envelope-open-text"></i>
+            <i class="fas fa-envelope-open-text" aria-hidden="true"></i>
         </div>
     </div>
 </div>
 
 <!-- Product Quick View Modal -->
-<div class="modal product-modal" id="productModal">
+<div class="modal product-modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="productModalTitle">
     <div class="modal-content">
-        <span class="close-modal">&times;</span>
+        <button class="close-modal" aria-label="Fermer la fenêtre modale">&times;</button>
         <div class="product-modal-container">
             <div class="product-modal-image">
                 <img src="" alt="" id="modalProductImage" loading="lazy">
             </div>
             <div class="product-modal-info">
-                <h3 class="product-modal-title" id="modalProductTitle"></h3>
+                <h3 class="product-modal-title" id="productModalTitle"></h3>
                 <div class="product-modal-price">
                     <span class="product-modal-current" id="modalProductCurrentPrice"></span>
                     <span class="product-modal-old" id="modalProductOldPrice"></span>
@@ -3113,8 +3178,9 @@
     const navMain = document.getElementById('navMain');
     
     hamburger.addEventListener('click', () => {
+        const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
         navMain.classList.toggle('active');
-        hamburger.classList.toggle('active');
+        hamburger.setAttribute('aria-expanded', !isExpanded);
         document.body.classList.toggle('no-scroll');
     });
     
@@ -3122,7 +3188,7 @@
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => {
             navMain.classList.remove('active');
-            hamburger.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
             document.body.classList.remove('no-scroll');
         });
     });
@@ -3158,12 +3224,16 @@
     let slideInterval;
     
     function showTestimonial(n) {
-        testimonialSlides.forEach(slide => slide.classList.remove('active'));
-        dots.forEach(dot => dot.classList.remove('active'));
+        testimonialSlides.forEach((slide, index) => {
+            slide.classList.remove('active');
+            dots[index].classList.remove('active');
+            dots[index].setAttribute('aria-current', 'false');
+        });
         
         currentTestimonial = (n + testimonialSlides.length) % testimonialSlides.length;
         testimonialSlides[currentTestimonial].classList.add('active');
         dots[currentTestimonial].classList.add('active');
+        dots[currentTestimonial].setAttribute('aria-current', 'true');
     }
     
     function nextTestimonial() {
@@ -3223,6 +3293,7 @@
             
             // Show success modal
             newsletterModal.style.display = 'flex';
+            document.body.classList.add('no-scroll');
             newsletterForm.reset();
             
             // Reset button
@@ -3236,6 +3307,7 @@
         btn.addEventListener('click', () => {
             document.querySelectorAll('.modal').forEach(modal => {
                 modal.style.display = 'none';
+                document.body.classList.remove('no-scroll');
             });
         });
     });
@@ -3244,6 +3316,7 @@
     window.addEventListener('click', (e) => {
         if (e.target.classList.contains('modal')) {
             e.target.style.display = 'none';
+            document.body.classList.remove('no-scroll');
         }
     });
     
@@ -3338,6 +3411,8 @@
             top: 0,
             behavior: 'smooth'
         });
+        // Move focus to the top of the page for keyboard users
+        document.querySelector('.skip-link').focus();
     });
     
     // FAQ Accordion
@@ -3347,15 +3422,19 @@
         const question = item.querySelector('.faq-question');
         
         question.addEventListener('click', () => {
+            const isExpanded = question.getAttribute('aria-expanded') === 'true';
+            
             // Close all other items
             faqItems.forEach(otherItem => {
                 if (otherItem !== item) {
                     otherItem.classList.remove('active');
+                    otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
                 }
             });
             
             // Toggle current item
             item.classList.toggle('active');
+            question.setAttribute('aria-expanded', !isExpanded);
         });
     });
     
@@ -3434,7 +3513,7 @@
             // Populate modal with product data
             document.getElementById('modalProductImage').src = product.image;
             document.getElementById('modalProductImage').alt = product.title;
-            document.getElementById('modalProductTitle').textContent = product.title;
+            document.getElementById('productModalTitle').textContent = product.title;
             document.getElementById('modalProductCurrentPrice').textContent = product.currentPrice;
             document.getElementById('modalProductOldPrice').textContent = product.oldPrice;
             document.getElementById('modalProductDescription').textContent = product.description;
@@ -3443,7 +3522,7 @@
             specsList.innerHTML = '';
             product.specs.forEach(spec => {
                 const li = document.createElement('li');
-                li.innerHTML = `<i class="fas fa-check"></i> ${spec}`;
+                li.innerHTML = `<i class="fas fa-check" aria-hidden="true"></i> ${spec}`;
                 specsList.appendChild(li);
             });
             
@@ -3566,6 +3645,7 @@
             // Show added notification
             const notification = document.createElement('div');
             notification.className = 'notification';
+            notification.setAttribute('role', 'alert');
             notification.innerHTML = `
                 <div class="notification-content">
                     <img src="${productImage}" alt="${productName}" width="40" height="40">
@@ -3599,6 +3679,11 @@
         
         // Show header after page load to prevent flash of unstyled content
         document.querySelector('.header').style.opacity = '1';
+        
+        // Set aria-expanded for FAQ items
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.setAttribute('aria-expanded', 'false');
+        });
     });
 </script>
 </body>
