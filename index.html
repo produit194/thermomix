@@ -2,14 +2,24 @@
 <html lang="fr-FR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
-    <meta name="description" content="Thermomix® - Le robot culinaire multifonction révolutionnaire. Découvrez les modèles TM6 et TM7 avec promotion exclusive de -40%">
-    <meta name="keywords" content="thermomix, tm6, tm7, robot cuisine, promotion, recettes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez Thermomix®, le robot culinaire multifonction révolutionnaire. TM6 et TM7 avec promotion exclusive -40%. Livraison gratuite, paiement sécurisé.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.thermomix.fr/">
+    <meta property="og:title" content="Thermomix® | Robot Culinaire Intelligent | Promotion -40%">
+    <meta property="og:description" content="Découvrez Thermomix®, le robot culinaire multifonction révolutionnaire. TM6 et TM7 avec promotion exclusive -40%.">
+    <meta property="og:image" content="https://www.thermomix.fr/images/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.thermomix.fr/">
+    <meta property="twitter:title" content="Thermomix® | Robot Culinaire Intelligent | Promotion -40%">
+    <meta property="twitter:description" content="Découvrez Thermomix®, le robot culinaire multifonction révolutionnaire. TM6 et TM7 avec promotion exclusive -40%.">
+    <meta property="twitter:image" content="https://www.thermomix.fr/images/twitter-image.jpg">
+
     <meta name="theme-color" content="#00A651">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.thermomix.fr" />
     
     <!-- Preload critical resources -->
@@ -922,7 +932,7 @@
         
         .product-specs ul {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(2, 1fr));
             gap: var(--space-xs);
         }
         
@@ -1914,6 +1924,44 @@
         
         @keyframes spin {
             to { transform: rotate(360deg); }
+        }
+        
+        /* Notification */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+            padding: var(--space-md);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: var(--transition-normal);
+            z-index: var(--z-index-toast);
+            max-width: 350px;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .notification-content {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+        
+        .notification-content img {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-sm);
+            object-fit: cover;
+        }
+        
+        .notification-content p {
+            margin-bottom: var(--space-xs);
         }
         
         /* Responsive */
@@ -3367,9 +3415,6 @@
                 contactForm.reset();
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
-                
-                // In a real implementation, you would redirect to a thank you page
-                // window.location.href = 'merci.html';
             }, 1500);
         }
     });
