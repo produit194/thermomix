@@ -58,7 +58,12 @@
             -webkit-tap-highlight-color: transparent;
             scroll-behavior: smooth;
         }
-        
+        .products-container {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+    gap: 20px !important;
+}
+
         body {
             line-height: 1.6;
             font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, sans-serif;
@@ -92,7 +97,49 @@
             cursor: pointer;
             -webkit-appearance: button;
         }
-        
+        /* Ajoutez ce code dans la partie CSS */
+.product-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    opacity: 1 !important; /* Force l'opacité */
+    transform: none !important; /* Annule toute transformation */
+}
+
+.product-image {
+    height: 300px;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.product-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #e53935;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 12px;
+    z-index: 10;
+} 
+
         button:focus {
             outline: 2px solid var(--primary-color);
             outline-offset: 2px;
@@ -2477,79 +2524,81 @@
         </div>
     </section>
 
-    <!-- Products Section -->
-    <section class="products" id="products">
-        <div class="container">
-            <div class="section-title">
-                <h2>Nos Produits Phares</h2>
-                <p>Découvrez notre gamme de robots culinaires haut de gamme</p>
-            </div>
+<!-- Dans la section products, remplacez par ce code vérifié -->
+<section class="products" id="products">
+    <div class="container">
+        <div class="section-title">
+            <h2>Nos Produits Phares</h2>
+            <p>Découvrez notre gamme de robots culinaires haut de gamme</p>
+        </div>
 
-            <div class="products-container">
-                <!-- Product 1 - TM6 -->
-                <article class="product-card">
-                    <div class="product-badge">-40%</div>
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1585238342024-78d90f58f6b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Thermomix TM6 - Robot culinaire multifonction avec écran tactile" loading="lazy" width="800" height="600">
+        <div class="products-container">
+            <!-- Product 1 - TM6 -->
+            <article class="product-card">
+                <div class="product-badge">-40%</div>
+                <div class="product-image">
+                    <img src="https://via.placeholder.com/800x600?text=Thermomix+TM6" 
+                         alt="Thermomix TM6" 
+                         loading="lazy" 
+                         width="800" height="600">
+                </div>
+                <div class="product-info">
+                    <h3>Thermomix® TM6</h3>
+                    <div class="product-price">
+                        <span class="current-price">899€</span>
+                        <span class="old-price">1499€</span>
                     </div>
-                    <div class="product-info">
-                        <h3>Thermomix® TM6</h3>
-                        <div class="product-price">
-                            <span class="current-price">899€</span>
-                            <span class="old-price">1499€</span>
-                        </div>
-                        <p class="product-description">Le robot culinaire intelligent avec écran tactile et plus de 40,000 recettes guidées.</p>
-                        
-                        <div class="product-specs">
-                            <ul>
-                                <li><i class="fas fa-check" aria-hidden="true"></i> 12 fonctions en 1</li>
-                                <li><i class="fas fa-check" aria-hidden="true"></i> Écran tactile couleur</li>
-                                <li><i class="fas fa-check" aria-hidden="true"></i> 40,000+ recettes</li>
-                                <li><i class="fas fa-check" aria-hidden="true"></i> Cuisson précise</li>
-                                <li><i class="fas fa-check" aria-hidden="true"></i> Contrôle via app</li>
-                                <li><i class="fas fa-check" aria-hidden="true"></i> Garantie 2 ans</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="product-actions">
-                            <a href="#" class="btn btn-primary">Acheter maintenant</a>
-                            <button class="btn btn-secondary btn-quick-view" data-product="tm6">Voir les détails</button>
-                        </div>
+                    <p class="product-description">Le robot culinaire intelligent avec écran tactile et plus de 40,000 recettes guidées.</p>
+                    
+                    <div class="product-specs">
+                        <ul>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> 12 fonctions en 1</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Écran tactile couleur</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> 40,000+ recettes</li>
+                        </ul>
                     </div>
-                </article>
+                    
+                    <div class="product-actions">
+                        <a href="#" class="btn btn-primary">Acheter maintenant</a>
+                        <button class="btn btn-secondary btn-quick-view" data-product="tm6">Voir les détails</button>
+                    </div>
+                </div>
+            </article>
 
-                <!-- Product 2 - TM7 -->
-                <article class="product-card">
-                    <div class="product-badge">Nouveau</div>
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1556910638-9a0cc496705e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Thermomix TM7 - Dernier modèle avec reconnaissance des ingrédients" loading="lazy" width="800" height="600">
+            <!-- Product 2 - TM7 -->
+            <article class="product-card">
+                <div class="product-badge">Nouveau</div>
+                <div class="product-image">
+                    <img src="https://via.placeholder.com/800x600?text=Thermomix+TM7" 
+                         alt="Thermomix TM7" 
+                         loading="lazy" 
+                         width="800" height="600">
+                </div>
+                <div class="product-info">
+                    <h3>Thermomix® TM7</h3>
+                    <div class="product-price">
+                        <span class="current-price">1199€</span>
+                        <span class="old-price">1999€</span>
                     </div>
-                    <div class="product-info">
-                        <h3>Thermomix® TM7</h3>
-                        <div class="product-price">
-                            <span class="current-price">1199€</span>
-                            <span class="old-price">1999€</span>
-                        </div>
-                        <p class="product-description">La dernière innovation avec reconnaissance des ingrédients et assistant vocal intégré.</p>
-                        
-                        <div class="product-specs">
-                            <ul>
-                                <li><i class="fas fa-check" aria-hidden="true"></i> 15 fonctions en 1</li>
-                                <li><i class="fas fa-check" aria-hidden="true"></i> Reconnaissance ingrédients</li>
-                                <li><i class="fas fa-check" aria-hidden="true"></i> Assistant vocal</li>
-                                <li><i class="fas fa-check" aria-hidden="true"></i> Écran HD 7"</li>
-                                <li><i class="fas fa-check" aria-hidden="true"></i> 50,000+ recettes</li>
-                                <li><i class="fas fa-check" aria-hidden="true"></i> Garantie 3 ans</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="product-actions">
-                            <a href="#" class="btn btn-primary">Acheter maintenant</a>
-                            <button class="btn btn-secondary btn-quick-view" data-product="tm7">Voir les détails</button>
-                        </div>
+                    <p class="product-description">La dernière innovation avec reconnaissance des ingrédients et assistant vocal intégré.</p>
+                    
+                    <div class="product-specs">
+                        <ul>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> 15 fonctions en 1</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Reconnaissance ingrédients</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Assistant vocal</li>
+                        </ul>
                     </div>
-                </article>
-
+                    
+                    <div class="product-actions">
+                        <a href="#" class="btn btn-primary">Acheter maintenant</a>
+                        <button class="btn btn-secondary btn-quick-view" data-product="tm7">Voir les détails</button>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
                 <!-- Product 3 - Accessories -->
                 <article class="product-card">
                     <div class="product-badge">Promo</div>
@@ -3581,18 +3630,20 @@
     });
     
     // Scroll Animation
-    function animateOnScroll() {
-        const elements = document.querySelectorAll('.feature-card, .product-card, .step, .recipe-card, .store-card');
-        const windowHeight = window.innerHeight;
-        const scrollOffset = window.scrollY + windowHeight;
-        
-        elements.forEach(element => {
-            const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-            const animationPoint = windowHeight * 0.8;
-            
-            if (scrollOffset > elementPosition + animationPoint) {
-                element.classList.add('animated');
-            }
+// Scroll Animation - Modifiez cette fonction
+function animateOnScroll() {
+    const elements = document.querySelectorAll('.product-card');
+    
+    elements.forEach(element => {
+        // Force l'affichage sans animation
+        element.style.opacity = '1';
+        element.style.transform = 'translateY(0)';
+        element.style.transition = 'none'; // Désactive les animations
+    });
+}
+
+// Appelez la fonction au chargement
+window.addEventListener('load', animateOnScroll);            }
         });
     }
     
